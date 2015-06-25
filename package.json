@@ -1,0 +1,24 @@
+{
+  "name": "teleapiwrapper",
+  "version": "0.5.0",
+  "description": "An unofficial JS-wrapper for the Telegram chat API. Currently focused on bots.",
+  "main": "telegram_api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Suppen/Telegram-API-wrapper-for-JS.git"
+  },
+  "keywords": [
+    "telegram",
+    "chat",
+    "api"
+  ],
+  "author": "Simen de Lange <simen.de.lange@gmail.com> (http://suppen.no/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Suppen/Telegram-API-wrapper-for-JS/issues"
+  },
+  "homepage": "https://github.com/Suppen/Telegram-API-wrapper-for-JS"
+}
