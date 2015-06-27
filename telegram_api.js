@@ -6,7 +6,7 @@
 var https = require("https");
 var querystring = require("querystring");
 var urlParser = require("url");
-var fs = require("fs");
+var FormData = require("form-data");
 
 
 /***********************
@@ -20,14 +20,32 @@ function unimplemented() {
 	});
 };
 
+// Dummy function, doing nothing at all
+function dummyFunc(){};
+
 // Get the callback from an arguments object
 function getCb(args) {
 	var cb = args[args.length-1];
 	if (cb instanceof Function) {
 		return cb;
 	} else {
-		return function() {};	// Dummy function
+		return dummyFunc;
 	}
+};
+
+// Parse arguments into an object
+function parseArgs(fields, args) {
+	var parsed = {};
+
+	parsed.cb = getCb(args);
+	if (parsed.cb != dummyFunc) {
+		args.length--;
+	}
+
+	for (var i = 0; i < args.length && i < fields.length; i++) {
+		parsed[fields[i]] = args[i];
+	}
+	return parsed;
 };
 
 
@@ -62,15 +80,14 @@ function BotAPI(botToken) {
 
 // The prototype of the bot BotAPI
 BotAPI.prototype = {
-	methodUrlBase: "https://api.telegram.org/bot<token>/",
 	token: "",
 	/**
 	 * A simple method for testing your bot's auth token. Requires no parameters. Returns basic information about the bot in form of a User object.
 	 *
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
 	 */
-	getMe: function(cb) {
-		this._doRequest("getMe", {}, getCb(arguments));
+	getMe: function() {
+		this._doRequest("getMe", parseArgs(arguments));
 	},
 	/**
 	 * Use this method to forward messages of any kind. On success, the sent Message is returned.
@@ -81,23 +98,16 @@ BotAPI.prototype = {
 	 * @param {ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [reply_markup]	Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
 	 */
-	sendMessage: function(
-		chat_id,
-		text,
-		disable_web_page_preview,
-		reply_to_message_id,
-		reply_markup,
-		cb
-	) {
-		var method = "sendMessage";
-		var data = {
-			chat_id: chat_id,
-			text: text,
-			disable_web_page_preview: disable_web_page_preview,
-			reply_to_message_id: reply_to_message_id,
-			reply_markup: reply_markup
-		};
-		this._doRequest(method, data, getCb(arguments));
+	sendMessage: function() {
+		var args = [
+			"chat_id",
+			"text",
+			"disable_web_page_preview",
+			"reply_to_message_id",
+			"reply_markup"
+		];
+
+		this._doRequest("sendMessage", parseArgs(args, arguments));
 	},
 	/**
 	 * Use this method to forward messages of any kind. On success, the sent Message is returned.
@@ -106,19 +116,14 @@ BotAPI.prototype = {
 	 * @param {Integer} message_id	Unique message identifier
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
 	 */
-	forwardMessage: function(
-		chat_id,
-		from_chat_id,
-		message_id,
-		cb
-	) {
-		var method = "forwardMessage";
-		var data = {
-			chat_id: chat_id,
-			from_chat_id: from_chat_id,
-			message_id: message_id
-		};
-		this._doRequest(method, data, getCb(arguments));
+	forwardMessage: function() {
+		var args = [
+			"chat_id",
+			"from_chat_id",
+			"message_id"
+		];
+
+		this._doRequest("forwardMessage", parseArgs(args, arguments));
 	},
 	/**
 	 * Use this method to send photos. On success, the sent Message is returned.
@@ -129,24 +134,19 @@ BotAPI.prototype = {
 	 * @param {ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [reply_markup]	Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
 	 */
-	sendPhoto: function(
-		chat_id,
-		photo,
-		caption,
-		reply_to_message_id,
-		reply_markup,
-		cb
-	) {
-return unimplemented();
-		var method = "sendPhoto";
-		var data = {
-			chat_id: chat_id,
-			photo: photo,
-			caption: caption,
-			reply_to_message_id: reply_to_message_id,
-			reply_markup: reply_markup
-		};
-		this._doRequest(method, data, getCb(arguments));
+	sendPhoto: function() {
+		var args = [
+			"chat_id",
+			"photo",
+			"caption",
+			"reply_to_message_id",
+			"reply_markup"
+		];
+		var argObj = parseArgs(args, arguments);
+		if (DataTypes.isType("InputFile", argObj.photo)) {
+			argObj.fileField = "photo";
+		}
+		this._doRequest("sendPhoto", argObj);
 	},
 	/**
 	 * Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .ogg file encoded with OPUS (other formats may be sent as Document). On success, the sent Message is returned.
@@ -156,22 +156,18 @@ return unimplemented();
 	 * @param {ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [reply_markup]	Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
 	 */
-	sendAudio: function(
-		chat_id,
-		audio,
-		reply_to_message_id,
-		reply_markup,
-		cb
-	) {
-return unimplemented();
-		var method = "sendAudio";
-		var data = {
-			chat_id: chat_id,
-			audio: audio,
-			reply_to_message_id: reply_to_message_id,
-			reply_markup: reply_markup
-		};
-		this._doRequest(method, data, getCb(arguments));
+	sendAudio: function() {
+		var args = [
+			"chat_id",
+			"audio",
+			"reply_to_message_id",
+			"reply_markup"
+		];
+		var argObj = parseArgs(args, arguments);
+		if (DataTypes.isType("InputFile", argObj.audio)) {
+			argObj.fileField = "audio";
+		}
+		this._doRequest("sendAudio", argObj);
 	},
 	/**
 	 * Use this method to send general files. On success, the sent Message is returned.
@@ -181,22 +177,18 @@ return unimplemented();
 	 * @param {ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [reply_markup]	Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
 	 */
-	sendDocument: function(
-		chat_id,
-		document,
-		reply_to_message_id,
-		reply_markup,
-		cb
-	) {
-return unimplemented();
-		var method = "sendDocument";
-		var data = {
-			chat_id: chat_id,
-			document: document,
-			reply_to_message_id: reply_to_message_id,
-			reply_markup: reply_markup
-		};
-		this._doRequest(method, data, getCb(arguments));
+	sendDocument: function() {
+		var args = [
+			"chat_id",
+			"document",
+			"reply_to_message_id",
+			"reply_markup"
+		];
+		var argObj = parseArgs(args, arguments);
+		if (DataTypes.isType("InputFile", argObj.document)) {
+			argObj.fileField = "document";
+		}
+		this._doRequest("sendDocument", argObj);
 	},
 	/**
 	 * Use this method to send .webp stickers. On success, the sent Message is returned.
@@ -206,22 +198,18 @@ return unimplemented();
 	 * @param {ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [reply_markup]	Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
 	 */
-	sendSticker: function(
-		chat_id,
-		sticker,
-		reply_to_message_id,
-		reply_markup,
-		cb
-	) {
-return unimplemented();
-		var method = "sendSticker";
-		var data = {
-			chat_id: chat_id,
-			sticker: sticker,
-			reply_to_message_id: reply_to_message_id,
-			reply_markup: reply_markup
-		};
-		this._doRequest(method, data, getCb(arguments));
+	sendSticker: function() {
+		var args = [
+			"chat_id",
+			"sticker",
+			"reply_to_message_id",
+			"reply_markup"
+		];
+		var argObj = parseArgs(args, arguments);
+		if (DataTypes.isType("InputFile", argObj.sticker)) {
+			argObj.fileField = "sticker";
+		}
+		this._doRequest("sendSticker", argObj);
 	},
 	/**
 	 * Use this method to send video files, Telegram clients support mp4 videos (other formats may be sent as Document). On success, the sent Message is returned.
@@ -231,22 +219,18 @@ return unimplemented();
 	 * @param {ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [reply_markup]	Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
 	 */
-	sendVideo: function(
-		chat_id,
-		video,
-		reply_to_message_id,
-		reply_markup,
-		cb
-	) {
-return unimplemented();
-		var method = "sendVideo";
-		var data = {
-			chat_id: chat_id,
-			video: video,
-			reply_to_message_id: reply_to_message_id,
-			reply_markup: reply_markup
-		};
-		this._doRequest(method, data, getCb(arguments));
+	sendVideo: function() {
+		var args = [
+			"chat_id",
+			"video",
+			"reply_to_message_id",
+			"reply_markup"
+		];
+		var argObj = parseArgs(args, arguments);
+		if (DataTypes.isType("InputFile", argObj.video)) {
+			argObj.fileField = "video";
+		}
+		this._doRequest("sendVideo", argObj);
 	},
 	/**
 	 * Use this method to send point on the map. On success, the sent Message is returned.
@@ -257,23 +241,15 @@ return unimplemented();
 	 * @param {ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [reply_markup]	Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
 	 */
-	sendLocation: function(
-		chat_id,
-		latitude,
-		longitude,
-		reply_to_message_id,
-		reply_markup,
-		cb
-	) {
-		var method = "sendLocation";
-		var data = {
-			chat_id: chat_id,
-			latitude: latitude,
-			longitude: longitude,
-			reply_to_message_id: reply_to_message_id,
-			reply_markup: reply_markup
-		};
-		this._doRequest(method, data, getCb(arguments));
+	sendLocation: function() {
+		var args = [
+			"chat_id",
+			"latitude",
+			"longitude",
+			"reply_to_message_id",
+			"reply_markup"
+		];
+		this._doRequest("sendLocation", parseArgs(args, arguments));
 	},
 	/**
 	 * Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status).
@@ -286,17 +262,12 @@ return unimplemented();
 	 * @param {String} action	Type of action to broadcast. Choose one, depending on what the user is about to receive: typing for text messages, upload_photo for photos, record_video or upload_video for videos, record_audio or upload_audio for audio files, upload_document for general files, find_location for location data.
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
 	 */
-	sendChatAction: function(
-		chat_id,
-		action,
-		cb
-	) {
-		var method = "sendChatAction";
-		var data = {
-			chat_id: chat_id,
-			action: action
-		};
-		this._doRequest(method, data, getCb(arguments));
+	sendChatAction: function() {
+		var args = [
+			"chat_id",
+			"action"
+		];
+		this._doRequest("sendChatAction", parseArgs(args, arguments));
 	},
 	/**
 	 * Use this method to get a list of profile pictures for a user. Returns a UserProfilePhotos object.
@@ -305,85 +276,66 @@ return unimplemented();
 	 * @param {Integer} [limit]	Limits the number of photos to be retrieved. Values between 1—100 are accepted. Defaults to 100.
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
 	 */
-	getUserProfilePhotos: function(
-		user_id,
-		offset,
-		limit,
-		cb
-	) {
-		var method = "getUserProfilePhotos";
-		var data = {
-			user_id: user_id,
-			offset: offset,
-			limit: limit
-		};
-		this._doRequest(method, data, getCb(arguments));
+	getUserProfilePhotos: function() {
+		var args = [
+			"user_id",
+			"offset",
+			"limit"
+		];
+		this._doRequest("getUserProfilePhotos", parseArgs(args, arguments));
 	},
 	/**
-	 * Use this method to receive incoming updates using long polling (wiki). An Array of Update objects is returned.
+	 * Use this method to receive incoming updates using long polling. An Array of Update objects is returned.
 	 * @param {Integer} [offset]	Identifier of the first update to be returned. Must be greater by one than the highest among the identifiers of previously received updates. By default, updates starting with the earliest unconfirmed update are returned. An update is considered confirmed as soon as getUpdates is called with an offset higher than its update_id.
 	 * @param {Integer} [limit]	Limits the number of updates to be retrieved. Values between 1—100 are accepted. Defaults to 100
 	 * @param {Integer} [timeout]	Timeout in seconds for long polling. Defaults to 0, i.e. usual short polling
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
 	 */
-	getUpdates: function(
-		offset,
-		limit,
-		timeout,
-		cb
-	) {
-		var method = "getUpdates";
-		var data = {
-			offset: offset,
-			limit: limit,
-			timeout: timeout
-		};
-		this._doRequest(method, data, getCb(arguments));
+	getUpdates: function() {
+		var args = [
+			"offset",
+			"limit",
+			"timeout"
+		];
+		this._doRequest("getUpdates", parseArgs(args, arguments));
 	},
 	/**
 	 * Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized @Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts.
 	 * @param {String} url	HTTPS url to send updates to. Use an empty string to remove webhook integration
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
 	 */
-	setWebhook: function(url, cb) {
-		var method = "setWebhook";
-		var data = {
-			url: url
-		};
-		this._doRequest(apiurl, data, getCb(arguments));
+	setWebhook: function() {
+		var args = [
+			"url"
+		];
+		this._doRequest("setWebhook", parseArgs(args, arguments));
 	},
 	/**
 	 * Internal API method. DO NOT USE. Sends the actual request to the API server
 	 * @param {String} method	Name of the method to use
-	 * @param {String} [data]	Object containing parameters for the method
+	 * @param {Object} argObj	Parsed argument object
 	 */
-	_doRequest: function(method, data, cb) {
+	_doRequest: function(method, argObj) {
 		var self = this;
 
+		// Get the callback
+		var cb = argObj.cb;
+		delete argObj.cb;
+
+		// Check if a token exists
 		if (self.token == "") {
 			throw new Error("Token not set. Please set the token-attribute on the BotAPI object");
 		}
 
-		if (!data) {
-			data = {};
-		}
-
-		data = querystring.stringify(data);
-
-		var result = "";
-
+		// Parse the URL
 		url = self.methodUrlBase + method;
 		url = url.replace("<token>", self.token);
 		url = urlParser.parse(url);
 
-		var req = https.request({
-			host: url.host,
-			path: url.path,
-			method: "POST",
-			headers: {
-				"Content-Type": "application/x-www-form-urlencoded"
-			}
-		}, function(res) {
+		// The callback for the request
+		function result(res) {
+			var result = "";
+
 			res.on("data", function(chunk) {
 				result += "" + chunk;
 			});
@@ -403,10 +355,39 @@ return unimplemented();
 			res.on("error", function(e) {
 				cb(e, null);
 			});
-		});
+		};
 
-		req.write(data);
-		req.end();
+		// Extract the file field
+		var fileField = argObj.fileField;
+		delete argObj.fileField;
+
+		// Create the form
+		var form = new FormData();
+
+		if (fileField && typeof fileField == "string") {
+			// Insert the file into the form
+			var inputFile = argObj[fileField];
+			delete argObj[fileField];
+
+			form.append(fileField, inputFile.file_read_stream);
+		} else if (fileField) {
+			throw new Error("No sensible file field given");
+		}
+
+		// Put the rest of the data into the form
+		for (var field in argObj) {
+			form.append(field, argObj[field]);
+		}
+
+		// The actual request
+		var req = https.request({
+			host: url.host,
+			path: url.path,
+			method: "POST",
+			headers: form.getHeaders()
+		}, result);
+
+		form.pipe(req);
 	}
 };
 
@@ -657,7 +638,7 @@ var DataTypes = {
 		this.selective = false;
 	},
 	/**
-	 * Makes an empty InputFile object
+	 * Makes an empty InputFile object. This type is my own implementation
 	 *
 	 * @constructor
 	 */
@@ -670,7 +651,7 @@ var DataTypes = {
 /**
  * List of mandatory field for each type
  */
-DataTypes.MandatoryFields = {
+DataTypes.RequiredFields = {
 	User: ["id", "first_name"],
 	GroupChat: ["id", "title"],
 	Message: ["message_id", "from", "date", "chat"],
@@ -704,7 +685,7 @@ DataTypes.isType = function(type, obj) {
 		throw new Error("Invalid type: " + type);
 	}
 
-	var m = DataTypes.MandatoryFields[type];
+	var m = DataTypes.RequiredFields[type];
 
 	for (var i = 0; i < m.length; i++) {
 		if (typeof obj[m[i]] == "undefined") {
