@@ -26,7 +26,7 @@ function dummyFunc(){};
 // Get the callback from an arguments object
 function getCb(args) {
 	if (args.length == 0) {
-		return dummy;
+		return dummyFunc;
 	}
 
 	var cb = args[args.length-1];
@@ -323,46 +323,19 @@ BotAPI.prototype = {
 	_doRequest: function(method, argObj) {
 		var self = this;
 
-		// Get the callback
-		var cb = argObj.cb;
-		delete argObj.cb;
-
 		// Check if a token exists
 		if (self.token == "") {
 			throw new Error("Token not set. Please set the token-attribute on the BotAPI object");
 		}
 
+		// Get the callback
+		var cb = argObj.cb;
+		delete argObj.cb;
+
 		// Parse the URL
 		url = self.methodUrlBase + method;
 		url = url.replace("<token>", self.token);
 		url = urlParser.parse(url);
-
-		// The callback for the request
-
-		// Extract the file field
-		var fileField = argObj.fileField;
-		delete argObj.fileField;
-
-		// Create the form
-		var form = new FormData();
-
-		var numberOfFields = 0;
-		if (fileField && typeof fileField == "string") {
-			// Insert the file into the form
-			var inputFile = argObj[fileField];
-			delete argObj[fileField];
-
-			form.append(fileField, inputFile.file_read_stream);
-			numberOfFields++;
-		} else if (fileField) {
-			throw new Error("No sensible file field given");
-		}
-
-		// Put the rest of the data into the form
-		for (var field in argObj) {
-			form.append(field, argObj[field]);
-			numberOfFields++;
-		}
 
 		// The http-callback function
 		function requestCallback(res) {
@@ -393,21 +366,44 @@ BotAPI.prototype = {
 			});
 		};
 
-		// The actual request
-		var options = {
-			host: url.host,
-			path: url.path,
-			method: "POST",
-		};
+		// Extract the file field
+		var fileField = argObj.fileField;
+		delete argObj.fileField;
 
-		if (numberOfFields > 0) {
-			headers: form.getHeaders()
-		}
-		var req = https.request(options, requestCallback);
-		if (numberOfFields > 0) {
+		if (fileField && typeof fileField == "string") {	// File upload
+			//Make the form
+			var form =  new FormData();
+			
+			// Insert the file into the form
+			var inputFile = argObj[fileField];
+			delete argObj[fileField];
+
+			// Put the rest of the data into the form
+			for (var field in argObj) {
+				form.append(field, argObj[field]);
+				numberOfFields++;
+			}
+
+			// Do the request
+			var req = https.request({
+				host: url.host,
+				path: url.path,
+				method: "POST",
+				headers: form.getHeaders()
+			}, requestCallback);
 			form.pipe(req);
-		} else {
-			req.end();
+		} else if (fileField) {	// Bullshit
+			throw new Error("No sensible file field given");
+		} else {	// No file upload
+			var req = https.request({
+				host: url.host,
+				path: url.path,
+				method: "POST",
+				headers: {
+					"Content-Type": "application/x-www-form-urlencoded"
+				}
+			}, requestCallback);
+			req.end(querystring.stringify(argObj));
 		}
 	}
 };
