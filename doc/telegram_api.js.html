@@ -26,11 +26,42 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>// Require important stuff
+            <pre class="prettyprint source linenums"><code>/**************
+ *  Requires  *
+ **************/
+
+// Require important stuff
 var https = require("https");
 var querystring = require("querystring");
 var urlParser = require("url");
+var fs = require("fs");
 
+
+/***********************
+ *  General functions  *
+ ***********************/
+
+// Function to tell the user about unimplemented parts of the API
+function unimplemented() {
+	return new Promise(function(resolve, reject) {
+		reject("This method is not implemented yet");
+	});
+};
+
+// Get the callback from an arguments object
+function getCb(args) {
+	var cb = args[args.length-1];
+	if (cb instanceof Function) {
+		return cb;
+	} else {
+		return function() {};	// Dummy function
+	}
+};
+
+
+/************
+ *  BotAPI  *
+ ************/
 
 // Default base URL for method calls
 var defaultMethodUrlBase = "https://api.telegram.org/bot&lt;token>/";
@@ -56,22 +87,6 @@ function BotAPI(botToken) {
 	this.methodUrlBase = defaultMethodUrlBase;
 };
 
-// Function to tell the user about unimplemented parts of the API
-function unimplemented() {
-	return new Promise(function(resolve, reject) {
-		reject("This method is not implemented yet");
-	});
-};
-
-// Get the callback from an arguments object
-function getCb(args) {
-	var cb = args[args.length-1];
-	if (cb instanceof Function) {
-		return cb;
-	} else {
-		return function() {};	// Dummy function
-	}
-};
 
 // The prototype of the bot BotAPI
 BotAPI.prototype = {
@@ -423,7 +438,316 @@ return unimplemented();
 	}
 };
 
+/***************
+ *  DataTypes  *
+ ***************/
+
+/**
+ * Holds Telegram types. See https://core.telegram.org/bots/api#available-types for info
+ *
+ * @namespace
+ */
+var DataTypes = {
+	/**
+	 * Constructs an empty User object
+	 *
+	 * @constructor
+	 */
+	User: function() {
+		/** User's ID, Integer **/
+		this.id = 0;
+		/** User's first name, String **/
+		this.first_name = "";
+		/** User's last name, String, optional **/
+		this.last_name = "";
+		/** User's username, String, optional **/
+		this.username = "";
+	},
+	/**
+	 * Constructs an empty GroupChat object
+	 *
+	 * @constructor
+	 */
+	GroupChat: function() {
+		/** GroupChat's ID, Integer **/
+		this.id = 0;
+		/** GroupChat's title, String **/
+		this.title = "";
+	},
+	/**
+	 * Constructs an empty Message object
+	 *
+	 * @constructor
+	 */
+	Message: function() {
+		/** Message's message ID, Integer **/
+		this.message_id = 0;
+		/** Message's from, User **/
+		this.from = null;
+		/** Message's date, Integer **/
+		this.date = 0;
+		/** Message's chat, User or GroupChat **/
+		this.chat = null;
+		/** Message's forwarded from, User, optional **/
+		this.forwarded_from = null;
+		/** Message's forward date, Integer, optional **/
+		this.forwarded_date = 0;
+		/** Message's reply to message, Message, optional **/
+		this.reply_to_message = null;
+		/** Message's text, String, optional **/
+		this.text = "";
+		/** Message's audio, Audio, optional **/
+		this.audio = null;
+		/** Message's document, Document, optional **/
+		this.document = null;
+		/** Message's photo, Array of PhotoSize, optional **/
+		this.photo = [];
+		/** Message's sticker, Sticker, optional **/
+		this.sticker = null;
+		/** Message's video, Video, optional **/
+		this.video = null;
+		/** Message's contact, Contact, optional **/
+		this.contact = null;
+		/** Message's location, Location, optional **/
+		this.location = null;
+		/** Message's new chat participant, User, optional **/
+		this.new_chat_participant = null;
+		/** Message's left chat participant, User, optional **/
+		this.left_chat_participant = null;
+		/** Message's new chat title, String, optional **/
+		this.new_chat_title = null;
+		/** Message's new chat photo, Array of PhotoSize, optional **/
+		this.new_chat_photo = [];
+		/** Message's delete chat photo, True, optional **/
+		this.delete_chat_photo = true;
+		/** Message's group chat created, True, optional **/
+		this.group_chat_created = [];
+	},
+	/**
+	 * Constructs an empty PhotoSize object
+	 *
+	 * @constructor
+	 */
+	PhotoSize: function() {
+		/** PhotoSize's ID, String **/
+		this.file_id = "";
+		/** PhotoSize's width, Integer **/
+		this.width = 0;
+		/** PhotoSize's height, Integer **/
+		this.height = 0;
+		/** PhotoSize's file size, Integer, optional **/
+		this.file_size = 0;
+	},
+	/**
+	 * Constructs an empty Audio object
+	 *
+	 * @constructor
+	 */
+	Audio: function() {
+		/** Audio's ID, String **/
+		this.file_id = "";
+		/** Audio's duration, seconds, Integer **/
+		this.duration = 0;
+		/** Audio's mime type, String, optional **/
+		this.mime_type = "";
+		/** Audio's file size, Integer, optional **/
+		this.file_size = 0;
+	},
+	/**
+	 * Constructs an empty Document object
+	 *
+	 * @constructor
+	 */
+	Document: function() {
+		/** Document's ID, String **/
+		this.file_id = "";
+		/** Document's thumbnail, PhotoSize **/
+		this.thumb = null;
+		/** Document's file name, String, optional **/
+		this.file_name = "";
+		/** Document's mime type, String, optional **/
+		this.mime_type = "";
+		/** Document's file size, Integer, optional **/
+		this.file_size = 0;
+	},
+	/**
+	 * Constructs an empty Sticker object
+	 *
+	 * @constructor
+	 */
+	Sticker: function() {
+		/** Sticker's ID, String **/
+		this.file_id = "";
+		/** Sticker's width, Integer **/
+		this.width = 0;
+		/** Sticker's height, Integer **/
+		this.height = 0;
+		/** Sticker's thumb, PhotoSize **/
+		this.thumb = null;
+		/** Sticker's file size, Integer, optional **/
+		this.file_size = 0;
+	},
+	/**
+	 * Constructs an empty Video object
+	 *
+	 * @constructor
+	 */
+	Video: function() {
+		/** Video's ID, String **/
+		this.file_id = "";
+		/** Video's width, Integer **/
+		this.width = 0;
+		/** Video's height, Integer **/
+		this.height = 0;
+		/** Video's height, Integer **/
+		this.duration = 0;
+		/** Video's thumb, PhotoSize **/
+		this.thumb = null;
+		/** Video's mime type, String, optional **/
+		this.mime_type = "";
+		/** Video's file size, Integer, optional **/
+		this.file_size = 0;
+		/** Video's caption, String, optional **/
+		this.caption = "";
+	},
+	/**
+	 * Constructs an empty Contact object
+	 *
+	 * @constructor
+	 */
+	Contact: function() {
+		/** Contact's phone number, String **/
+		this.phone_number = "";
+		/** Contact's first name, String **/
+		this.first_name = "";
+		/** Contact's last name, String, optional **/
+		this.last_name = "";
+		/** Contact's User ID, String, optional **/
+		this.user_id = "";
+	},
+	/**
+	 * Constructs an empty Location object
+	 *
+	 * @constructor
+	 */
+	Location: function() {
+		/** Location's longitude, Float **/
+		this.longitude = 0;
+		/** Location's latitude, Float **/
+		this.latitude = 0;
+	},
+	/**
+	 * Constructs an empty UserProfilePhotos object
+	 *
+	 * @constructor
+	 */
+	UserProfilePhotos: function() {
+		/** UserProfilePhotos's total count, Integer **/
+		this.total_count = 0;
+		/** UserProfilePhotos's latitude, Array of Array of PhotoSize **/
+		this.photos = [];
+	},
+	/**
+	 * Constructs an empty ReplyKeyboardMarkup object
+	 *
+	 * @constructor
+	 */
+	ReplyKeyboardMarkup: function() {
+		/** ReplyKeyboardMarkup's keyboard, Array of Array of String **/
+		this.keyboard = [];
+		/** ReplyKeyboardMarkup's resize keyboard, Boolean, optional **/
+		this.resize_keyboard = false;
+		/** ReplyKeyboardMarkup's one time keyboard, Boolean, optional **/
+		this.one_time_keyboard = false;
+		/** ReplyKeyboardMarkup's selective, Boolean, optional **/
+		this.selective = false;
+	},
+	/**
+	 * Constructs an empty ReplyKeyboardHide object
+	 *
+	 * @constructor
+	 */
+	ReplyKeyboardHide: function() {
+		/** ReplyKeyboardHide's keyboard, True **/
+		this.hide_keyboard = true;
+		/** ReplyKeyboardHide's selective, Boolean, optional **/
+		this.selective = false;
+	},
+	/**
+	 * Constructs an empty ForceReply object
+	 *
+	 * @constructor
+	 */
+	ForceReply: function() {
+		/** ForceReply's force reply, True **/
+		this.force_reply = true;
+		/** ForceReply's selective, Boolean, optional **/
+		this.selective = false;
+	},
+	/**
+	 * Makes an empty InputFile object
+	 *
+	 * @constructor
+	 */
+	InputFile: function() {
+		/** InputFile's file read stream, Stream.Readable **/
+		this.file_read_stream = null;
+	}
+};
+
+/**
+ * List of mandatory field for each type
+ */
+DataTypes.MandatoryFields = {
+	User: ["id", "first_name"],
+	GroupChat: ["id", "title"],
+	Message: ["message_id", "from", "date", "chat"],
+	PhotoSize: ["file_id", "width", "height"],
+	Audio: ["file_id", "duration"],
+	Document: ["file_id", "thumb"],
+	Sticker: ["file_id", "width", "height", "thumb"],
+	Video: ["file_id", "width", "height", "duration", "thumb"],
+	Contact: ["phone_number", "first_name"],
+	Location: ["longitude", "latitude"],
+	UserProfilePhotos: ["total_count", "photos"],
+	ReplyKeyboardMarkup: ["keyboard"],
+	ReplyKeyboardHide: ["hide_keyboard"],
+	ForceReply: ["force_reply"],
+	InputFile: ["file_read_stream"]
+};
+
+/**
+ * Checks if an object is of a type.
+ *
+ * Only checks if the type's mandatory fields are present. Does not check their
+ * types. Does not check other fields
+ *
+ * @param {String} type	The type to check for
+ * @param {Object} obj	The object to check
+ *
+ * @return {Boolean}	True if the object is of the type, false otherwise
+ */
+DataTypes.isType = function(type, obj) {
+	if (typeof DataTypes[type] == "undefined") {
+		throw new Error("Invalid type: " + type);
+	}
+
+	var m = DataTypes.MandatoryFields[type];
+
+	for (var i = 0; i &lt; m.length; i++) {
+		if (typeof obj[m[i]] == "undefined") {
+			return false;
+		}
+	}
+	return true;
+};
+
+/************
+ * Exports  *
+ ************/
+
 module.exports.BotAPI = BotAPI;
+module.exports.DataTypes = DataTypes;
 </code></pre>
         </article>
     </section>
@@ -434,13 +758,13 @@ module.exports.BotAPI = BotAPI;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BotAPI.html">BotAPI</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BotAPI.html">BotAPI</a></li><li><a href="DataTypes.Audio.html">Audio</a></li><li><a href="DataTypes.Contact.html">Contact</a></li><li><a href="DataTypes.Document.html">Document</a></li><li><a href="DataTypes.ForceReply.html">ForceReply</a></li><li><a href="DataTypes.GroupChat.html">GroupChat</a></li><li><a href="DataTypes.InputFile.html">InputFile</a></li><li><a href="DataTypes.Location.html">Location</a></li><li><a href="DataTypes.Message.html">Message</a></li><li><a href="DataTypes.PhotoSize.html">PhotoSize</a></li><li><a href="DataTypes.ReplyKeyboardHide.html">ReplyKeyboardHide</a></li><li><a href="DataTypes.ReplyKeyboardMarkup.html">ReplyKeyboardMarkup</a></li><li><a href="DataTypes.Sticker.html">Sticker</a></li><li><a href="DataTypes.User.html">User</a></li><li><a href="DataTypes.UserProfilePhotos.html">UserProfilePhotos</a></li><li><a href="DataTypes.Video.html">Video</a></li></ul><h3>Namespaces</h3><ul><li><a href="DataTypes.html">DataTypes</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Sat Jun 27 2015 11:17:08 GMT+0200 (CEST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Sat Jun 27 2015 12:52:02 GMT+0200 (CEST)
 </footer>
 
 <script> prettyPrint(); </script>
