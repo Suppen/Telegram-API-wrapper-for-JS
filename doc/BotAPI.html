@@ -257,7 +257,7 @@
 
     
 
-    <h4 class="name" id="_doRequest"><span class="type-signature"></span>_doRequest<span class="signature">(method, data<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="_doRequest"><span class="type-signature"></span>_doRequest<span class="signature">(method, data<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -400,7 +400,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line369">line 369</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line345">line 345</a>
     </li></ul></dd>
     
 
@@ -423,28 +423,6 @@
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    A promise which will contain the result of the request
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 
@@ -453,7 +431,7 @@
 
     
 
-    <h4 class="name" id="forwardMessage"><span class="type-signature"></span>forwardMessage<span class="signature">(chat_id, from_chat_id, message_id, cb)</span><span class="type-signature"> &rarr; {Message}</span></h4>
+    <h4 class="name" id="forwardMessage"><span class="type-signature"></span>forwardMessage<span class="signature">(chat_id, from_chat_id, message_id, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -484,6 +462,8 @@
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -509,6 +489,14 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
@@ -531,6 +519,14 @@
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -555,6 +551,14 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
@@ -577,6 +581,16 @@
             
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -622,7 +636,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line100">line 100</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line94">line 94</a>
     </li></ul></dd>
     
 
@@ -645,28 +659,6 @@
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    The sent Message
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Message</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 
@@ -675,7 +667,7 @@
 
     
 
-    <h4 class="name" id="getMe"><span class="type-signature"></span>getMe<span class="signature">(cb)</span><span class="type-signature"> &rarr; {User}</span></h4>
+    <h4 class="name" id="getMe"><span class="type-signature"></span>getMe<span class="signature">(cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -706,6 +698,8 @@
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -730,6 +724,16 @@
             
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -775,7 +779,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line59">line 59</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line57">line 57</a>
     </li></ul></dd>
     
 
@@ -798,28 +802,6 @@
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Basic information about the bot in form of a User object
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">User</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 
@@ -828,7 +810,7 @@
 
     
 
-    <h4 class="name" id="getUpdates"><span class="type-signature"></span>getUpdates<span class="signature">(offset<span class="signature-attributes">opt</span>, limit<span class="signature-attributes">opt</span>, timeout<span class="signature-attributes">opt</span>, cb)</span><span class="type-signature"> &rarr; {Array.&lt;Update>}</span></h4>
+    <h4 class="name" id="getUpdates"><span class="type-signature"></span>getUpdates<span class="signature">(offset<span class="signature-attributes">opt</span>, limit<span class="signature-attributes">opt</span>, timeout<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -987,6 +969,8 @@
             
                 <td class="attributes">
                 
+                    &lt;optional><br>
+                
 
                 
 
@@ -1037,7 +1021,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line336">line 336</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line314">line 314</a>
     </li></ul></dd>
     
 
@@ -1060,24 +1044,6 @@
 
 
 
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array.&lt;Update></span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 
@@ -1086,7 +1052,7 @@
 
     
 
-    <h4 class="name" id="getUserProfilePhotos"><span class="type-signature"></span>getUserProfilePhotos<span class="signature">(user_id, offset<span class="signature-attributes">opt</span>, limit<span class="signature-attributes">opt</span>, cb)</span><span class="type-signature"> &rarr; {UserProfilePhotos}</span></h4>
+    <h4 class="name" id="getUserProfilePhotos"><span class="type-signature"></span>getUserProfilePhotos<span class="signature">(user_id, offset<span class="signature-attributes">opt</span>, limit<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -1243,6 +1209,8 @@
             
                 <td class="attributes">
                 
+                    &lt;optional><br>
+                
 
                 
 
@@ -1293,7 +1261,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line313">line 313</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line293">line 293</a>
     </li></ul></dd>
     
 
@@ -1316,24 +1284,6 @@
 
 
 
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">UserProfilePhotos</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 
@@ -1342,7 +1292,7 @@
 
     
 
-    <h4 class="name" id="sendAudio"><span class="type-signature"></span>sendAudio<span class="signature">(chat_id, audio, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb)</span><span class="type-signature"> &rarr; {Message}</span></h4>
+    <h4 class="name" id="sendAudio"><span class="type-signature"></span>sendAudio<span class="signature">(chat_id, audio, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -1539,6 +1489,8 @@
             
                 <td class="attributes">
                 
+                    &lt;optional><br>
+                
 
                 
 
@@ -1589,7 +1541,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line154">line 154</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line144">line 144</a>
     </li></ul></dd>
     
 
@@ -1612,28 +1564,6 @@
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    The sent Message
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Message</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 
@@ -1642,7 +1572,7 @@
 
     
 
-    <h4 class="name" id="sendChatAction"><span class="type-signature"></span>sendChatAction<span class="signature">(chat_id, action, cb)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="sendChatAction"><span class="type-signature"></span>sendChatAction<span class="signature">(chat_id, action, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -1677,6 +1607,8 @@ We only recommend using this method when a response from the bot will take a not
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -1702,6 +1634,14 @@ We only recommend using this method when a response from the bot will take a not
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
@@ -1725,6 +1665,14 @@ We only recommend using this method when a response from the bot will take a not
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
@@ -1747,6 +1695,16 @@ We only recommend using this method when a response from the bot will take a not
             
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -1792,7 +1750,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line292">line 292</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line274">line 274</a>
     </li></ul></dd>
     
 
@@ -1823,7 +1781,7 @@ We only recommend using this method when a response from the bot will take a not
 
     
 
-    <h4 class="name" id="sendDocument"><span class="type-signature"></span>sendDocument<span class="signature">(chat_id, document, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb)</span><span class="type-signature"> &rarr; {Message}</span></h4>
+    <h4 class="name" id="sendDocument"><span class="type-signature"></span>sendDocument<span class="signature">(chat_id, document, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -2020,6 +1978,8 @@ We only recommend using this method when a response from the bot will take a not
             
                 <td class="attributes">
                 
+                    &lt;optional><br>
+                
 
                 
 
@@ -2070,7 +2030,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line181">line 181</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line169">line 169</a>
     </li></ul></dd>
     
 
@@ -2093,28 +2053,6 @@ We only recommend using this method when a response from the bot will take a not
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    The sent Message
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Message</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 
@@ -2123,7 +2061,7 @@ We only recommend using this method when a response from the bot will take a not
 
     
 
-    <h4 class="name" id="sendLocation"><span class="type-signature"></span>sendLocation<span class="signature">(chat_id, latitude, longitude, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb)</span><span class="type-signature"> &rarr; {Message}</span></h4>
+    <h4 class="name" id="sendLocation"><span class="type-signature"></span>sendLocation<span class="signature">(chat_id, latitude, longitude, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -2348,6 +2286,8 @@ We only recommend using this method when a response from the bot will take a not
             
                 <td class="attributes">
                 
+                    &lt;optional><br>
+                
 
                 
 
@@ -2398,7 +2338,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line263">line 263</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line245">line 245</a>
     </li></ul></dd>
     
 
@@ -2421,28 +2361,6 @@ We only recommend using this method when a response from the bot will take a not
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    The sent Message
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Message</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 
@@ -2451,7 +2369,7 @@ We only recommend using this method when a response from the bot will take a not
 
     
 
-    <h4 class="name" id="sendMessage"><span class="type-signature"></span>sendMessage<span class="signature">(chat_id, text, disable_web_page_preview<span class="signature-attributes">opt</span>, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb)</span><span class="type-signature"> &rarr; {Message}</span></h4>
+    <h4 class="name" id="sendMessage"><span class="type-signature"></span>sendMessage<span class="signature">(chat_id, text, disable_web_page_preview<span class="signature-attributes">opt</span>, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -2678,6 +2596,8 @@ We only recommend using this method when a response from the bot will take a not
             
                 <td class="attributes">
                 
+                    &lt;optional><br>
+                
 
                 
 
@@ -2728,7 +2648,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line73">line 73</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line69">line 69</a>
     </li></ul></dd>
     
 
@@ -2751,28 +2671,6 @@ We only recommend using this method when a response from the bot will take a not
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    The sent Message
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Message</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 
@@ -2781,7 +2679,7 @@ We only recommend using this method when a response from the bot will take a not
 
     
 
-    <h4 class="name" id="sendPhoto"><span class="type-signature"></span>sendPhoto<span class="signature">(chat_id, photo, caption<span class="signature-attributes">opt</span>, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb)</span><span class="type-signature"> &rarr; {Message}</span></h4>
+    <h4 class="name" id="sendPhoto"><span class="type-signature"></span>sendPhoto<span class="signature">(chat_id, photo, caption<span class="signature-attributes">opt</span>, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -3011,6 +2909,8 @@ We only recommend using this method when a response from the bot will take a not
             
                 <td class="attributes">
                 
+                    &lt;optional><br>
+                
 
                 
 
@@ -3061,7 +2961,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line125">line 125</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line117">line 117</a>
     </li></ul></dd>
     
 
@@ -3084,28 +2984,6 @@ We only recommend using this method when a response from the bot will take a not
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    The sent Message
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Message</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 
@@ -3114,7 +2992,7 @@ We only recommend using this method when a response from the bot will take a not
 
     
 
-    <h4 class="name" id="sendSticker"><span class="type-signature"></span>sendSticker<span class="signature">(chat_id, sticker, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb)</span><span class="type-signature"> &rarr; {Message}</span></h4>
+    <h4 class="name" id="sendSticker"><span class="type-signature"></span>sendSticker<span class="signature">(chat_id, sticker, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -3311,6 +3189,8 @@ We only recommend using this method when a response from the bot will take a not
             
                 <td class="attributes">
                 
+                    &lt;optional><br>
+                
 
                 
 
@@ -3361,7 +3241,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line208">line 208</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line194">line 194</a>
     </li></ul></dd>
     
 
@@ -3384,28 +3264,6 @@ We only recommend using this method when a response from the bot will take a not
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    The sent Message
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Message</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 
@@ -3414,7 +3272,7 @@ We only recommend using this method when a response from the bot will take a not
 
     
 
-    <h4 class="name" id="sendVideo"><span class="type-signature"></span>sendVideo<span class="signature">(chat_id, video, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb)</span><span class="type-signature"> &rarr; {Message}</span></h4>
+    <h4 class="name" id="sendVideo"><span class="type-signature"></span>sendVideo<span class="signature">(chat_id, video, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -3611,6 +3469,8 @@ We only recommend using this method when a response from the bot will take a not
             
                 <td class="attributes">
                 
+                    &lt;optional><br>
+                
 
                 
 
@@ -3661,7 +3521,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line235">line 235</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line219">line 219</a>
     </li></ul></dd>
     
 
@@ -3684,28 +3544,6 @@ We only recommend using this method when a response from the bot will take a not
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    The sent Message
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Message</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 
@@ -3714,7 +3552,7 @@ We only recommend using this method when a response from the bot will take a not
 
     
 
-    <h4 class="name" id="setWebhook"><span class="type-signature"></span>setWebhook<span class="signature">(url, cb)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="setWebhook"><span class="type-signature"></span>setWebhook<span class="signature">(url, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -3745,6 +3583,8 @@ We only recommend using this method when a response from the bot will take a not
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -3770,6 +3610,14 @@ We only recommend using this method when a response from the bot will take a not
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
@@ -3792,6 +3640,16 @@ We only recommend using this method when a response from the bot will take a not
             
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -3837,7 +3695,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line355">line 355</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line333">line 333</a>
     </li></ul></dd>
     
 
@@ -3885,7 +3743,7 @@ We only recommend using this method when a response from the bot will take a not
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Sat Jun 27 2015 11:13:26 GMT+0200 (CEST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Sat Jun 27 2015 11:17:08 GMT+0200 (CEST)
 </footer>
 
 <script> prettyPrint(); </script>
