@@ -378,10 +378,11 @@ BotAPI.prototype = {
 			var inputFile = argObj[fileField];
 			delete argObj[fileField];
 
+			form.append(fileField, inputFile.file_read_stream);
+
 			// Put the rest of the data into the form
 			for (var field in argObj) {
 				form.append(field, argObj[field]);
-				numberOfFields++;
 			}
 
 			// Do the request
