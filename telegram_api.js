@@ -25,6 +25,10 @@ function dummyFunc(){};
 
 // Get the callback from an arguments object
 function getCb(args) {
+	if (args.length == 0) {
+		return dummy;
+	}
+
 	var cb = args[args.length-1];
 	if (cb instanceof Function) {
 		return cb;
@@ -87,7 +91,8 @@ BotAPI.prototype = {
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
 	 */
 	getMe: function() {
-		this._doRequest("getMe", parseArgs(arguments));
+		var args = [];
+		this._doRequest("getMe", parseArgs(args, arguments));
 	},
 	/**
 	 * Use this method to forward messages of any kind. On success, the sent Message is returned.
@@ -333,7 +338,34 @@ BotAPI.prototype = {
 		url = urlParser.parse(url);
 
 		// The callback for the request
-		function result(res) {
+
+		// Extract the file field
+		var fileField = argObj.fileField;
+		delete argObj.fileField;
+
+		// Create the form
+		var form = new FormData();
+
+		var numberOfFields = 0;
+		if (fileField && typeof fileField == "string") {
+			// Insert the file into the form
+			var inputFile = argObj[fileField];
+			delete argObj[fileField];
+
+			form.append(fileField, inputFile.file_read_stream);
+			numberOfFields++;
+		} else if (fileField) {
+			throw new Error("No sensible file field given");
+		}
+
+		// Put the rest of the data into the form
+		for (var field in argObj) {
+			form.append(field, argObj[field]);
+			numberOfFields++;
+		}
+
+		// The http-callback function
+		function requestCallback(res) {
 			var result = "";
 
 			res.on("data", function(chunk) {
@@ -341,7 +373,11 @@ BotAPI.prototype = {
 			});
 			res.on("end", function() {
 				try {
-					result = JSON.parse(result);
+					try {
+						result = JSON.parse(result);
+					} catch (e) {
+						throw new Error("Result was not JSON");
+					}
 					if (!result.ok) {
 						throw new Error(result.description);
 					} else {
@@ -357,37 +393,22 @@ BotAPI.prototype = {
 			});
 		};
 
-		// Extract the file field
-		var fileField = argObj.fileField;
-		delete argObj.fileField;
-
-		// Create the form
-		var form = new FormData();
-
-		if (fileField && typeof fileField == "string") {
-			// Insert the file into the form
-			var inputFile = argObj[fileField];
-			delete argObj[fileField];
-
-			form.append(fileField, inputFile.file_read_stream);
-		} else if (fileField) {
-			throw new Error("No sensible file field given");
-		}
-
-		// Put the rest of the data into the form
-		for (var field in argObj) {
-			form.append(field, argObj[field]);
-		}
-
 		// The actual request
-		var req = https.request({
+		var options = {
 			host: url.host,
 			path: url.path,
 			method: "POST",
-			headers: form.getHeaders()
-		}, result);
+		};
 
-		form.pipe(req);
+		if (numberOfFields > 0) {
+			headers: form.getHeaders()
+		}
+		var req = https.request(options, requestCallback);
+		if (numberOfFields > 0) {
+			form.pipe(req);
+		} else {
+			req.end();
+		}
 	}
 };
 
