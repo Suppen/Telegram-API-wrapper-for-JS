@@ -1,6 +1,6 @@
 {
   "name": "teleapiwrapper",
-  "version": "0.7.3",
+  "version": "0.7.4",
   "description": "An unofficial JS-wrapper for the Telegram chat API. Currently focused on bots.",
   "main": "telegram_api.js",
   "scripts": {
@@ -13,7 +13,10 @@
   "keywords": [
     "telegram",
     "chat",
-    "api"
+    "api",
+    "bots",
+    "bot",
+    "wrapper"
   ],
   "author": "Simen de Lange <simen.de.lange@gmail.com> (http://suppen.no/)",
   "license": "ISC",

@@ -13,13 +13,6 @@ var FormData = require("form-data");
  *  General functions  *
  ***********************/
 
-// Function to tell the user about unimplemented parts of the API
-function unimplemented() {
-	return new Promise(function(resolve, reject) {
-		reject("This method is not implemented yet");
-	});
-};
-
 // Dummy function, doing nothing at all
 function dummyFunc(){};
 
@@ -57,9 +50,6 @@ function parseArgs(fields, args) {
  *  BotAPI  *
  ************/
 
-// Default base URL for method calls
-var defaultMethodUrlBase = "https://api.telegram.org/bot<token>/";
-
 /**
  * Creates a new BotAPI-object for a bot
  *
@@ -74,17 +64,16 @@ function BotAPI(botToken) {
 	}
 
 	this.token = botToken;
-
-	/**
-	 * Change this in the constructed object if you for some reason don't want to use this URL
-	 */
-	this.methodUrlBase = defaultMethodUrlBase;
 };
 
 
 // The prototype of the bot BotAPI
 BotAPI.prototype = {
 	token: "",
+	/**
+	 * Change this in the constructed object if you for some reason don't want to use this URL
+	 */
+	methodUrlBase: "https://api.telegram.org/bot<token>/",
 	/**
 	 * A simple method for testing your bot's auth token. Requires no parameters. Returns basic information about the bot in form of a User object.
 	 *
