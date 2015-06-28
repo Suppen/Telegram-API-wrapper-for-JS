@@ -51,7 +51,7 @@ function parseArgs(fields, args) {
  ************/
 
 /**
- * Creates a new BotAPI-object for a bot
+ * Creates a new BotAPI-object for a bot. All methods may take a callback with params error and result
  *
  * @param {String} botToken	The authentication token for the bot, as provided by BotFather
  *
