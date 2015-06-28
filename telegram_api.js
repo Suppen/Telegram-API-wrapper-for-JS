@@ -7,6 +7,7 @@ var https = require("https");
 var querystring = require("querystring");
 var urlParser = require("url");
 var FormData = require("form-data");
+var fs = require("fs");
 
 
 /***********************
@@ -367,7 +368,7 @@ BotAPI.prototype = {
 			var inputFile = argObj[fileField];
 			delete argObj[fileField];
 
-			form.append(fileField, inputFile.file_read_stream);
+			form.append(fileField, inputFile);
 
 			// Put the rest of the data into the form
 			for (var field in argObj) {
@@ -643,15 +644,6 @@ var DataTypes = {
 		this.force_reply = true;
 		/** ForceReply's selective, Boolean, optional **/
 		this.selective = false;
-	},
-	/**
-	 * Makes an empty InputFile object. This type is my own implementation
-	 *
-	 * @constructor
-	 */
-	InputFile: function() {
-		/** InputFile's file read stream, Stream.Readable **/
-		this.file_read_stream = null;
 	}
 };
 
@@ -673,7 +665,6 @@ DataTypes.RequiredFields = {
 	ReplyKeyboardMarkup: ["keyboard"],
 	ReplyKeyboardHide: ["hide_keyboard"],
 	ForceReply: ["force_reply"],
-	InputFile: ["file_read_stream"]
 };
 
 /**
@@ -688,6 +679,10 @@ DataTypes.RequiredFields = {
  * @return {Boolean}	True if the object is of the type, false otherwise
  */
 DataTypes.isType = function(type, obj) {
+	if (type == "InputFile") {
+		return (obj instanceof fs.ReadStream);
+	}
+
 	if (typeof DataTypes[type] == "undefined") {
 		throw new Error("Invalid type: " + type);
 	}

@@ -24,6 +24,7 @@ var bot = new BotAPI(botToken);
 ## Send a request ##
 
 ```javascript
+// Note: All methods support callbacks on the form function(error, result)
 // Get bot info
 bot.getMe(function(err, res) {
 	console.log(res);
@@ -33,8 +34,8 @@ bot.getMe(function(err, res) {
 bot.sendMessage(chatId, text);	// Callback optional
 
 // Send a photo (same approach with other file sendings)
-var photo = {
-	file_read_stream = fs.createReadStream("some_photo.jpg")
-};
-bot.sendPhoto(chatId, photo, "This is a really nice photo");
+bot.sendPhoto(chatId, fs.createReadStream("some_photo.jpg"), "This is a really nice photo");
 ```
+
+## Changelog ##
+**0.8.0**: Got rid of the wrapper object for input files
