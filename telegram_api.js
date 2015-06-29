@@ -382,6 +382,8 @@ BotAPI.prototype = {
 				method: "POST",
 				headers: form.getHeaders()
 			}, requestCallback);
+			req.on("error", function(e) {cb(e, null);});
+
 			form.pipe(req);
 		} else if (fileField) {	// Bullshit
 			throw new Error("No sensible file field given");
@@ -394,6 +396,8 @@ BotAPI.prototype = {
 					"Content-Type": "application/x-www-form-urlencoded"
 				}
 			}, requestCallback);
+			req.on("error", function(e) {cb(e, null);});
+
 			req.end(querystring.stringify(argObj));
 		}
 	}
