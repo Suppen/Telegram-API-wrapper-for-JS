@@ -404,7 +404,6 @@ BotAPI.prototype = {
 				}
 			}, requestCallback);
 			req.on("error", function(e) {cb(e, null);});
-console.log(querystring.stringify(argObj));
 
 			req.end(querystring.stringify(argObj));
 		}
