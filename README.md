@@ -34,12 +34,25 @@ bot.getMe(function(err, res) {
 // Send a message
 bot.sendMessage(chatId, text);	// Callback optional
 
+// Send a message with a reply-keyboard
+var keyboard = { /*  reply_markup */
+	keyboard: [
+        	['yes', 'no'],
+		[ 'cancel'],
+	],
+	resize_keyboard: true
+};
+bot.sendMessage(chatId, text, 0, 0, keyboard);
+
 // Send a photo (same approach with other file sendings)
 bot.sendPhoto(chatId, fs.createReadStream("some_photo.jpg"), "This is a really nice photo");
+
 // Send a photo by ID (same approach with other file sendings)
-bot.sendPhoto(chatId, "Adrgvmercfiawejdatruotseafasert", "This is a really nice photo");
+var photoId = "Adrgvmercfiawejdatruotseafasert";
+bot.sendPhoto(chatId, photoId, "This is a really nice photo");
 ```
 
 ## Changelog
+* **0.9.0**: The wrapper now internally serializes objects and arrays given to it, so arguments like ''reply_markup'' are now given actual objects, not JSON-strings
 * **0.8.1**: Fixed a bug which would crash the process if no connection could be made to the server
 * **0.8.0**: Got rid of the wrapper object for input files

@@ -359,15 +359,24 @@ BotAPI.prototype = {
 		// Extract the file field
 		var fileField = argObj.fileField;
 		delete argObj.fileField;
+		var inputFile = false;
+		if (fileField) {
+			inputFile = argObj[fileField];
+			delete argObj[fileField];
+		}
 
-		if (fileField && typeof fileField == "string") {	// File upload
+		// JSON-serialize every value in the argObj
+		for (var p in argObj) {
+			if (argObj[p] instanceof Array || argObj[p] instanceof Object) {
+				argObj[p] = JSON.stringify(argObj[p]);
+			}
+		}
+
+		if (inputFile) {	// File upload
 			//Make the form
 			var form =  new FormData();
 			
 			// Insert the file into the form
-			var inputFile = argObj[fileField];
-			delete argObj[fileField];
-
 			form.append(fileField, inputFile);
 
 			// Put the rest of the data into the form
@@ -385,8 +394,6 @@ BotAPI.prototype = {
 			req.on("error", function(e) {cb(e, null);});
 
 			form.pipe(req);
-		} else if (fileField) {	// Bullshit
-			throw new Error("No sensible file field given");
 		} else {	// No file upload
 			var req = https.request({
 				host: url.host,
@@ -397,6 +404,7 @@ BotAPI.prototype = {
 				}
 			}, requestCallback);
 			req.on("error", function(e) {cb(e, null);});
+console.log(querystring.stringify(argObj));
 
 			req.end(querystring.stringify(argObj));
 		}
