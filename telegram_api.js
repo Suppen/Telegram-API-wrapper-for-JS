@@ -367,7 +367,7 @@ BotAPI.prototype = {
 
 		// JSON-serialize every value in the argObj
 		for (var p in argObj) {
-			if (argObj[p] instanceof Array || argObj[p] instanceof Object) {
+			if (argObj[p] instanceof Object) {
 				argObj[p] = JSON.stringify(argObj[p]);
 			}
 		}
@@ -609,6 +609,15 @@ var DataTypes = {
 		this.latitude = 0;
 	},
 	/**
+	 *
+	 */
+	Update: function() {
+		/** Update's ID, Integer **/
+		this.id = 0;
+		/** Update's Message, Message, optional according to the docs... I'm gonna treat it as required **/
+		this.message = null;
+	}
+	/**
 	 * Constructs an empty UserProfilePhotos object
 	 *
 	 * @constructor
@@ -672,6 +681,7 @@ DataTypes.RequiredFields = {
 	Video: ["file_id", "width", "height", "duration", "thumb"],
 	Contact: ["phone_number", "first_name"],
 	Location: ["longitude", "latitude"],
+	Update: ["id", "message"],
 	UserProfilePhotos: ["total_count", "photos"],
 	ReplyKeyboardMarkup: ["keyboard"],
 	ReplyKeyboardHide: ["hide_keyboard"],

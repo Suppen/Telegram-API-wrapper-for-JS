@@ -25,7 +25,7 @@ var bot = new BotAPI(botToken);
 ## Send a request
 
 ```javascript
-// Note: All methods support callbacks on the form function(error, result), where "result" is the JSON-response from the server
+// Note: All methods support callbacks on the form function(error, result), where "result" is the parsed JSON-response from the server
 // Get bot info
 bot.getMe(function(err, res) {
 	console.log(res);
@@ -37,7 +37,7 @@ bot.sendMessage(chatId, text);	// Callback optional
 // Send a message with a reply-keyboard
 var keyboard = { /*  reply_markup */
 	keyboard: [
-        	['yes', 'no'],
+		['yes', 'no'],
 		[ 'cancel'],
 	],
 	resize_keyboard: true
@@ -53,6 +53,7 @@ bot.sendPhoto(chatId, photoId, "This is a really nice photo");
 ```
 
 ## Changelog
+* **0.9.2**: Added the "Update"-type to DataTypes
 * **0.9.1**: Removed debugoutput from the code
 * **0.9.0**: The wrapper now internally serializes objects and arrays given to it, so arguments like ''reply_markup'' are now given actual objects, not JSON-strings
 * **0.8.1**: Fixed a bug which would crash the process if no connection could be made to the server
