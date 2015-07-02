@@ -616,7 +616,7 @@ var DataTypes = {
 		this.id = 0;
 		/** Update's Message, Message, optional according to the docs... I'm gonna treat it as required **/
 		this.message = null;
-	}
+	},
 	/**
 	 * Constructs an empty UserProfilePhotos object
 	 *

@@ -53,7 +53,7 @@ bot.sendPhoto(chatId, photoId, "This is a really nice photo");
 ```
 
 ## Changelog
-* **0.9.2**: Added the "Update"-type to DataTypes
+* **0.9.3**: Added the "Update"-type to DataTypes
 * **0.9.1**: Removed debugoutput from the code
 * **0.9.0**: The wrapper now internally serializes objects and arrays given to it, so arguments like ''reply_markup'' are now given actual objects, not JSON-strings
 * **0.8.1**: Fixed a bug which would crash the process if no connection could be made to the server
