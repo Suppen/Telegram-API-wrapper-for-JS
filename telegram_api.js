@@ -8,6 +8,7 @@ var querystring = require("querystring");
 var urlParser = require("url");
 var FormData = require("form-data");
 var fs = require("fs");
+var stream = require("stream");
 
 
 /***********************
@@ -385,27 +386,35 @@ BotAPI.prototype = {
 			}
 
 			// Do the request
-			var req = https.request({
-				host: url.host,
-				path: url.path,
-				method: "POST",
-				headers: form.getHeaders()
-			}, requestCallback);
-			req.on("error", function(e) {cb(e, null);});
+			try {
+				var req = https.request({
+					host: url.host,
+					path: url.path,
+					method: "POST",
+					headers: form.getHeaders()
+				}, requestCallback);
+				req.on("error", function(e) {cb(e, null);});
 
-			form.pipe(req);
+				form.pipe(req);
+			} catch (e) {
+				cb(e, null);
+			}
 		} else {	// No file upload
-			var req = https.request({
-				host: url.host,
-				path: url.path,
-				method: "POST",
-				headers: {
-					"Content-Type": "application/x-www-form-urlencoded"
-				}
-			}, requestCallback);
-			req.on("error", function(e) {cb(e, null);});
+			try {
+				var req = https.request({
+					host: url.host,
+					path: url.path,
+					method: "POST",
+					headers: {
+						"Content-Type": "application/x-www-form-urlencoded"
+					}
+				}, requestCallback);
+				req.on("error", function(e) {cb(e, null);});
 
-			req.end(querystring.stringify(argObj));
+				req.end(querystring.stringify(argObj));
+			} catch (e) {
+				cb(e, null);
+			}
 		}
 	}
 };
@@ -701,7 +710,10 @@ DataTypes.RequiredFields = {
  */
 DataTypes.isType = function(type, obj) {
 	if (type == "InputFile") {
-		return (obj instanceof fs.ReadStream);
+		if (obj instanceof stream.Readable && typeof obj.path != "string") {
+			console.warn("teleapiwrapper can't send other readable streams than fs.readStream. As a workaround, add a string attribute called 'path' to the stream, and it will be sent anyway");
+		}
+		return obj instanceof stream.Readable && typeof obj.path == "string";
 	}
 
 	if (typeof DataTypes[type] == "undefined") {
