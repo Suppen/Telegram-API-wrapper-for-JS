@@ -527,6 +527,10 @@ var DataTypes = {
 		this.sticker = null;
 		/** Message's video, Video, optional **/
 		this.video = null;
+		/** Message's voice, Voice, optional **/
+		this.voice = null;
+		/** Message's caption for photo or video, String, optional **/
+		this.caption = "";
 		/** Message's contact, Contact, optional **/
 		this.contact = null;
 		/** Message's location, Location, optional **/
@@ -569,6 +573,10 @@ var DataTypes = {
 		this.file_id = "";
 		/** Audio's duration, seconds, Integer **/
 		this.duration = 0;
+		/** Audio's performer, String, optional **/
+		this.performer = "";
+		/** Audio's title, String, optional **/
+		this.title = "";
 		/** Audio's mime type, String, optional **/
 		this.mime_type = "";
 		/** Audio's file size, Integer, optional **/
@@ -630,6 +638,21 @@ var DataTypes = {
 		this.file_size = 0;
 		/** Video's caption, String, optional **/
 		this.caption = "";
+	},
+	/**
+	 * Constructs an empty Voice object
+	 *
+	 * @constructor
+	 */
+	Voice: function() {
+		/** Voice's ID, String **/
+		this.file_id = "";
+		/** Voice's duration, seconds, Integer **/
+		this.duration = 0;
+		/** Voice's mime type, String, optional **/
+		this.mime_type = "";
+		/** Voice's file size, Integer, optional **/
+		this.file_size = 0;
 	},
 	/**
 	 * Constructs an empty Contact object
