@@ -35,6 +35,8 @@ var https = require("https");
 var querystring = require("querystring");
 var urlParser = require("url");
 var FormData = require("form-data");
+var fs = require("fs");
+var stream = require("stream");
 
 
 /***********************
@@ -115,6 +117,7 @@ BotAPI.prototype = {
 	 * Use this method to forward messages of any kind. On success, the sent Message is returned.
 	 * @param {Integer} chat_id	ID of the chat to send the message to
 	 * @param {String} text	Message to send to the chat
+	 * @param {String} [parse_mode] Send Markdown, if you want Telegram apps to show bold, italic and inline URLs in your bot's message. For the moment, only Telegram for Android and OSX support this.
 	 * @param {Boolean} [disable_web_page_preview]	Disables link previews for links in this message
 	 * @param {Integer} [reply_to_message_id]	If the message is a reply, ID of the original message
 	 * @param {ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [reply_markup]	Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.
@@ -124,6 +127,7 @@ BotAPI.prototype = {
 		var args = [
 			"chat_id",
 			"text",
+			"parse_mode",
 			"disable_web_page_preview",
 			"reply_to_message_id",
 			"reply_markup"
@@ -174,6 +178,9 @@ BotAPI.prototype = {
 	 * Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .ogg file encoded with OPUS (other formats may be sent as Document). On success, the sent Message is returned.
 	 * @param {Integer} chat_id	ID of the chat to send the message to
 	 * @param {String|InputFile} audio	Audio file to send. You can either pass a file_id as String to resend an audio that is already on the Telegram servers, or upload a new audio file using multipart/form-data.
+	 * @param {Integet} [duration]	Duration of the audio in secondsi
+	 * @param {String} [performer]	Performer
+	 * @param {String} [title]	Track name
 	 * @param {Integer} [reply_to_message_id]	If the message is a reply, ID of the original message
 	 * @param {ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [reply_markup]	Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
@@ -182,6 +189,9 @@ BotAPI.prototype = {
 		var args = [
 			"chat_id",
 			"audio",
+			"duration",
+			"performer",
+			"title",
 			"reply_to_message_id",
 			"reply_markup"
 		];
@@ -237,6 +247,8 @@ BotAPI.prototype = {
 	 * Use this method to send video files, Telegram clients support mp4 videos (other formats may be sent as Document). On success, the sent Message is returned.
 	 * @param {Integer} chat_id	ID of the chat to send the message to
 	 * @param {String|InputFile} video	Video to send. You can either pass a file_id as String to resend a video that is already on the Telegram servers, or upload a new video file using multipart/form-data.
+	 * @param {Integer} [duration]	Duration of sent video in seconds
+	 * @param {String} [caption]	Video caption (may also be used when resending videos by file_id).
 	 * @param {Integer} [reply_to_message_id]	If the message is a reply, ID of the original message
 	 * @param {ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [reply_markup]	Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
@@ -245,6 +257,8 @@ BotAPI.prototype = {
 		var args = [
 			"chat_id",
 			"video",
+			"duration",
+			"caption",
 			"reply_to_message_id",
 			"reply_markup"
 		];
@@ -253,6 +267,29 @@ BotAPI.prototype = {
 			argObj.fileField = "video";
 		}
 		this._doRequest("sendVideo", argObj);
+	},
+	/**
+	 * Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .ogg file encoded with OPUS (other formats may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
+	 * @param {Integer} chat_id	ID of the chat to send the message to
+	 * @param {String|InputFile} voice	Audio file to send. You can either pass a file_id as String to resend an audio that is already on the Telegram servers, or upload a new audio file using multipart/form-data.
+	 * @param {Integet} [duration]	Duration of the audio in secondsi
+	 * @param {Integer} [reply_to_message_id]	If the message is a reply, ID of the original message
+	 * @param {ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [reply_markup]	Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.
+	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
+	 */
+	sendVoice: function() {
+		var args = [
+			"chat_id",
+			"voice",
+			"duration",
+			"reply_to_message_id",
+			"reply_markup"
+		];
+		var argObj = parseArgs(args, arguments);
+		if (DataTypes.isType("InputFile", argObj.audio)) {
+			argObj.fileField = "audio";
+		}
+		this._doRequest("sendVoice", argObj);
 	},
 	/**
 	 * Use this method to send point on the map. On success, the sent Message is returned.
@@ -324,12 +361,17 @@ BotAPI.prototype = {
 	/**
 	 * Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized @Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts.
 	 * @param {String} url	HTTPS url to send updates to. Use an empty string to remove webhook integration
+	 * @param {InputFile} [certificate]	Upload your public key certificate so that the root certificate in use can be checked
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
 	 */
 	setWebhook: function() {
 		var args = [
-			"url"
+			"url",
+			"certificate"
 		];
+		if (DataTypes.isType("InputFile", argObj.certificate)) {
+			argObj.fileField = "certificate";
+		}
 		this._doRequest("setWebhook", parseArgs(args, arguments));
 	},
 	/**
@@ -386,16 +428,25 @@ BotAPI.prototype = {
 		// Extract the file field
 		var fileField = argObj.fileField;
 		delete argObj.fileField;
+		var inputFile = false;
+		if (fileField) {
+			inputFile = argObj[fileField];
+			delete argObj[fileField];
+		}
 
-		if (fileField &amp;&amp; typeof fileField == "string") {	// File upload
+		// JSON-serialize every value in the argObj
+		for (var p in argObj) {
+			if (argObj[p] instanceof Object) {
+				argObj[p] = JSON.stringify(argObj[p]);
+			}
+		}
+
+		if (inputFile) {	// File upload
 			//Make the form
 			var form =  new FormData();
 			
 			// Insert the file into the form
-			var inputFile = argObj[fileField];
-			delete argObj[fileField];
-
-			form.append(fileField, inputFile.file_read_stream);
+			form.append(fileField, inputFile);
 
 			// Put the rest of the data into the form
 			for (var field in argObj) {
@@ -403,25 +454,35 @@ BotAPI.prototype = {
 			}
 
 			// Do the request
-			var req = https.request({
-				host: url.host,
-				path: url.path,
-				method: "POST",
-				headers: form.getHeaders()
-			}, requestCallback);
-			form.pipe(req);
-		} else if (fileField) {	// Bullshit
-			throw new Error("No sensible file field given");
+			try {
+				var req = https.request({
+					host: url.host,
+					path: url.path,
+					method: "POST",
+					headers: form.getHeaders()
+				}, requestCallback);
+				req.on("error", function(e) {cb(e, null);});
+
+				form.pipe(req);
+			} catch (e) {
+				cb(e, null);
+			}
 		} else {	// No file upload
-			var req = https.request({
-				host: url.host,
-				path: url.path,
-				method: "POST",
-				headers: {
-					"Content-Type": "application/x-www-form-urlencoded"
-				}
-			}, requestCallback);
-			req.end(querystring.stringify(argObj));
+			try {
+				var req = https.request({
+					host: url.host,
+					path: url.path,
+					method: "POST",
+					headers: {
+						"Content-Type": "application/x-www-form-urlencoded"
+					}
+				}, requestCallback);
+				req.on("error", function(e) {cb(e, null);});
+
+				req.end(querystring.stringify(argObj));
+			} catch (e) {
+				cb(e, null);
+			}
 		}
 	}
 };
@@ -625,6 +686,15 @@ var DataTypes = {
 		this.latitude = 0;
 	},
 	/**
+	 *
+	 */
+	Update: function() {
+		/** Update's ID, Integer **/
+		this.id = 0;
+		/** Update's Message, Message, optional according to the docs... I'm gonna treat it as required **/
+		this.message = null;
+	},
+	/**
 	 * Constructs an empty UserProfilePhotos object
 	 *
 	 * @constructor
@@ -671,15 +741,6 @@ var DataTypes = {
 		this.force_reply = true;
 		/** ForceReply's selective, Boolean, optional **/
 		this.selective = false;
-	},
-	/**
-	 * Makes an empty InputFile object. This type is my own implementation
-	 *
-	 * @constructor
-	 */
-	InputFile: function() {
-		/** InputFile's file read stream, Stream.Readable **/
-		this.file_read_stream = null;
 	}
 };
 
@@ -697,11 +758,11 @@ DataTypes.RequiredFields = {
 	Video: ["file_id", "width", "height", "duration", "thumb"],
 	Contact: ["phone_number", "first_name"],
 	Location: ["longitude", "latitude"],
+	Update: ["id", "message"],
 	UserProfilePhotos: ["total_count", "photos"],
 	ReplyKeyboardMarkup: ["keyboard"],
 	ReplyKeyboardHide: ["hide_keyboard"],
 	ForceReply: ["force_reply"],
-	InputFile: ["file_read_stream"]
 };
 
 /**
@@ -716,6 +777,13 @@ DataTypes.RequiredFields = {
  * @return {Boolean}	True if the object is of the type, false otherwise
  */
 DataTypes.isType = function(type, obj) {
+	if (type == "InputFile") {
+		if (obj instanceof stream.Readable &amp;&amp; typeof obj.path != "string") {
+			console.warn("teleapiwrapper can't send other readable streams than fs.readStream. As a workaround, add a string attribute called 'path' to the stream, and it will be sent anyway");
+		}
+		return obj instanceof stream.Readable &amp;&amp; typeof obj.path == "string";
+	}
+
 	if (typeof DataTypes[type] == "undefined") {
 		throw new Error("Invalid type: " + type);
 	}
@@ -746,13 +814,13 @@ module.exports.DataTypes = DataTypes;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BotAPI.html">BotAPI</a></li><li><a href="DataTypes.Audio.html">Audio</a></li><li><a href="DataTypes.Contact.html">Contact</a></li><li><a href="DataTypes.Document.html">Document</a></li><li><a href="DataTypes.ForceReply.html">ForceReply</a></li><li><a href="DataTypes.GroupChat.html">GroupChat</a></li><li><a href="DataTypes.InputFile.html">InputFile</a></li><li><a href="DataTypes.Location.html">Location</a></li><li><a href="DataTypes.Message.html">Message</a></li><li><a href="DataTypes.PhotoSize.html">PhotoSize</a></li><li><a href="DataTypes.ReplyKeyboardHide.html">ReplyKeyboardHide</a></li><li><a href="DataTypes.ReplyKeyboardMarkup.html">ReplyKeyboardMarkup</a></li><li><a href="DataTypes.Sticker.html">Sticker</a></li><li><a href="DataTypes.User.html">User</a></li><li><a href="DataTypes.UserProfilePhotos.html">UserProfilePhotos</a></li><li><a href="DataTypes.Video.html">Video</a></li></ul><h3>Namespaces</h3><ul><li><a href="DataTypes.html">DataTypes</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BotAPI.html">BotAPI</a></li><li><a href="DataTypes.Audio.html">Audio</a></li><li><a href="DataTypes.Contact.html">Contact</a></li><li><a href="DataTypes.Document.html">Document</a></li><li><a href="DataTypes.ForceReply.html">ForceReply</a></li><li><a href="DataTypes.GroupChat.html">GroupChat</a></li><li><a href="DataTypes.Location.html">Location</a></li><li><a href="DataTypes.Message.html">Message</a></li><li><a href="DataTypes.PhotoSize.html">PhotoSize</a></li><li><a href="DataTypes.ReplyKeyboardHide.html">ReplyKeyboardHide</a></li><li><a href="DataTypes.ReplyKeyboardMarkup.html">ReplyKeyboardMarkup</a></li><li><a href="DataTypes.Sticker.html">Sticker</a></li><li><a href="DataTypes.User.html">User</a></li><li><a href="DataTypes.UserProfilePhotos.html">UserProfilePhotos</a></li><li><a href="DataTypes.Video.html">Video</a></li></ul><h3>Namespaces</h3><ul><li><a href="DataTypes.html">DataTypes</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Sun Jun 28 2015 12:25:04 GMT+0200 (CEST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Tue Sep 08 2015 17:44:03 GMT+0200 (CEST)
 </footer>
 
 <script> prettyPrint(); </script>

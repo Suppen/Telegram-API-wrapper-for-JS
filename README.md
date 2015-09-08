@@ -53,6 +53,7 @@ bot.sendPhoto(chatId, photoId, "This is a really nice photo");
 ```
 
 ## Changelog
+* **0.10.0**: Updated the API to match the bot API as of Sep. 7 2015. See also the [BotAPI changelog]{https://core.telegram.org/bots/api#available-methods} **THIS UPDATE MAY BREAK YOUR BOTS!**, but not updating can also break them
 * **0.9.4**: Made it possible to send ANY stream.Readable as a file as long as it has a string as "path"-attribute. If it doesn't, you get a warning
 * **0.9.3**: Added the "Update"-type to DataTypes
 * **0.9.1**: Removed debugoutput from the code

@@ -142,7 +142,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line60">line 60</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line62">line 62</a>
     </li></ul></dd>
     
 
@@ -230,7 +230,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line76">line 76</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line78">line 78</a>
     </li></ul></dd>
     
 
@@ -380,7 +380,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line312">line 312</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line354">line 354</a>
     </li></ul></dd>
     
 
@@ -616,7 +616,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line113">line 113</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line117">line 117</a>
     </li></ul></dd>
     
 
@@ -759,7 +759,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line82">line 82</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line84">line 84</a>
     </li></ul></dd>
     
 
@@ -1001,7 +1001,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line288">line 288</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line325">line 325</a>
     </li></ul></dd>
     
 
@@ -1241,7 +1241,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line273">line 273</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line310">line 310</a>
     </li></ul></dd>
     
 
@@ -1272,7 +1272,7 @@
 
     
 
-    <h4 class="name" id="sendAudio"><span class="type-signature"></span>sendAudio<span class="signature">(chat_id, audio, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="sendAudio"><span class="type-signature"></span>sendAudio<span class="signature">(chat_id, audio, duration<span class="signature-attributes">opt</span>, performer<span class="signature-attributes">opt</span>, title<span class="signature-attributes">opt</span>, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -1376,6 +1376,105 @@
             
 
             <td class="description last">Audio file to send. You can either pass a file_id as String to resend an audio that is already on the Telegram servers, or upload a new audio file using multipart/form-data.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>duration</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integet</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Duration of the audio in secondsi</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>performer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Performer</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>title</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Track name</td>
         </tr>
 
     
@@ -1521,7 +1620,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line153">line 153</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line160">line 160</a>
     </li></ul></dd>
     
 
@@ -1730,7 +1829,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line259">line 259</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line296">line 296</a>
     </li></ul></dd>
     
 
@@ -2010,7 +2109,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line174">line 174</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line184">line 184</a>
     </li></ul></dd>
     
 
@@ -2318,7 +2417,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line238">line 238</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line275">line 275</a>
     </li></ul></dd>
     
 
@@ -2349,7 +2448,7 @@ We only recommend using this method when a response from the bot will take a not
 
     
 
-    <h4 class="name" id="sendMessage"><span class="type-signature"></span>sendMessage<span class="signature">(chat_id, text, disable_web_page_preview<span class="signature-attributes">opt</span>, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="sendMessage"><span class="type-signature"></span>sendMessage<span class="signature">(chat_id, text, parse_mode<span class="signature-attributes">opt</span>, disable_web_page_preview<span class="signature-attributes">opt</span>, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -2450,6 +2549,39 @@ We only recommend using this method when a response from the bot will take a not
             
 
             <td class="description last">Message to send to the chat</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>parse_mode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Send Markdown, if you want Telegram apps to show bold, italic and inline URLs in your bot's message. For the moment, only Telegram for Android and OSX support this.</td>
         </tr>
 
     
@@ -2628,7 +2760,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line95">line 95</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line98">line 98</a>
     </li></ul></dd>
     
 
@@ -2941,7 +3073,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line131">line 131</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line135">line 135</a>
     </li></ul></dd>
     
 
@@ -3221,7 +3353,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line195">line 195</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line205">line 205</a>
     </li></ul></dd>
     
 
@@ -3252,7 +3384,7 @@ We only recommend using this method when a response from the bot will take a not
 
     
 
-    <h4 class="name" id="sendVideo"><span class="type-signature"></span>sendVideo<span class="signature">(chat_id, video, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="sendVideo"><span class="type-signature"></span>sendVideo<span class="signature">(chat_id, video, duration<span class="signature-attributes">opt</span>, caption<span class="signature-attributes">opt</span>, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -3356,6 +3488,72 @@ We only recommend using this method when a response from the bot will take a not
             
 
             <td class="description last">Video to send. You can either pass a file_id as String to resend a video that is already on the Telegram servers, or upload a new video file using multipart/form-data.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>duration</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Duration of sent video in seconds</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>caption</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Video caption (may also be used when resending videos by file_id).</td>
         </tr>
 
     
@@ -3501,7 +3699,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line216">line 216</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line228">line 228</a>
     </li></ul></dd>
     
 
@@ -3532,7 +3730,320 @@ We only recommend using this method when a response from the bot will take a not
 
     
 
-    <h4 class="name" id="setWebhook"><span class="type-signature"></span>setWebhook<span class="signature">(url, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="sendVoice"><span class="type-signature"></span>sendVoice<span class="signature">(chat_id, voice, duration<span class="signature-attributes">opt</span>, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .ogg file encoded with OPUS (other formats may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>chat_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">ID of the chat to send the message to</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>voice</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+|
+
+<span class="param-type">InputFile</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Audio file to send. You can either pass a file_id as String to resend an audio that is already on the Telegram servers, or upload a new audio file using multipart/form-data.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>duration</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integet</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Duration of the audio in secondsi</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reply_to_message_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">If the message is a reply, ID of the original message</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reply_markup</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ReplyKeyboardMarkup</span>
+|
+
+<span class="param-type">ReplyKeyboardHide</span>
+|
+
+<span class="param-type">ForceReply</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cb</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">If the last argument is a function, it will be treated as a callback function with args "error" and "result"</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line252">line 252</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="setWebhook"><span class="type-signature"></span>setWebhook<span class="signature">(url, certificate<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -3608,6 +4119,39 @@ We only recommend using this method when a response from the bot will take a not
 
         <tr>
             
+                <td class="name"><code>certificate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">InputFile</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Upload your public key certificate so that the root certificate in use can be checked</td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>cb</code></td>
             
 
@@ -3675,7 +4219,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line301">line 301</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line339">line 339</a>
     </li></ul></dd>
     
 
@@ -3717,13 +4261,13 @@ We only recommend using this method when a response from the bot will take a not
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BotAPI.html">BotAPI</a></li><li><a href="DataTypes.Audio.html">Audio</a></li><li><a href="DataTypes.Contact.html">Contact</a></li><li><a href="DataTypes.Document.html">Document</a></li><li><a href="DataTypes.ForceReply.html">ForceReply</a></li><li><a href="DataTypes.GroupChat.html">GroupChat</a></li><li><a href="DataTypes.InputFile.html">InputFile</a></li><li><a href="DataTypes.Location.html">Location</a></li><li><a href="DataTypes.Message.html">Message</a></li><li><a href="DataTypes.PhotoSize.html">PhotoSize</a></li><li><a href="DataTypes.ReplyKeyboardHide.html">ReplyKeyboardHide</a></li><li><a href="DataTypes.ReplyKeyboardMarkup.html">ReplyKeyboardMarkup</a></li><li><a href="DataTypes.Sticker.html">Sticker</a></li><li><a href="DataTypes.User.html">User</a></li><li><a href="DataTypes.UserProfilePhotos.html">UserProfilePhotos</a></li><li><a href="DataTypes.Video.html">Video</a></li></ul><h3>Namespaces</h3><ul><li><a href="DataTypes.html">DataTypes</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BotAPI.html">BotAPI</a></li><li><a href="DataTypes.Audio.html">Audio</a></li><li><a href="DataTypes.Contact.html">Contact</a></li><li><a href="DataTypes.Document.html">Document</a></li><li><a href="DataTypes.ForceReply.html">ForceReply</a></li><li><a href="DataTypes.GroupChat.html">GroupChat</a></li><li><a href="DataTypes.Location.html">Location</a></li><li><a href="DataTypes.Message.html">Message</a></li><li><a href="DataTypes.PhotoSize.html">PhotoSize</a></li><li><a href="DataTypes.ReplyKeyboardHide.html">ReplyKeyboardHide</a></li><li><a href="DataTypes.ReplyKeyboardMarkup.html">ReplyKeyboardMarkup</a></li><li><a href="DataTypes.Sticker.html">Sticker</a></li><li><a href="DataTypes.User.html">User</a></li><li><a href="DataTypes.UserProfilePhotos.html">UserProfilePhotos</a></li><li><a href="DataTypes.Video.html">Video</a></li></ul><h3>Namespaces</h3><ul><li><a href="DataTypes.html">DataTypes</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Sun Jun 28 2015 12:25:04 GMT+0200 (CEST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Tue Sep 08 2015 17:44:03 GMT+0200 (CEST)
 </footer>
 
 <script> prettyPrint(); </script>

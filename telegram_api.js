@@ -89,6 +89,7 @@ BotAPI.prototype = {
 	 * Use this method to forward messages of any kind. On success, the sent Message is returned.
 	 * @param {Integer} chat_id	ID of the chat to send the message to
 	 * @param {String} text	Message to send to the chat
+	 * @param {String} [parse_mode] Send Markdown, if you want Telegram apps to show bold, italic and inline URLs in your bot's message. For the moment, only Telegram for Android and OSX support this.
 	 * @param {Boolean} [disable_web_page_preview]	Disables link previews for links in this message
 	 * @param {Integer} [reply_to_message_id]	If the message is a reply, ID of the original message
 	 * @param {ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [reply_markup]	Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.
@@ -98,6 +99,7 @@ BotAPI.prototype = {
 		var args = [
 			"chat_id",
 			"text",
+			"parse_mode",
 			"disable_web_page_preview",
 			"reply_to_message_id",
 			"reply_markup"
@@ -148,6 +150,9 @@ BotAPI.prototype = {
 	 * Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .ogg file encoded with OPUS (other formats may be sent as Document). On success, the sent Message is returned.
 	 * @param {Integer} chat_id	ID of the chat to send the message to
 	 * @param {String|InputFile} audio	Audio file to send. You can either pass a file_id as String to resend an audio that is already on the Telegram servers, or upload a new audio file using multipart/form-data.
+	 * @param {Integet} [duration]	Duration of the audio in secondsi
+	 * @param {String} [performer]	Performer
+	 * @param {String} [title]	Track name
 	 * @param {Integer} [reply_to_message_id]	If the message is a reply, ID of the original message
 	 * @param {ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [reply_markup]	Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
@@ -156,6 +161,9 @@ BotAPI.prototype = {
 		var args = [
 			"chat_id",
 			"audio",
+			"duration",
+			"performer",
+			"title",
 			"reply_to_message_id",
 			"reply_markup"
 		];
@@ -211,6 +219,8 @@ BotAPI.prototype = {
 	 * Use this method to send video files, Telegram clients support mp4 videos (other formats may be sent as Document). On success, the sent Message is returned.
 	 * @param {Integer} chat_id	ID of the chat to send the message to
 	 * @param {String|InputFile} video	Video to send. You can either pass a file_id as String to resend a video that is already on the Telegram servers, or upload a new video file using multipart/form-data.
+	 * @param {Integer} [duration]	Duration of sent video in seconds
+	 * @param {String} [caption]	Video caption (may also be used when resending videos by file_id).
 	 * @param {Integer} [reply_to_message_id]	If the message is a reply, ID of the original message
 	 * @param {ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [reply_markup]	Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
@@ -219,6 +229,8 @@ BotAPI.prototype = {
 		var args = [
 			"chat_id",
 			"video",
+			"duration",
+			"caption",
 			"reply_to_message_id",
 			"reply_markup"
 		];
@@ -227,6 +239,29 @@ BotAPI.prototype = {
 			argObj.fileField = "video";
 		}
 		this._doRequest("sendVideo", argObj);
+	},
+	/**
+	 * Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .ogg file encoded with OPUS (other formats may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
+	 * @param {Integer} chat_id	ID of the chat to send the message to
+	 * @param {String|InputFile} voice	Audio file to send. You can either pass a file_id as String to resend an audio that is already on the Telegram servers, or upload a new audio file using multipart/form-data.
+	 * @param {Integet} [duration]	Duration of the audio in secondsi
+	 * @param {Integer} [reply_to_message_id]	If the message is a reply, ID of the original message
+	 * @param {ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [reply_markup]	Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.
+	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
+	 */
+	sendVoice: function() {
+		var args = [
+			"chat_id",
+			"voice",
+			"duration",
+			"reply_to_message_id",
+			"reply_markup"
+		];
+		var argObj = parseArgs(args, arguments);
+		if (DataTypes.isType("InputFile", argObj.audio)) {
+			argObj.fileField = "audio";
+		}
+		this._doRequest("sendVoice", argObj);
 	},
 	/**
 	 * Use this method to send point on the map. On success, the sent Message is returned.
@@ -298,12 +333,17 @@ BotAPI.prototype = {
 	/**
 	 * Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized @Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts.
 	 * @param {String} url	HTTPS url to send updates to. Use an empty string to remove webhook integration
+	 * @param {InputFile} [certificate]	Upload your public key certificate so that the root certificate in use can be checked
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
 	 */
 	setWebhook: function() {
 		var args = [
-			"url"
+			"url",
+			"certificate"
 		];
+		if (DataTypes.isType("InputFile", argObj.certificate)) {
+			argObj.fileField = "certificate";
+		}
 		this._doRequest("setWebhook", parseArgs(args, arguments));
 	},
 	/**
