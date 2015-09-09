@@ -42,7 +42,15 @@ var keyboard = { /*  reply_markup */
 	],
 	resize_keyboard: true
 };
-bot.sendMessage(chatId, text, 0, 0, keyboard);
+bot.sendMessage(chatId, text, null, 0, 0, keyboard, callback);
+
+// Send a message with a reply-keyboard, with all arguments given as an object to the method. ALL methods support this.
+bot.sendMessage({
+	chat_id: chatId,
+	text: text,
+	keyboard: keyboard,
+	cb: callback	// Again, callback is optional
+});
 
 // Send a photo (same approach with other file sendings)
 bot.sendPhoto(chatId, fs.createReadStream("some_photo.jpg"), "This is a really nice photo");
@@ -53,8 +61,9 @@ bot.sendPhoto(chatId, photoId, "This is a really nice photo");
 ```
 
 ## Changelog
+* **0.11.0**: All methods now support a single object naming all the methods arguments. See examples
 * **0.10.1**: Added missing datatypes and updated existing ones
-* **0.10.0**: Updated the API to match the bot API as of Sep. 7 2015. See also the [BotAPI changelog]{https://core.telegram.org/bots/api#available-methods} **THIS UPDATE MAY BREAK YOUR BOTS!**, but not updating can also break them
+* **0.10.0**: Updated the API to match the bot API as of Sep. 7 2015. See also the [BotAPI changelog](https://core.telegram.org/bots/api-changelog) **THIS UPDATE MAY BREAK YOUR BOTS!** but not updating can also break them
 * **0.9.4**: Made it possible to send ANY stream.Readable as a file as long as it has a string as "path"-attribute. If it doesn't, you get a warning
 * **0.9.3**: Added the "Update"-type to DataTypes
 * **0.9.1**: Removed debugoutput from the code

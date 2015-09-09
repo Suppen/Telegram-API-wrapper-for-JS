@@ -35,15 +35,22 @@ function getCb(args) {
 // Parse arguments into an object
 function parseArgs(fields, args) {
 	var parsed = {};
+	if (args.length == 1 && args[0] instanceof Object && !(args[0] instanceof Function)) {	// A single object was given, containing all arguments
+		if (typeof args[0].cb == "undefined") {
+			args[0].cb = dummyFunc;
+		}
+		parsed = args[0];
+	} else {	// Arguments were given in the traditional way
+		parsed.cb = getCb(args);
+		if (parsed.cb != dummyFunc) {
+			args.length--;
+		}
 
-	parsed.cb = getCb(args);
-	if (parsed.cb != dummyFunc) {
-		args.length--;
+		for (var i = 0; i < args.length && i < fields.length; i++) {
+			parsed[fields[i]] = args[i];
+		}
 	}
 
-	for (var i = 0; i < args.length && i < fields.length; i++) {
-		parsed[fields[i]] = args[i];
-	}
 	return parsed;
 };
 
