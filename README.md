@@ -70,3 +70,5 @@ bot.sendPhoto(chatId, photoId, "This is a really nice photo");
 * **0.9.0**: The wrapper now internally serializes objects and arrays given to it, so arguments like ''reply_markup'' are now given actual objects, not JSON-strings
 * **0.8.1**: Fixed a bug which would crash the process if no connection could be made to the server
 * **0.8.0**: Got rid of the wrapper object for input files
+
+PS: If someone wants to write tests for this package, please do, and send me a pull request on github
