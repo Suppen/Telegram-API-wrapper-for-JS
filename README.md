@@ -2,17 +2,13 @@
 
 An unofficial JS-wrapper for the Telegram chat API. Currently focused on bots.
 
-**Supports ALL methods in the bot API**, but currently none in the regular API
+**Supports ALL methods in the bot API as of 2015-09-21**, but currently none in the regular API
 
 npm: [https://www.npmjs.com/package/teleapiwrapper](https://www.npmjs.com/package/teleapiwrapper)
 
 github: [https://github.com/Suppen/Telegram-API-wrapper-for-JS](https://github.com/Suppen/Telegram-API-wrapper-for-JS)
 
 Official API-documentation: [https://core.telegram.org/bots/api](https://core.telegram.org/bots/api)
-
-**Now supports sending files!** But does not support fetching files from Telegram's servers yet...
-
-**NOTE**: From v0.6.0, this no longer uses Promises. I didn't quite get the hang of them, so I went back to callbacks
 
 ## Create a new wrapper (aka. new bot)
 
@@ -58,9 +54,19 @@ bot.sendPhoto(chatId, fs.createReadStream("some_photo.jpg"), "This is a really n
 // Send a photo by ID (same approach with other file sendings)
 var photoId = "Adrgvmercfiawejdatruotseafasert";
 bot.sendPhoto(chatId, photoId, "This is a really nice photo");
+
+// Download a file sent to the bot
+bot.getFile(file_id, function(err, res) {
+	bot.helperDownloadFile(res.result, function(err, res) {
+		// res is now a http.IncomingMessage with the file.
+		res.pipe(fs.createWriteStream("downloadedFile"));
+	});
+});
+
 ```
 
 ## Changelog
+* **0.12.0**: Supports the new getFile() method. Also has a helper method called "helperDownloadFile", which actually gets the file for you
 * **0.11.0**: All methods now support a single object naming all the methods arguments. See examples
 * **0.10.1**: Added missing datatypes and updated existing ones
 * **0.10.0**: Updated the API to match the bot API as of Sep. 7 2015. See also the [BotAPI changelog](https://core.telegram.org/bots/api-changelog) **THIS UPDATE MAY BREAK YOUR BOTS!** but not updating can also break them

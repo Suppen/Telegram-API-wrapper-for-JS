@@ -3,8 +3,8 @@
  **************/
 
 // Require important stuff
+var http = require("http");
 var https = require("https");
-var querystring = require("querystring");
 var urlParser = require("url");
 var FormData = require("form-data");
 var fs = require("fs");
@@ -83,6 +83,10 @@ BotAPI.prototype = {
 	 * Change this in the constructed object if you for some reason don't want to use this URL
 	 */
 	methodUrlBase: "https://api.telegram.org/bot<token>/",
+	/**
+	 * Change this in the constructed object if you for some reason don't want to use this URL
+	 */
+	fileUrlBase: "https://api.telegram.org/file/bot<token>/",
 	/**
 	 * A simple method for testing your bot's auth token. Requires no parameters. Returns basic information about the bot in form of a User object.
 	 *
@@ -354,6 +358,16 @@ BotAPI.prototype = {
 		this._doRequest("setWebhook", parseArgs(args, arguments));
 	},
 	/**
+	 * Use this method to get basic info about a file and prepare it for downloading. For the moment, bots can download files of up to 20MB in size. On success, a File object is returned. The file can then be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>, where <file_path> is taken from the response. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile again.
+	 * @param {String} file_id	File identifier to get info about
+	 */
+	getFile: function() {
+		var args = [
+			"file_id"
+		];
+		this._doRequest("getFile", parseArgs(args, arguments));
+	},
+	/**
 	 * Internal API method. DO NOT USE. Sends the actual request to the API server
 	 * @param {String} method	Name of the method to use
 	 * @param {Object} argObj	Parsed argument object
@@ -371,7 +385,7 @@ BotAPI.prototype = {
 		delete argObj.cb;
 
 		// Parse the URL
-		url = self.methodUrlBase + method;
+		var url = self.methodUrlBase + method;
 		url = url.replace("<token>", self.token);
 		url = urlParser.parse(url);
 
@@ -421,6 +435,11 @@ BotAPI.prototype = {
 		}
 
 		if (inputFile) {	// File upload
+			// Give the file a default name if not given
+			if (!(inputFile instanceof http.IncomingMessage || (inputFile instanceof stream.Readable && typeof inputFile.path == "string"))) {	// TODO Dry this up. This boolean expression is written three times in the code, the other two down in DataTypes.isType();
+				inputFile.path = "Some file";
+			}
+
 			//Make the form
 			var form =  new FormData();
 			
@@ -453,16 +472,42 @@ BotAPI.prototype = {
 					path: url.path,
 					method: "POST",
 					headers: {
-						"Content-Type": "application/x-www-form-urlencoded"
+						"Content-Type": "application/json"
 					}
 				}, requestCallback);
 				req.on("error", function(e) {cb(e, null);});
 
-				req.end(querystring.stringify(argObj));
+				req.end(JSON.stringify(argObj));
 			} catch (e) {
 				cb(e, null);
 			}
 		}
+	},
+	/**
+	 * getFile does not actually get the file, it only gets a path where you can download the file from. This method actually sends the download request for you, The callback gets an error object if the request failed, and gets the response object otherwise. See https://nodejs.org/api/http.html#http_http_incomingmessage
+	 * @param {File} file	The File object returned from getFile
+	 */
+	helperDownloadFile: function() {
+		var args = [
+			"file"
+		];
+		argObj = parseArgs(args, arguments);
+
+		// Check if a file was actually provided
+		if (!DataTypes.isType("File", argObj.file)) {
+			throw new Error("Given file argument is not a file object");
+		}
+
+		// Download the file
+		var url = this.fileUrlBase + argObj.file.file_path;
+		url = url.replace("<token>", this.token);
+
+		var req = https.get(url, function(res) {
+			argObj.cb(null, res);	// Return the response object
+		});
+		req.on("error", function(e) {
+			argObj.cb(e, null);	// Something went wrong with the request
+		});
 	}
 };
 
@@ -743,6 +788,19 @@ var DataTypes = {
 		this.force_reply = true;
 		/** ForceReply's selective, Boolean, optional **/
 		this.selective = false;
+	},
+	/**
+	 * Constructs an empty File object
+	 *
+	 * @constructor
+	 */
+	File: function() {
+		/** File's unique identifier, String **/
+		this.file_id = "";
+		/** File's size, if known **/
+		this.file_size = 0;
+		/** File's path. Use https://api.telegram.org/file/bot<token>/<file_path> to get the file. String **/
+		this.file_path = "";
 	}
 };
 
@@ -758,6 +816,7 @@ DataTypes.RequiredFields = {
 	Document: ["file_id", "thumb"],
 	Sticker: ["file_id", "width", "height", "thumb"],
 	Video: ["file_id", "width", "height", "duration", "thumb"],
+	Voice: ["file_id", "duration"],
 	Contact: ["phone_number", "first_name"],
 	Location: ["longitude", "latitude"],
 	Update: ["id", "message"],
@@ -765,6 +824,7 @@ DataTypes.RequiredFields = {
 	ReplyKeyboardMarkup: ["keyboard"],
 	ReplyKeyboardHide: ["hide_keyboard"],
 	ForceReply: ["force_reply"],
+	File: ["file_id"]
 };
 
 /**
@@ -780,10 +840,10 @@ DataTypes.RequiredFields = {
  */
 DataTypes.isType = function(type, obj) {
 	if (type == "InputFile") {
-		if (obj instanceof stream.Readable && typeof obj.path != "string") {
-			console.warn("teleapiwrapper can't send other readable streams than fs.readStream. As a workaround, add a string attribute called 'path' to the stream, and it will be sent anyway");
+		if (!(obj instanceof http.IncomingMessage || (obj instanceof stream.Readable && typeof obj.path == "string"))) {
+			console.warn("teleapiwrapper uses the string value of the \"path\" field on a readable stream to generate the name of the file. If no \"path\" field is present, it will default to \"Some file\"");
 		}
-		return obj instanceof stream.Readable && typeof obj.path == "string";
+		return obj instanceof http.IncomingMessage | (obj instanceof stream.Readable && typeof obj.path == "string");
 	}
 
 	if (typeof DataTypes[type] == "undefined") {

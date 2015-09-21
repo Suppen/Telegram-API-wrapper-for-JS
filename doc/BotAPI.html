@@ -142,7 +142,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line62">line 62</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line69">line 69</a>
     </li></ul></dd>
     
 
@@ -183,6 +183,68 @@
 
     
         <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="fileUrlBase"><span class="type-signature"></span>fileUrlBase<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Change this in the constructed object if you for some reason don't want to use this URL
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line89">line 89</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
 
         
             
@@ -230,7 +292,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line78">line 78</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line85">line 85</a>
     </li></ul></dd>
     
 
@@ -380,7 +442,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line354">line 354</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line375">line 375</a>
     </li></ul></dd>
     
 
@@ -616,7 +678,138 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line117">line 117</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line128">line 128</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getFile"><span class="type-signature"></span>getFile<span class="signature">(file_id)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Use this method to get basic info about a file and prepare it for downloading. For the moment, bots can download files of up to 20MB in size. On success, a File object is returned. The file can then be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>, where <file_path> is taken from the response. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile again.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>file_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">File identifier to get info about</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line364">line 364</a>
     </li></ul></dd>
     
 
@@ -759,7 +952,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line84">line 84</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line95">line 95</a>
     </li></ul></dd>
     
 
@@ -1001,7 +1194,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line325">line 325</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line336">line 336</a>
     </li></ul></dd>
     
 
@@ -1241,7 +1434,138 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line310">line 310</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line321">line 321</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="helperDownloadFile"><span class="type-signature"></span>helperDownloadFile<span class="signature">(file)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    getFile does not actually get the file, it only gets a path where you can download the file from. This method actually sends the download request for you, The callback gets an error object if the request failed, and gets the response object otherwise. See https://nodejs.org/api/http.html#http_http_incomingmessage
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>file</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">File</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The File object returned from getFile</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line490">line 490</a>
     </li></ul></dd>
     
 
@@ -1620,7 +1944,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line160">line 160</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line171">line 171</a>
     </li></ul></dd>
     
 
@@ -1829,7 +2153,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line296">line 296</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line307">line 307</a>
     </li></ul></dd>
     
 
@@ -2109,7 +2433,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line184">line 184</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line195">line 195</a>
     </li></ul></dd>
     
 
@@ -2417,7 +2741,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line275">line 275</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line286">line 286</a>
     </li></ul></dd>
     
 
@@ -2760,7 +3084,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line98">line 98</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line109">line 109</a>
     </li></ul></dd>
     
 
@@ -3073,7 +3397,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line135">line 135</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line146">line 146</a>
     </li></ul></dd>
     
 
@@ -3353,7 +3677,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line205">line 205</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line216">line 216</a>
     </li></ul></dd>
     
 
@@ -3699,7 +4023,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line228">line 228</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line239">line 239</a>
     </li></ul></dd>
     
 
@@ -4012,7 +4336,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line252">line 252</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line263">line 263</a>
     </li></ul></dd>
     
 
@@ -4219,7 +4543,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line339">line 339</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line350">line 350</a>
     </li></ul></dd>
     
 
@@ -4261,13 +4585,13 @@ We only recommend using this method when a response from the bot will take a not
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BotAPI.html">BotAPI</a></li><li><a href="DataTypes.Audio.html">Audio</a></li><li><a href="DataTypes.Contact.html">Contact</a></li><li><a href="DataTypes.Document.html">Document</a></li><li><a href="DataTypes.ForceReply.html">ForceReply</a></li><li><a href="DataTypes.GroupChat.html">GroupChat</a></li><li><a href="DataTypes.Location.html">Location</a></li><li><a href="DataTypes.Message.html">Message</a></li><li><a href="DataTypes.PhotoSize.html">PhotoSize</a></li><li><a href="DataTypes.ReplyKeyboardHide.html">ReplyKeyboardHide</a></li><li><a href="DataTypes.ReplyKeyboardMarkup.html">ReplyKeyboardMarkup</a></li><li><a href="DataTypes.Sticker.html">Sticker</a></li><li><a href="DataTypes.User.html">User</a></li><li><a href="DataTypes.UserProfilePhotos.html">UserProfilePhotos</a></li><li><a href="DataTypes.Video.html">Video</a></li></ul><h3>Namespaces</h3><ul><li><a href="DataTypes.html">DataTypes</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BotAPI.html">BotAPI</a></li><li><a href="DataTypes.Audio.html">Audio</a></li><li><a href="DataTypes.Contact.html">Contact</a></li><li><a href="DataTypes.Document.html">Document</a></li><li><a href="DataTypes.File.html">File</a></li><li><a href="DataTypes.ForceReply.html">ForceReply</a></li><li><a href="DataTypes.GroupChat.html">GroupChat</a></li><li><a href="DataTypes.Location.html">Location</a></li><li><a href="DataTypes.Message.html">Message</a></li><li><a href="DataTypes.PhotoSize.html">PhotoSize</a></li><li><a href="DataTypes.ReplyKeyboardHide.html">ReplyKeyboardHide</a></li><li><a href="DataTypes.ReplyKeyboardMarkup.html">ReplyKeyboardMarkup</a></li><li><a href="DataTypes.Sticker.html">Sticker</a></li><li><a href="DataTypes.User.html">User</a></li><li><a href="DataTypes.UserProfilePhotos.html">UserProfilePhotos</a></li><li><a href="DataTypes.Video.html">Video</a></li><li><a href="DataTypes.Voice.html">Voice</a></li></ul><h3>Namespaces</h3><ul><li><a href="DataTypes.html">DataTypes</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Tue Sep 08 2015 17:44:03 GMT+0200 (CEST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Mon Sep 21 2015 21:00:07 GMT+0200 (CEST)
 </footer>
 
 <script> prettyPrint(); </script>
