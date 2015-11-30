@@ -360,6 +360,7 @@ BotAPI.prototype = {
 	/**
 	 * Use this method to get basic info about a file and prepare it for downloading. For the moment, bots can download files of up to 20MB in size. On success, a File object is returned. The file can then be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>, where <file_path> is taken from the response. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile again.
 	 * @param {String} file_id	File identifier to get info about
+	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
 	 */
 	getFile: function() {
 		var args = [
@@ -373,10 +374,8 @@ BotAPI.prototype = {
 	 * @param {Object} argObj	Parsed argument object
 	 */
 	_doRequest: function(method, argObj) {
-		var self = this;
-
 		// Check if a token exists
-		if (self.token == "") {
+		if (this.token == "") {
 			throw new Error("Token not set. Please set the token-attribute on the BotAPI object");
 		}
 
@@ -385,38 +384,11 @@ BotAPI.prototype = {
 		delete argObj.cb;
 
 		// Parse the URL
-		var url = self.methodUrlBase + method;
-		url = url.replace("<token>", self.token);
+		var url = this.methodUrlBase + method;
+		url = url.replace("<token>", this.token);
 		url = urlParser.parse(url);
 
 		// The http-callback function
-		function requestCallback(res) {
-			var result = "";
-
-			res.on("data", function(chunk) {
-				result += "" + chunk;
-			});
-			res.on("end", function() {
-				try {
-					try {
-						result = JSON.parse(result);
-					} catch (e) {
-						throw new Error("Result was not JSON");
-					}
-					if (!result.ok) {
-						throw new Error(result.description);
-					} else {
-						cb(null, result);
-					}
-				} catch (e) {
-					cb(e, null);
-				}
-				
-			});
-			res.on("error", function(e) {
-				cb(e, null);
-			});
-		};
 
 		// Extract the file field
 		var fileField = argObj.fileField;
@@ -434,7 +406,13 @@ BotAPI.prototype = {
 			}
 		}
 
-		if (inputFile) {	// File upload
+		// Default headers for the request
+		var headers = {
+			"Content-Type": "application/json"
+		};
+
+		// Check if the request should contain a file
+		if (inputFile) {
 			// Give the file a default name if not given
 			if (!(inputFile instanceof http.IncomingMessage || (inputFile instanceof stream.Readable && typeof inputFile.path == "string"))) {	// TODO Dry this up. This boolean expression is written three times in the code, the other two down in DataTypes.isType();
 				inputFile.path = "Some file";
@@ -451,41 +429,66 @@ BotAPI.prototype = {
 				form.append(field, argObj[field]);
 			}
 
-			// Do the request
-			try {
-				var req = https.request({
-					host: url.host,
-					path: url.path,
-					method: "POST",
-					headers: form.getHeaders()
-				}, requestCallback);
-				req.on("error", function(e) {cb(e, null);});
-
-				form.pipe(req);
-			} catch (e) {
-				cb(e, null);
-			}
-		} else {	// No file upload
-			try {
-				var req = https.request({
-					host: url.host,
-					path: url.path,
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json"
-					}
-				}, requestCallback);
-				req.on("error", function(e) {cb(e, null);});
-
-				req.end(JSON.stringify(argObj));
-			} catch (e) {
-				cb(e, null);
-			}
+			// Override the headers
+			headers = form.getHeaders();
 		}
+
+		// Do the request
+		var req = https.request({
+			host: url.host,
+			path: url.path,
+			method: "POST",
+			headers: headers
+		});
+
+		// Listen for the response
+		req.on("response", function(res) {
+			// Buffer to hold the result body
+			var result = "";
+
+			res.on("data", function(chunk) {
+				// Concatenate all chunks
+				result += "" + chunk.toString("utf-8");
+			});
+			res.on("end", function() {
+				try {
+					// Try to parse the result as JSON
+					result = JSON.parse(result);
+	
+					// Parsing went OK. Did everything go well on Telegram's end?
+					if (!result.ok) {
+						cb(new Error(result.description), null);
+					} else {
+						cb(null, result);
+					}
+				} catch (e) {
+					// Parsing went wrong
+					cb(e, null);
+				}
+
+			});
+			res.on("error", function(e) {
+				cb(e, null);
+			});
+		});
+
+		// Check for errors
+		req.on("error", function(e) {
+			cb(e, null);
+		});
+
+		// Send the body
+		if (inputFile) {
+			form.pipe(req);
+		} else {
+			req.end(JSON.stringify(argObj));
+		}
+
 	},
 	/**
 	 * getFile does not actually get the file, it only gets a path where you can download the file from. This method actually sends the download request for you, The callback gets an error object if the request failed, and gets the response object otherwise. See https://nodejs.org/api/http.html#http_http_incomingmessage
 	 * @param {File} file	The File object returned from getFile
+	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
 	 */
 	helperDownloadFile: function() {
 		var args = [
@@ -797,9 +800,9 @@ var DataTypes = {
 	File: function() {
 		/** File's unique identifier, String **/
 		this.file_id = "";
-		/** File's size, if known **/
+		/** File's size, if known. Optional **/
 		this.file_size = 0;
-		/** File's path. Use https://api.telegram.org/file/bot<token>/<file_path> to get the file. String **/
+		/** File's path. Use https://api.telegram.org/file/bot<token>/<file_path> to get the file. String. Optional **/
 		this.file_path = "";
 	}
 };
@@ -843,7 +846,7 @@ DataTypes.isType = function(type, obj) {
 		if (!(obj instanceof http.IncomingMessage || (obj instanceof stream.Readable && typeof obj.path == "string"))) {
 			console.warn("teleapiwrapper uses the string value of the \"path\" field on a readable stream to generate the name of the file. If no \"path\" field is present, it will default to \"Some file\"");
 		}
-		return obj instanceof http.IncomingMessage | (obj instanceof stream.Readable && typeof obj.path == "string");
+		return obj instanceof http.IncomingMessage || (obj instanceof stream.Readable && typeof obj.path == "string");
 	}
 
 	if (typeof DataTypes[type] == "undefined") {

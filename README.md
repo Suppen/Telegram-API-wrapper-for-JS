@@ -66,6 +66,7 @@ bot.getFile(file_id, function(err, res) {
 ```
 
 ## Changelog
+* **0.12.1**: Inserted a missing | in the code, and cleaned the code a bit
 * **0.12.0**: Supports the new getFile() method. Also has a helper method called "helperDownloadFile", which actually gets the file for you
 * **0.11.0**: All methods now support a single object naming all the methods arguments. See examples
 * **0.10.1**: Added missing datatypes and updated existing ones
