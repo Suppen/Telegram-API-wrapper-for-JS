@@ -28,9 +28,7 @@
 
 <header>
     
-        <h2>
-        BotAPI
-        </h2>
+        <h2>BotAPI</h2>
         
     
 </header>
@@ -442,7 +440,305 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line375">line 375</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line382">line 382</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="answerInlineQuery"><span class="type-signature"></span>answerInlineQuery<span class="signature">(inline_query_id, results, cache_time<span class="signature-attributes">opt</span>, {Boolean, next_offset<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Use this method to send answers to an inline query. On success, True is returned.
+No more than 50 results per query are allowed.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inline_query_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Unique identifier for the answered query</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>results</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;InlineQueryResult></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">A JSON-serialized array of results for the inline query</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cache_time</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The maximum amount of time in seconds that the result of the inline query may be cached on the server. Defaults to 300.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>{Boolean</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">[is_personal]	Pass True, if results may be cached on the server side only for the user that sent the query. By default, results may be returned to any user who sends the same query</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>next_offset</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Pass the offset that a client should send in the next query with the same text to receive more results. Pass an empty string if there are no more results or if you don‘t support pagination. Offset length can’t exceed 64 bytes.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cb</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">If the last argument is a function, it will be treated as a callback function with args "error" and "result"</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line367">line 367</a>
     </li></ul></dd>
     
 
@@ -709,7 +1005,7 @@
 
     
 
-    <h4 class="name" id="getFile"><span class="type-signature"></span>getFile<span class="signature">(file_id)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getFile"><span class="type-signature"></span>getFile<span class="signature">(file_id, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -740,6 +1036,8 @@
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -765,10 +1063,51 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
             <td class="description last">File identifier to get info about</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cb</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">If the last argument is a function, it will be treated as a callback function with args "error" and "result"</td>
         </tr>
 
     
@@ -809,7 +1148,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line364">line 364</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line351">line 351</a>
     </li></ul></dd>
     
 
@@ -1194,7 +1533,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line336">line 336</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line324">line 324</a>
     </li></ul></dd>
     
 
@@ -1434,7 +1773,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line321">line 321</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line309">line 309</a>
     </li></ul></dd>
     
 
@@ -1465,7 +1804,7 @@
 
     
 
-    <h4 class="name" id="helperDownloadFile"><span class="type-signature"></span>helperDownloadFile<span class="signature">(file)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="helperDownloadFile"><span class="type-signature"></span>helperDownloadFile<span class="signature">(file, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -1496,6 +1835,8 @@
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -1521,10 +1862,51 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
             <td class="description last">The File object returned from getFile</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cb</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">If the last argument is a function, it will be treated as a callback function with args "error" and "result"</td>
         </tr>
 
     
@@ -1565,7 +1947,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line490">line 490</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line476">line 476</a>
     </li></ul></dd>
     
 
@@ -1681,7 +2063,7 @@
 <span class="param-type">String</span>
 |
 
-<span class="param-type">InputFile</span>
+<span class="param-type"><a href="DataTypes.InputFile.html">DataTypes.InputFile</a></span>
 
 
             
@@ -1944,7 +2326,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line171">line 171</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line169">line 169</a>
     </li></ul></dd>
     
 
@@ -2153,7 +2535,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line307">line 307</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line295">line 295</a>
     </li></ul></dd>
     
 
@@ -2269,7 +2651,7 @@ We only recommend using this method when a response from the bot will take a not
 <span class="param-type">String</span>
 |
 
-<span class="param-type">InputFile</span>
+<span class="param-type"><a href="DataTypes.InputFile.html">DataTypes.InputFile</a></span>
 
 
             
@@ -2433,7 +2815,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line195">line 195</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line191">line 191</a>
     </li></ul></dd>
     
 
@@ -2741,7 +3123,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line286">line 286</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line274">line 274</a>
     </li></ul></dd>
     
 
@@ -3200,7 +3582,7 @@ We only recommend using this method when a response from the bot will take a not
 <span class="param-type">String</span>
 |
 
-<span class="param-type">InputFile</span>
+<span class="param-type"><a href="DataTypes.InputFile.html">DataTypes.InputFile</a></span>
 
 
             
@@ -3513,7 +3895,7 @@ We only recommend using this method when a response from the bot will take a not
 <span class="param-type">String</span>
 |
 
-<span class="param-type">InputFile</span>
+<span class="param-type"><a href="DataTypes.InputFile.html">DataTypes.InputFile</a></span>
 
 
             
@@ -3677,7 +4059,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line216">line 216</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line210">line 210</a>
     </li></ul></dd>
     
 
@@ -3793,7 +4175,7 @@ We only recommend using this method when a response from the bot will take a not
 <span class="param-type">String</span>
 |
 
-<span class="param-type">InputFile</span>
+<span class="param-type"><a href="DataTypes.InputFile.html">DataTypes.InputFile</a></span>
 
 
             
@@ -4023,7 +4405,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line239">line 239</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line231">line 231</a>
     </li></ul></dd>
     
 
@@ -4139,7 +4521,7 @@ We only recommend using this method when a response from the bot will take a not
 <span class="param-type">String</span>
 |
 
-<span class="param-type">InputFile</span>
+<span class="param-type"><a href="DataTypes.InputFile.html">DataTypes.InputFile</a></span>
 
 
             
@@ -4336,7 +4718,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line263">line 263</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line253">line 253</a>
     </li></ul></dd>
     
 
@@ -4543,7 +4925,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line350">line 350</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line338">line 338</a>
     </li></ul></dd>
     
 
@@ -4585,13 +4967,13 @@ We only recommend using this method when a response from the bot will take a not
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BotAPI.html">BotAPI</a></li><li><a href="DataTypes.Audio.html">Audio</a></li><li><a href="DataTypes.Contact.html">Contact</a></li><li><a href="DataTypes.Document.html">Document</a></li><li><a href="DataTypes.File.html">File</a></li><li><a href="DataTypes.ForceReply.html">ForceReply</a></li><li><a href="DataTypes.GroupChat.html">GroupChat</a></li><li><a href="DataTypes.Location.html">Location</a></li><li><a href="DataTypes.Message.html">Message</a></li><li><a href="DataTypes.PhotoSize.html">PhotoSize</a></li><li><a href="DataTypes.ReplyKeyboardHide.html">ReplyKeyboardHide</a></li><li><a href="DataTypes.ReplyKeyboardMarkup.html">ReplyKeyboardMarkup</a></li><li><a href="DataTypes.Sticker.html">Sticker</a></li><li><a href="DataTypes.User.html">User</a></li><li><a href="DataTypes.UserProfilePhotos.html">UserProfilePhotos</a></li><li><a href="DataTypes.Video.html">Video</a></li><li><a href="DataTypes.Voice.html">Voice</a></li></ul><h3>Namespaces</h3><ul><li><a href="DataTypes.html">DataTypes</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BotAPI.html">BotAPI</a></li><li><a href="DataTypes.File.html">File</a></li><li><a href="DataTypes.InputFile.html">InputFile</a></li></ul><h3>Namespaces</h3><ul><li><a href="DataTypes.html">DataTypes</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Mon Sep 21 2015 21:00:07 GMT+0200 (CEST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue Jan 05 2016 08:17:45 GMT+0100 (CET)
 </footer>
 
 <script> prettyPrint(); </script>

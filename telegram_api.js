@@ -137,7 +137,7 @@ BotAPI.prototype = {
 	/**
 	 * Use this method to send photos. On success, the sent Message is returned.
 	 * @param {Integer} chat_id	ID of the chat to send the message to
-	 * @param {String|InputFile} photo	Photo to send. You can either pass a file_id as String to resend a photo that is already on the Telegram servers, or upload a new photo using multipart/form-data.
+	 * @param {String|DataTypes.InputFile} photo	Photo to send. You can either pass a file_id as String to resend a photo that is already on the Telegram servers, or upload a new photo using multipart/form-data.
 	 * @param {String} [caption]	Photo caption (may also be used when resending photos by file_id).
 	 * @param {Integer} [reply_to_message_id]	If the message is a reply, ID of the original message
 	 * @param {ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [reply_markup]	Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.
@@ -152,15 +152,13 @@ BotAPI.prototype = {
 			"reply_markup"
 		];
 		var argObj = parseArgs(args, arguments);
-		if (DataTypes.isType("InputFile", argObj.photo)) {
-			argObj.fileField = "photo";
-		}
+		argObj.photo = new DataTypes.InputFile(argObj.photo);
 		this._doRequest("sendPhoto", argObj);
 	},
 	/**
 	 * Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .ogg file encoded with OPUS (other formats may be sent as Document). On success, the sent Message is returned.
 	 * @param {Integer} chat_id	ID of the chat to send the message to
-	 * @param {String|InputFile} audio	Audio file to send. You can either pass a file_id as String to resend an audio that is already on the Telegram servers, or upload a new audio file using multipart/form-data.
+	 * @param {String|DataTypes.InputFile} audio	Audio file to send. You can either pass a file_id as String to resend an audio that is already on the Telegram servers, or upload a new audio file using multipart/form-data.
 	 * @param {Integet} [duration]	Duration of the audio in secondsi
 	 * @param {String} [performer]	Performer
 	 * @param {String} [title]	Track name
@@ -179,15 +177,13 @@ BotAPI.prototype = {
 			"reply_markup"
 		];
 		var argObj = parseArgs(args, arguments);
-		if (DataTypes.isType("InputFile", argObj.audio)) {
-			argObj.fileField = "audio";
-		}
+		argObj.audio = new DataTypes.InputFile(argObj.audio);
 		this._doRequest("sendAudio", argObj);
 	},
 	/**
 	 * Use this method to send general files. On success, the sent Message is returned.
 	 * @param {Integer} chat_id	ID of the chat to send the message to
-	 * @param {String|InputFile} document	File to send. You can either pass a file_id as String to resend a file that is already on the Telegram servers, or upload a new file using multipart/form-data.
+	 * @param {String|DataTypes.InputFile} document	File to send. You can either pass a file_id as String to resend a file that is already on the Telegram servers, or upload a new file using multipart/form-data.
 	 * @param {Integer} [reply_to_message_id]	If the message is a reply, ID of the original message
 	 * @param {ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [reply_markup]	Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
@@ -200,15 +196,13 @@ BotAPI.prototype = {
 			"reply_markup"
 		];
 		var argObj = parseArgs(args, arguments);
-		if (DataTypes.isType("InputFile", argObj.document)) {
-			argObj.fileField = "document";
-		}
+		argObj.document = new DataTypes.InputFile(argObj.document);
 		this._doRequest("sendDocument", argObj);
 	},
 	/**
 	 * Use this method to send .webp stickers. On success, the sent Message is returned.
 	 * @param {Integer} chat_id	ID of the chat to send the message to
-	 * @param {String|InputFile} sticker	Sticker to send. You can either pass a file_id as String to resend a sticker that is already on the Telegram servers, or upload a new sticker using multipart/form-data.
+	 * @param {String|DataTypes.InputFile} sticker	Sticker to send. You can either pass a file_id as String to resend a sticker that is already on the Telegram servers, or upload a new sticker using multipart/form-data.
 	 * @param {Integer} [reply_to_message_id]	If the message is a reply, ID of the original message
 	 * @param {ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [reply_markup]	Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
@@ -221,15 +215,13 @@ BotAPI.prototype = {
 			"reply_markup"
 		];
 		var argObj = parseArgs(args, arguments);
-		if (DataTypes.isType("InputFile", argObj.sticker)) {
-			argObj.fileField = "sticker";
-		}
+		argObj.sticker = new DataTypes.InputFile(argObj.sticker);
 		this._doRequest("sendSticker", argObj);
 	},
 	/**
 	 * Use this method to send video files, Telegram clients support mp4 videos (other formats may be sent as Document). On success, the sent Message is returned.
 	 * @param {Integer} chat_id	ID of the chat to send the message to
-	 * @param {String|InputFile} video	Video to send. You can either pass a file_id as String to resend a video that is already on the Telegram servers, or upload a new video file using multipart/form-data.
+	 * @param {String|DataTypes.InputFile} video	Video to send. You can either pass a file_id as String to resend a video that is already on the Telegram servers, or upload a new video file using multipart/form-data.
 	 * @param {Integer} [duration]	Duration of sent video in seconds
 	 * @param {String} [caption]	Video caption (may also be used when resending videos by file_id).
 	 * @param {Integer} [reply_to_message_id]	If the message is a reply, ID of the original message
@@ -246,15 +238,13 @@ BotAPI.prototype = {
 			"reply_markup"
 		];
 		var argObj = parseArgs(args, arguments);
-		if (DataTypes.isType("InputFile", argObj.video)) {
-			argObj.fileField = "video";
-		}
+		argObj.video = new DataTypes.InputFile(argObj.video);
 		this._doRequest("sendVideo", argObj);
 	},
 	/**
 	 * Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .ogg file encoded with OPUS (other formats may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
 	 * @param {Integer} chat_id	ID of the chat to send the message to
-	 * @param {String|InputFile} voice	Audio file to send. You can either pass a file_id as String to resend an audio that is already on the Telegram servers, or upload a new audio file using multipart/form-data.
+	 * @param {String|DataTypes.InputFile} voice	Audio file to send. You can either pass a file_id as String to resend an audio that is already on the Telegram servers, or upload a new audio file using multipart/form-data.
 	 * @param {Integet} [duration]	Duration of the audio in secondsi
 	 * @param {Integer} [reply_to_message_id]	If the message is a reply, ID of the original message
 	 * @param {ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [reply_markup]	Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.
@@ -269,9 +259,7 @@ BotAPI.prototype = {
 			"reply_markup"
 		];
 		var argObj = parseArgs(args, arguments);
-		if (DataTypes.isType("InputFile", argObj.audio)) {
-			argObj.fileField = "audio";
-		}
+		argObj.voice = new DataTypes.InputFile(argObj.voice);
 		this._doRequest("sendVoice", argObj);
 	},
 	/**
@@ -352,9 +340,7 @@ BotAPI.prototype = {
 			"url",
 			"certificate"
 		];
-		if (DataTypes.isType("InputFile", argObj.certificate)) {
-			argObj.fileField = "certificate";
-		}
+		argObj.certificate = new DataTypes.InputFile(argObj.certificate);
 		this._doRequest("setWebhook", parseArgs(args, arguments));
 	},
 	/**
@@ -367,6 +353,26 @@ BotAPI.prototype = {
 			"file_id"
 		];
 		this._doRequest("getFile", parseArgs(args, arguments));
+	},
+	/**
+	 * Use this method to send answers to an inline query. On success, True is returned.
+	 * No more than 50 results per query are allowed.
+	 * @param {String} inline_query_id	Unique identifier for the answered query
+	 * @param {InlineQueryResult[]} results	A JSON-serialized array of results for the inline query
+	 * @param {Integer} [cache_time]	The maximum amount of time in seconds that the result of the inline query may be cached on the server. Defaults to 300.
+	 * @param {Boolean] [is_personal]	Pass True, if results may be cached on the server side only for the user that sent the query. By default, results may be returned to any user who sends the same query
+	 * @param {String} [next_offset]	Pass the offset that a client should send in the next query with the same text to receive more results. Pass an empty string if there are no more results or if you don‘t support pagination. Offset length can’t exceed 64 bytes.
+	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
+	 */
+	answerInlineQuery: function() {
+		var args = [
+			"inline_query_id",
+			"results",
+			"cache_time",
+			"is_personal",
+			"next_offset"
+		];
+		this._doRequest("answerInlineQuery", parseArgs(args, arguments));
 	},
 	/**
 	 * Internal API method. DO NOT USE. Sends the actual request to the API server
@@ -388,49 +394,27 @@ BotAPI.prototype = {
 		url = url.replace("<token>", this.token);
 		url = urlParser.parse(url);
 
-		// The http-callback function
-
-		// Extract the file field
-		var fileField = argObj.fileField;
-		delete argObj.fileField;
-		var inputFile = false;
-		if (fileField) {
-			inputFile = argObj[fileField];
-			delete argObj[fileField];
-		}
-
-		// JSON-serialize every value in the argObj
+		// JSON-serialize every value in the argObj except input files, which the stream will be extracted from if it is not just a file ID
 		for (var p in argObj) {
-			if (argObj[p] instanceof Object) {
+			if (argObj[p] instanceof DataTypes.InputFile) {
+				// This is an input file. If it is a file ID, just let it go. Otherwise, it's the stream we want
+				if (argObj[p].file_data != null) {
+					argObj[p] = argObj[p].file_data;
+				} else {
+					argObj[p] = argObj[p].file_id;
+				}
+			} else if (argObj[p] instanceof Object) {
+				// Stringify the object
 				argObj[p] = JSON.stringify(argObj[p]);
 			}
 		}
 
-		// Default headers for the request
-		var headers = {
-			"Content-Type": "application/json"
-		};
+		// Create the form
+		var form = new FormData();
 
-		// Check if the request should contain a file
-		if (inputFile) {
-			// Give the file a default name if not given
-			if (!(inputFile instanceof http.IncomingMessage || (inputFile instanceof stream.Readable && typeof inputFile.path == "string"))) {	// TODO Dry this up. This boolean expression is written three times in the code, the other two down in DataTypes.isType();
-				inputFile.path = "Some file";
-			}
-
-			//Make the form
-			var form =  new FormData();
-			
-			// Insert the file into the form
-			form.append(fileField, inputFile);
-
-			// Put the rest of the data into the form
-			for (var field in argObj) {
-				form.append(field, argObj[field]);
-			}
-
-			// Override the headers
-			headers = form.getHeaders();
+		// Fill data into the form
+		for (var field in argObj) {
+			form.append(field, argObj[field]);
 		}
 
 		// Do the request
@@ -438,7 +422,7 @@ BotAPI.prototype = {
 			host: url.host,
 			path: url.path,
 			method: "POST",
-			headers: headers
+			headers: form.getHeaders()
 		});
 
 		// Listen for the response
@@ -448,7 +432,7 @@ BotAPI.prototype = {
 
 			res.on("data", function(chunk) {
 				// Concatenate all chunks
-				result += "" + chunk.toString("utf-8");
+				result = result + chunk.toString("utf-8");
 			});
 			res.on("end", function() {
 				try {
@@ -467,22 +451,21 @@ BotAPI.prototype = {
 				}
 
 			});
-			res.on("error", function(e) {
+			res.on("error", function(e) {	// Will this ever happen? The docs don't specify an error event
+				console.log("Response error:", e);
 				cb(e, null);
 			});
 		});
 
 		// Check for errors
-		req.on("error", function(e) {
+		req.on("error", function(e) {	// Will this ever happen? The docs don't specify an error event
+			console.log("Request error:", e);
 			cb(e, null);
 		});
 
 		// Send the body
-		if (inputFile) {
-			form.pipe(req);
-		} else {
-			req.end(JSON.stringify(argObj));
-		}
+		form.pipe(req);
+form.on("error", function(){});
 
 	},
 	/**
@@ -525,274 +508,6 @@ BotAPI.prototype = {
  */
 var DataTypes = {
 	/**
-	 * Constructs an empty User object
-	 *
-	 * @constructor
-	 */
-	User: function() {
-		/** User's ID, Integer **/
-		this.id = 0;
-		/** User's first name, String **/
-		this.first_name = "";
-		/** User's last name, String, optional **/
-		this.last_name = "";
-		/** User's username, String, optional **/
-		this.username = "";
-	},
-	/**
-	 * Constructs an empty GroupChat object
-	 *
-	 * @constructor
-	 */
-	GroupChat: function() {
-		/** GroupChat's ID, Integer **/
-		this.id = 0;
-		/** GroupChat's title, String **/
-		this.title = "";
-	},
-	/**
-	 * Constructs an empty Message object
-	 *
-	 * @constructor
-	 */
-	Message: function() {
-		/** Message's message ID, Integer **/
-		this.message_id = 0;
-		/** Message's from, User **/
-		this.from = null;
-		/** Message's date, Integer **/
-		this.date = 0;
-		/** Message's chat, User or GroupChat **/
-		this.chat = null;
-		/** Message's forwarded from, User, optional **/
-		this.forwarded_from = null;
-		/** Message's forward date, Integer, optional **/
-		this.forwarded_date = 0;
-		/** Message's reply to message, Message, optional **/
-		this.reply_to_message = null;
-		/** Message's text, String, optional **/
-		this.text = "";
-		/** Message's audio, Audio, optional **/
-		this.audio = null;
-		/** Message's document, Document, optional **/
-		this.document = null;
-		/** Message's photo, Array of PhotoSize, optional **/
-		this.photo = [];
-		/** Message's sticker, Sticker, optional **/
-		this.sticker = null;
-		/** Message's video, Video, optional **/
-		this.video = null;
-		/** Message's voice, Voice, optional **/
-		this.voice = null;
-		/** Message's caption for photo or video, String, optional **/
-		this.caption = "";
-		/** Message's contact, Contact, optional **/
-		this.contact = null;
-		/** Message's location, Location, optional **/
-		this.location = null;
-		/** Message's new chat participant, User, optional **/
-		this.new_chat_participant = null;
-		/** Message's left chat participant, User, optional **/
-		this.left_chat_participant = null;
-		/** Message's new chat title, String, optional **/
-		this.new_chat_title = null;
-		/** Message's new chat photo, Array of PhotoSize, optional **/
-		this.new_chat_photo = [];
-		/** Message's delete chat photo, True, optional **/
-		this.delete_chat_photo = true;
-		/** Message's group chat created, True, optional **/
-		this.group_chat_created = [];
-	},
-	/**
-	 * Constructs an empty PhotoSize object
-	 *
-	 * @constructor
-	 */
-	PhotoSize: function() {
-		/** PhotoSize's ID, String **/
-		this.file_id = "";
-		/** PhotoSize's width, Integer **/
-		this.width = 0;
-		/** PhotoSize's height, Integer **/
-		this.height = 0;
-		/** PhotoSize's file size, Integer, optional **/
-		this.file_size = 0;
-	},
-	/**
-	 * Constructs an empty Audio object
-	 *
-	 * @constructor
-	 */
-	Audio: function() {
-		/** Audio's ID, String **/
-		this.file_id = "";
-		/** Audio's duration, seconds, Integer **/
-		this.duration = 0;
-		/** Audio's performer, String, optional **/
-		this.performer = "";
-		/** Audio's title, String, optional **/
-		this.title = "";
-		/** Audio's mime type, String, optional **/
-		this.mime_type = "";
-		/** Audio's file size, Integer, optional **/
-		this.file_size = 0;
-	},
-	/**
-	 * Constructs an empty Document object
-	 *
-	 * @constructor
-	 */
-	Document: function() {
-		/** Document's ID, String **/
-		this.file_id = "";
-		/** Document's thumbnail, PhotoSize **/
-		this.thumb = null;
-		/** Document's file name, String, optional **/
-		this.file_name = "";
-		/** Document's mime type, String, optional **/
-		this.mime_type = "";
-		/** Document's file size, Integer, optional **/
-		this.file_size = 0;
-	},
-	/**
-	 * Constructs an empty Sticker object
-	 *
-	 * @constructor
-	 */
-	Sticker: function() {
-		/** Sticker's ID, String **/
-		this.file_id = "";
-		/** Sticker's width, Integer **/
-		this.width = 0;
-		/** Sticker's height, Integer **/
-		this.height = 0;
-		/** Sticker's thumb, PhotoSize **/
-		this.thumb = null;
-		/** Sticker's file size, Integer, optional **/
-		this.file_size = 0;
-	},
-	/**
-	 * Constructs an empty Video object
-	 *
-	 * @constructor
-	 */
-	Video: function() {
-		/** Video's ID, String **/
-		this.file_id = "";
-		/** Video's width, Integer **/
-		this.width = 0;
-		/** Video's height, Integer **/
-		this.height = 0;
-		/** Video's height, Integer **/
-		this.duration = 0;
-		/** Video's thumb, PhotoSize **/
-		this.thumb = null;
-		/** Video's mime type, String, optional **/
-		this.mime_type = "";
-		/** Video's file size, Integer, optional **/
-		this.file_size = 0;
-		/** Video's caption, String, optional **/
-		this.caption = "";
-	},
-	/**
-	 * Constructs an empty Voice object
-	 *
-	 * @constructor
-	 */
-	Voice: function() {
-		/** Voice's ID, String **/
-		this.file_id = "";
-		/** Voice's duration, seconds, Integer **/
-		this.duration = 0;
-		/** Voice's mime type, String, optional **/
-		this.mime_type = "";
-		/** Voice's file size, Integer, optional **/
-		this.file_size = 0;
-	},
-	/**
-	 * Constructs an empty Contact object
-	 *
-	 * @constructor
-	 */
-	Contact: function() {
-		/** Contact's phone number, String **/
-		this.phone_number = "";
-		/** Contact's first name, String **/
-		this.first_name = "";
-		/** Contact's last name, String, optional **/
-		this.last_name = "";
-		/** Contact's User ID, String, optional **/
-		this.user_id = "";
-	},
-	/**
-	 * Constructs an empty Location object
-	 *
-	 * @constructor
-	 */
-	Location: function() {
-		/** Location's longitude, Float **/
-		this.longitude = 0;
-		/** Location's latitude, Float **/
-		this.latitude = 0;
-	},
-	/**
-	 *
-	 */
-	Update: function() {
-		/** Update's ID, Integer **/
-		this.id = 0;
-		/** Update's Message, Message, optional according to the docs... I'm gonna treat it as required **/
-		this.message = null;
-	},
-	/**
-	 * Constructs an empty UserProfilePhotos object
-	 *
-	 * @constructor
-	 */
-	UserProfilePhotos: function() {
-		/** UserProfilePhotos's total count, Integer **/
-		this.total_count = 0;
-		/** UserProfilePhotos's latitude, Array of Array of PhotoSize **/
-		this.photos = [];
-	},
-	/**
-	 * Constructs an empty ReplyKeyboardMarkup object
-	 *
-	 * @constructor
-	 */
-	ReplyKeyboardMarkup: function() {
-		/** ReplyKeyboardMarkup's keyboard, Array of Array of String **/
-		this.keyboard = [];
-		/** ReplyKeyboardMarkup's resize keyboard, Boolean, optional **/
-		this.resize_keyboard = false;
-		/** ReplyKeyboardMarkup's one time keyboard, Boolean, optional **/
-		this.one_time_keyboard = false;
-		/** ReplyKeyboardMarkup's selective, Boolean, optional **/
-		this.selective = false;
-	},
-	/**
-	 * Constructs an empty ReplyKeyboardHide object
-	 *
-	 * @constructor
-	 */
-	ReplyKeyboardHide: function() {
-		/** ReplyKeyboardHide's keyboard, True **/
-		this.hide_keyboard = true;
-		/** ReplyKeyboardHide's selective, Boolean, optional **/
-		this.selective = false;
-	},
-	/**
-	 * Constructs an empty ForceReply object
-	 *
-	 * @constructor
-	 */
-	ForceReply: function() {
-		/** ForceReply's force reply, True **/
-		this.force_reply = true;
-		/** ForceReply's selective, Boolean, optional **/
-		this.selective = false;
-	},
-	/**
 	 * Constructs an empty File object
 	 *
 	 * @constructor
@@ -804,6 +519,46 @@ var DataTypes = {
 		this.file_size = 0;
 		/** File's path. Use https://api.telegram.org/file/bot<token>/<file_path> to get the file. String. Optional **/
 		this.file_path = "";
+	},
+	/**
+	 * Creates a new InputFile object which can be given to BotAPI.send_document or other methods which require files. The resulting object will have either a file_id or a file_stream property. The other will be null
+	 *
+	 * @param {String|Buffer|stream.Readable} data	The data for the input file. If this is a string, it will be interpreted as a file_id to resend a file already uploaded to the Telegram servers. If given a buffer or stream.Readable, the data will be uploaded to Telegram
+	 * @param {String} [filename]	Defaults to "Some file" if not given and data is not an instance of fs.ReadStream, in which case it will be named after the file which the stream is reading. Has no effect if data is a string
+	 *
+	 * @constructor
+	 */
+	InputFile: function(data, filename) {
+		this.file_id = null;
+		this.file_data = null;
+
+		// Check if this is a file ID or an actual file
+		if (typeof data == "string") {
+			// File ID
+			this.file_id = data;
+		} else if (data instanceof Buffer) {
+			// A buffer. Make it available and name it
+			this.file_data = data;
+			this.file_data.path = filename ? filename : "Some file";
+		} else if (data instanceof stream.Readable) {
+			// A stream. Shove it through a PassThrough and name it
+			this.file_data = new stream.PassThrough();
+			data.pipe(this.file_data);
+			if (data instanceof fs.ReadStream && !filename) {
+				this.file_data.path = data.path;
+			} else if (filename) {
+				this.file_data.path = filename;
+			} else {
+				this.file_data.path = "Some file";
+			}
+		} else if (data instanceof DataTypes.InputFile) {
+			// This is already an input file
+			this.file_id = data.file_id;
+			this.file_data = data.file_data;
+		} else {
+			// Can't make sense of the data. Throw an error
+			throw new Error("Invalid data for InputFile");
+		}
 	}
 };
 
@@ -811,22 +566,6 @@ var DataTypes = {
  * List of mandatory field for each type
  */
 DataTypes.RequiredFields = {
-	User: ["id", "first_name"],
-	GroupChat: ["id", "title"],
-	Message: ["message_id", "from", "date", "chat"],
-	PhotoSize: ["file_id", "width", "height"],
-	Audio: ["file_id", "duration"],
-	Document: ["file_id", "thumb"],
-	Sticker: ["file_id", "width", "height", "thumb"],
-	Video: ["file_id", "width", "height", "duration", "thumb"],
-	Voice: ["file_id", "duration"],
-	Contact: ["phone_number", "first_name"],
-	Location: ["longitude", "latitude"],
-	Update: ["id", "message"],
-	UserProfilePhotos: ["total_count", "photos"],
-	ReplyKeyboardMarkup: ["keyboard"],
-	ReplyKeyboardHide: ["hide_keyboard"],
-	ForceReply: ["force_reply"],
 	File: ["file_id"]
 };
 
@@ -862,6 +601,7 @@ DataTypes.isType = function(type, obj) {
 	}
 	return true;
 };
+
 
 /************
  * Exports  *

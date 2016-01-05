@@ -27,8 +27,22 @@ bot.getMe(function(err, res) {
 	console.log(res);
 });
 
+
 // Send a message
-bot.sendMessage(chatId, text);	// Callback optional
+
+// There are two ways to give arguments to a method.
+// One is to just give them in the order the API documentation says
+bot.sendMessage(chatId, text, callback);	// Callback optional
+
+// The other is to provide an object as the method's only parameter
+
+bot.sendMessage({
+	chat_id: chatId,
+	text: text,
+	cb: callback
+});
+
+// Send a more fancy message
 
 // Send a message with a reply-keyboard
 var keyboard = { /*  reply_markup */
@@ -39,8 +53,7 @@ var keyboard = { /*  reply_markup */
 	resize_keyboard: true
 };
 bot.sendMessage(chatId, text, null, 0, 0, keyboard, callback);
-
-// Send a message with a reply-keyboard, with all arguments given as an object to the method. ALL methods support this.
+// or
 bot.sendMessage({
 	chat_id: chatId,
 	text: text,
@@ -49,11 +62,19 @@ bot.sendMessage({
 });
 
 // Send a photo (same approach with other file sendings)
-bot.sendPhoto(chatId, fs.createReadStream("some_photo.jpg"), "This is a really nice photo");
+bot.sendPhoto({
+	chat_id: chatId,
+	photo: fs.createReadStream("some_photo.jpg"),
+	caption: "This is a really nice photo"
+});
 
 // Send a photo by ID (same approach with other file sendings)
 var photoId = "Adrgvmercfiawejdatruotseafasert";
-bot.sendPhoto(chatId, photoId, "This is a really nice photo");
+bot.sendPhoto({
+	chat_id: chatId,
+	photo: photoId,
+	caption: "This is a really nice photo"
+});
 
 // Download a file sent to the bot
 bot.getFile(file_id, function(err, res) {
@@ -63,9 +84,24 @@ bot.getFile(file_id, function(err, res) {
 	});
 });
 
+// If you want to give the file a specific name, you create an object of type DataTypes.InputFile and give it to the method
+var DataTypes = require("teleapiwrapper").DataTypes;
+
+var file = new DataTypes.InputFile(fs.createReadStream("somefile"), "Very important file.txt");
+bot.sendDocument({
+	chat_id: chatId,
+	document: file
+});
+
+// The DataTypes.InputFile constructor can be initialized with a string, a buffer, a readable stream or an already existing InputFile.
+// If given a string, it is interpreted as a file ID for an already uploaded file, so Telegram will just resend that one.
+// Otherwise, it will upload the file.
+// If you pass it an instance of fs.ReadStream, it will itself extract the name of the file from the stream and use that, unless you override it yourself
+
 ```
 
 ## Changelog
+* **0.13.0**: Support for inline bots, and major refactoring
 * **0.12.1**: Inserted a missing | in the code, and cleaned the code a bit
 * **0.12.0**: Supports the new getFile() method. Also has a helper method called "helperDownloadFile", which actually gets the file for you
 * **0.11.0**: All methods now support a single object naming all the methods arguments. See examples
