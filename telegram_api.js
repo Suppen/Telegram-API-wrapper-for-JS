@@ -1,3 +1,10 @@
+/************
+ * Exports  *
+ ************/
+
+module.exports.BotAPI = BotAPI;
+module.exports.DataTypes = DataTypes;
+
 /**************
  *  Requires  *
  **************/
@@ -16,7 +23,7 @@ var stream = require("stream");
  ***********************/
 
 // Dummy function, doing nothing at all
-function dummyFunc(){};
+function dummyFunc() {};
 
 // Get the callback from an arguments object
 function getCb(args) {
@@ -25,11 +32,7 @@ function getCb(args) {
 	}
 
 	var cb = args[args.length-1];
-	if (cb instanceof Function) {
-		return cb;
-	} else {
-		return dummyFunc;
-	}
+	return cb instanceof Function ? cb : dummyFunc;
 };
 
 // Parse arguments into an object
@@ -63,22 +66,36 @@ function parseArgs(fields, args) {
  * Creates a new BotAPI-object for a bot. All methods may take a callback with params error and result
  *
  * @param {String} botToken	The authentication token for the bot, as provided by BotFather
+ * @param {String} [botName]	Name of the bot. Not required, and not used. Just creates a handy property, name, on the object to access the bot's name
  *
  * @constructor
  */
-function BotAPI(botToken) {
+function BotAPI(botToken, botName) {
 	// Make it usable without "new"
 	if (!this) {
 		return new BotAPI(botToken);
 	}
 
+	/**
+	 * The bot's token
+	 */
 	this.token = botToken;
+	if (typeof botName != "undefined") {
+		/**
+		 * The name of the bot. Not used by the wrapper, just a handle for you
+		 */
+		this.name = botName;
+	}
+
+	/**
+	 * teleapiwrapper 0.14.0 changed the result object from the method calls. Set this to "true" to use the old way instead. Before, the methods returned the unmodified parsed object from the method call. Now, they return the object in the result property of that object. This means that where you earlier used "res.result", you can now use just "res". Example: You call bot.getUpdates(function(err, res) {}); In the callback, you earlier wrote "res.result[0]" to get the first update. Now, you write "res[0]". This option will be removed in later versions of teleapiwrapper, so please modify your code to deal with the new way
+	 */
+	this.forceOldWay = false;
 };
 
 
 // The prototype of the bot BotAPI
 BotAPI.prototype = {
-	token: "",
 	/**
 	 * Change this in the constructed object if you for some reason don't want to use this URL
 	 */
@@ -443,19 +460,23 @@ BotAPI.prototype = {
 					if (!result.ok) {
 						cb(new Error(result.description), null);
 					} else {
-						cb(null, result);
+						if (!this.forceOldWay) {
+							cb(null, result.result);
+						} else {
+							cb(null, result);
+						}
 					}
 				} catch (e) {
 					// Parsing went wrong
 					cb(e, null);
 				}
 
-			});
+			}.bind(this));
 			res.on("error", function(e) {	// Will this ever happen? The docs don't specify an error event
 				console.log("Response error:", e);
 				cb(e, null);
 			});
-		});
+		}.bind(this));
 
 		// Check for errors
 		req.on("error", function(e) {	// Will this ever happen? The docs don't specify an error event
@@ -465,8 +486,6 @@ BotAPI.prototype = {
 
 		// Send the body
 		form.pipe(req);
-form.on("error", function(){});
-
 	},
 	/**
 	 * getFile does not actually get the file, it only gets a path where you can download the file from. This method actually sends the download request for you, The callback gets an error object if the request failed, and gets the response object otherwise. See https://nodejs.org/api/http.html#http_http_incomingmessage
@@ -480,7 +499,7 @@ form.on("error", function(){});
 		argObj = parseArgs(args, arguments);
 
 		// Check if a file was actually provided
-		if (!DataTypes.isType("File", argObj.file)) {
+		if (typeof argObj.file.file_id != "undefined") {
 			throw new Error("Given file argument is not a file object");
 		}
 
@@ -508,19 +527,6 @@ form.on("error", function(){});
  */
 var DataTypes = {
 	/**
-	 * Constructs an empty File object
-	 *
-	 * @constructor
-	 */
-	File: function() {
-		/** File's unique identifier, String **/
-		this.file_id = "";
-		/** File's size, if known. Optional **/
-		this.file_size = 0;
-		/** File's path. Use https://api.telegram.org/file/bot<token>/<file_path> to get the file. String. Optional **/
-		this.file_path = "";
-	},
-	/**
 	 * Creates a new InputFile object which can be given to BotAPI.send_document or other methods which require files. The resulting object will have either a file_id or a file_stream property. The other will be null
 	 *
 	 * @param {String|Buffer|stream.Readable} data	The data for the input file. If this is a string, it will be interpreted as a file_id to resend a file already uploaded to the Telegram servers. If given a buffer or stream.Readable, the data will be uploaded to Telegram
@@ -532,6 +538,8 @@ var DataTypes = {
 		this.file_id = null;
 		this.file_data = null;
 
+		var defaultFilename = "Some file";
+
 		// Check if this is a file ID or an actual file
 		if (typeof data == "string") {
 			// File ID
@@ -539,9 +547,9 @@ var DataTypes = {
 		} else if (data instanceof Buffer) {
 			// A buffer. Make it available and name it
 			this.file_data = data;
-			this.file_data.path = filename ? filename : "Some file";
+			this.file_data.path = filename ? filename : defaultFilename;
 		} else if (data instanceof stream.Readable) {
-			// A stream. Shove it through a PassThrough and name it
+			// A stream. Shove it through a PassThrough to make all streams the same type and name it
 			this.file_data = new stream.PassThrough();
 			data.pipe(this.file_data);
 			if (data instanceof fs.ReadStream && !filename) {
@@ -549,7 +557,7 @@ var DataTypes = {
 			} else if (filename) {
 				this.file_data.path = filename;
 			} else {
-				this.file_data.path = "Some file";
+				this.file_data.path = defaultFilename;
 			}
 		} else if (data instanceof DataTypes.InputFile) {
 			// This is already an input file
@@ -561,51 +569,3 @@ var DataTypes = {
 		}
 	}
 };
-
-/**
- * List of mandatory field for each type
- */
-DataTypes.RequiredFields = {
-	File: ["file_id"]
-};
-
-/**
- * Checks if an object is of a type.
- *
- * Only checks if the type's mandatory fields are present. Does not check their
- * types. Does not check other fields
- *
- * @param {String} type	The type to check for
- * @param {Object} obj	The object to check
- *
- * @return {Boolean}	True if the object is of the type, false otherwise
- */
-DataTypes.isType = function(type, obj) {
-	if (type == "InputFile") {
-		if (!(obj instanceof http.IncomingMessage || (obj instanceof stream.Readable && typeof obj.path == "string"))) {
-			console.warn("teleapiwrapper uses the string value of the \"path\" field on a readable stream to generate the name of the file. If no \"path\" field is present, it will default to \"Some file\"");
-		}
-		return obj instanceof http.IncomingMessage || (obj instanceof stream.Readable && typeof obj.path == "string");
-	}
-
-	if (typeof DataTypes[type] == "undefined") {
-		throw new Error("Invalid type: " + type);
-	}
-
-	var m = DataTypes.RequiredFields[type];
-
-	for (var i = 0; i < m.length; i++) {
-		if (typeof obj[m[i]] == "undefined") {
-			return false;
-		}
-	}
-	return true;
-};
-
-
-/************
- * Exports  *
- ************/
-
-module.exports.BotAPI = BotAPI;
-module.exports.DataTypes = DataTypes;

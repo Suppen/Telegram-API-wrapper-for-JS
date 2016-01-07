@@ -10,6 +10,8 @@ github: [https://github.com/Suppen/Telegram-API-wrapper-for-JS](https://github.c
 
 Official API-documentation: [https://core.telegram.org/bots/api](https://core.telegram.org/bots/api)
 
+**IMPORTANT!!!!** teleapiwrapper 0.14.0 changed the result object from the method calls. If you insist on using the old way, set the property "forceOldWay" on your bot to false. Before, the methods returned the unmodified parsed object from the method call. Now, they return the object in the result property of that object. This means that where you earlier used "res.result", you can now use just "res". Example: You call bot.getUpdates(function(err, res) {}); In the callback, you earlier wrote "res.result[0]" to get the first update. Now, you write "res[0]". This option will be removed in later versions of teleapiwrapper, so please modify your code to deal with the new way
+
 ## Create a new wrapper (aka. new bot)
 
 ```javascript
@@ -101,17 +103,12 @@ bot.sendDocument({
 ```
 
 ## Changelog
+* **0.14.0**: Changed format of the result object in callbacks
 * **0.13.0**: Support for inline bots, and major refactoring
 * **0.12.1**: Inserted a missing | in the code, and cleaned the code a bit
 * **0.12.0**: Supports the new getFile() method. Also has a helper method called "helperDownloadFile", which actually gets the file for you
 * **0.11.0**: All methods now support a single object naming all the methods arguments. See examples
 * **0.10.1**: Added missing datatypes and updated existing ones
 * **0.10.0**: Updated the API to match the bot API as of Sep. 7 2015. See also the [BotAPI changelog](https://core.telegram.org/bots/api-changelog) **THIS UPDATE MAY BREAK YOUR BOTS!** but not updating can also break them
-* **0.9.4**: Made it possible to send ANY stream.Readable as a file as long as it has a string as "path"-attribute. If it doesn't, you get a warning
-* **0.9.3**: Added the "Update"-type to DataTypes
-* **0.9.1**: Removed debugoutput from the code
-* **0.9.0**: The wrapper now internally serializes objects and arrays given to it, so arguments like ''reply_markup'' are now given actual objects, not JSON-strings
-* **0.8.1**: Fixed a bug which would crash the process if no connection could be made to the server
-* **0.8.0**: Got rid of the wrapper object for input files
 
 PS: If someone wants to write tests for this package, please do, and send me a pull request on github
