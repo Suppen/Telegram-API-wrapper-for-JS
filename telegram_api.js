@@ -10,7 +10,6 @@ module.exports.DataTypes = DataTypes;
  **************/
 
 // Require important stuff
-var http = require("http");
 var https = require("https");
 var urlParser = require("url");
 var FormData = require("form-data");
@@ -33,7 +32,7 @@ function getCb(args) {
 
 	var cb = args[args.length-1];
 	return cb instanceof Function ? cb : dummyFunc;
-};
+}
 
 // Parse arguments into an object
 function parseArgs(fields, args) {
@@ -55,8 +54,18 @@ function parseArgs(fields, args) {
 	}
 
 	return parsed;
-};
+}
 
+/********************************************************
+ * Make sure a lack of Promise doesn't break everything *
+ ********************************************************/
+
+if (typeof Promise != "function") {
+	console.warn("Promises are not available. teleapiwrapper will work, but only with callbacks. Either upgrade nodejs or polyfill promises if you wish to use them");
+	Promise = function(func) {
+		func(dummyFunc, dummyFunc);
+	};
+}
 
 /************
  *  BotAPI  *
@@ -91,7 +100,7 @@ function BotAPI(botToken, botName) {
 	 * teleapiwrapper 0.14.0 changed the result object from the method calls. Set this to "true" to use the old way instead. Before, the methods returned the unmodified parsed object from the method call. Now, they return the object in the result property of that object. This means that where you earlier used "res.result", you can now use just "res". Example: You call bot.getUpdates(function(err, res) {}); In the callback, you earlier wrote "res.result[0]" to get the first update. Now, you write "res[0]". This option will be removed in later versions of teleapiwrapper, so please modify your code to deal with the new way
 	 */
 	this.forceOldWay = false;
-};
+}
 
 
 // The prototype of the bot BotAPI
@@ -111,7 +120,7 @@ BotAPI.prototype = {
 	 */
 	getMe: function() {
 		var args = [];
-		this._doRequest("getMe", parseArgs(args, arguments));
+		return this._doRequest("getMe", parseArgs(args, arguments));
 	},
 	/**
 	 * Use this method to forward messages of any kind. On success, the sent Message is returned.
@@ -133,7 +142,7 @@ BotAPI.prototype = {
 			"reply_markup"
 		];
 
-		this._doRequest("sendMessage", parseArgs(args, arguments));
+		return this._doRequest("sendMessage", parseArgs(args, arguments));
 	},
 	/**
 	 * Use this method to forward messages of any kind. On success, the sent Message is returned.
@@ -149,7 +158,7 @@ BotAPI.prototype = {
 			"message_id"
 		];
 
-		this._doRequest("forwardMessage", parseArgs(args, arguments));
+		return this._doRequest("forwardMessage", parseArgs(args, arguments));
 	},
 	/**
 	 * Use this method to send photos. On success, the sent Message is returned.
@@ -170,7 +179,7 @@ BotAPI.prototype = {
 		];
 		var argObj = parseArgs(args, arguments);
 		argObj.photo = new DataTypes.InputFile(argObj.photo);
-		this._doRequest("sendPhoto", argObj);
+		return this._doRequest("sendPhoto", argObj);
 	},
 	/**
 	 * Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .ogg file encoded with OPUS (other formats may be sent as Document). On success, the sent Message is returned.
@@ -195,7 +204,7 @@ BotAPI.prototype = {
 		];
 		var argObj = parseArgs(args, arguments);
 		argObj.audio = new DataTypes.InputFile(argObj.audio);
-		this._doRequest("sendAudio", argObj);
+		return this._doRequest("sendAudio", argObj);
 	},
 	/**
 	 * Use this method to send general files. On success, the sent Message is returned.
@@ -214,7 +223,7 @@ BotAPI.prototype = {
 		];
 		var argObj = parseArgs(args, arguments);
 		argObj.document = new DataTypes.InputFile(argObj.document);
-		this._doRequest("sendDocument", argObj);
+		return this._doRequest("sendDocument", argObj);
 	},
 	/**
 	 * Use this method to send .webp stickers. On success, the sent Message is returned.
@@ -233,7 +242,7 @@ BotAPI.prototype = {
 		];
 		var argObj = parseArgs(args, arguments);
 		argObj.sticker = new DataTypes.InputFile(argObj.sticker);
-		this._doRequest("sendSticker", argObj);
+		return this._doRequest("sendSticker", argObj);
 	},
 	/**
 	 * Use this method to send video files, Telegram clients support mp4 videos (other formats may be sent as Document). On success, the sent Message is returned.
@@ -256,7 +265,7 @@ BotAPI.prototype = {
 		];
 		var argObj = parseArgs(args, arguments);
 		argObj.video = new DataTypes.InputFile(argObj.video);
-		this._doRequest("sendVideo", argObj);
+		return this._doRequest("sendVideo", argObj);
 	},
 	/**
 	 * Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .ogg file encoded with OPUS (other formats may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
@@ -277,7 +286,7 @@ BotAPI.prototype = {
 		];
 		var argObj = parseArgs(args, arguments);
 		argObj.voice = new DataTypes.InputFile(argObj.voice);
-		this._doRequest("sendVoice", argObj);
+		return this._doRequest("sendVoice", argObj);
 	},
 	/**
 	 * Use this method to send point on the map. On success, the sent Message is returned.
@@ -296,7 +305,7 @@ BotAPI.prototype = {
 			"reply_to_message_id",
 			"reply_markup"
 		];
-		this._doRequest("sendLocation", parseArgs(args, arguments));
+		return this._doRequest("sendLocation", parseArgs(args, arguments));
 	},
 	/**
 	 * Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status).
@@ -314,7 +323,7 @@ BotAPI.prototype = {
 			"chat_id",
 			"action"
 		];
-		this._doRequest("sendChatAction", parseArgs(args, arguments));
+		return this._doRequest("sendChatAction", parseArgs(args, arguments));
 	},
 	/**
 	 * Use this method to get a list of profile pictures for a user. Returns a UserProfilePhotos object.
@@ -329,7 +338,7 @@ BotAPI.prototype = {
 			"offset",
 			"limit"
 		];
-		this._doRequest("getUserProfilePhotos", parseArgs(args, arguments));
+		return this._doRequest("getUserProfilePhotos", parseArgs(args, arguments));
 	},
 	/**
 	 * Use this method to receive incoming updates using long polling. An Array of Update objects is returned.
@@ -344,7 +353,7 @@ BotAPI.prototype = {
 			"limit",
 			"timeout"
 		];
-		this._doRequest("getUpdates", parseArgs(args, arguments));
+		return this._doRequest("getUpdates", parseArgs(args, arguments));
 	},
 	/**
 	 * Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized @Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts.
@@ -358,7 +367,7 @@ BotAPI.prototype = {
 			"certificate"
 		];
 		argObj.certificate = new DataTypes.InputFile(argObj.certificate);
-		this._doRequest("setWebhook", parseArgs(args, arguments));
+		return this._doRequest("setWebhook", parseArgs(args, arguments));
 	},
 	/**
 	 * Use this method to get basic info about a file and prepare it for downloading. For the moment, bots can download files of up to 20MB in size. On success, a File object is returned. The file can then be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>, where <file_path> is taken from the response. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile again.
@@ -369,7 +378,7 @@ BotAPI.prototype = {
 		var args = [
 			"file_id"
 		];
-		this._doRequest("getFile", parseArgs(args, arguments));
+		return this._doRequest("getFile", parseArgs(args, arguments));
 	},
 	/**
 	 * Use this method to send answers to an inline query. On success, True is returned.
@@ -389,12 +398,14 @@ BotAPI.prototype = {
 			"is_personal",
 			"next_offset"
 		];
-		this._doRequest("answerInlineQuery", parseArgs(args, arguments));
+		return this._doRequest("answerInlineQuery", parseArgs(args, arguments));
 	},
 	/**
 	 * Internal API method. DO NOT USE. Sends the actual request to the API server
 	 * @param {String} method	Name of the method to use
 	 * @param {Object} argObj	Parsed argument object
+	 *
+	 * @private
 	 */
 	_doRequest: function(method, argObj) {
 		// Check if a token exists
@@ -442,50 +453,59 @@ BotAPI.prototype = {
 			headers: form.getHeaders()
 		});
 
-		// Listen for the response
-		req.on("response", function(res) {
-			// Buffer to hold the result body
-			var result = "";
+		return new Promise(function(resolve, reject) {
+			// Listen for the response
+			req.on("response", function(res) {
+				// Buffer to hold the result body
+				var result = "";
 
-			res.on("data", function(chunk) {
-				// Concatenate all chunks
-				result = result + chunk.toString("utf-8");
-			});
-			res.on("end", function() {
-				try {
-					// Try to parse the result as JSON
-					result = JSON.parse(result);
-	
-					// Parsing went OK. Did everything go well on Telegram's end?
-					if (!result.ok) {
-						cb(new Error(result.description), null);
-					} else {
-						if (!this.forceOldWay) {
-							cb(null, result.result);
+				res.on("data", function(chunk) {
+					// Concatenate all chunks
+					result = result + chunk.toString("utf-8");
+				});
+				res.on("end", function() {
+					try {
+						// Try to parse the result as JSON
+						result = JSON.parse(result);
+		
+						// Parsing went OK. Did everything go well on Telegram's end?
+						if (!result.ok) {
+							var err = new Error(result.description);
+							cb(err, null);
+							reject(err);
 						} else {
-							cb(null, result);
+							if (!this.forceOldWay) {
+								cb(null, result.result);
+								resolve(result.result);
+							} else {
+								cb(null, result);
+								reject(new Error("Please set forceOldWay to false to use promises with teleapiwrapper"));
+							}
 						}
+					} catch (e) {
+						// Parsing went wrong
+						cb(e, null);
+						reject(e);
 					}
-				} catch (e) {
-					// Parsing went wrong
+
+				}.bind(this));
+				res.on("error", function(e) {	// Will this ever happen? The docs don't specify an error event
+					console.log("Response error:", e);
 					cb(e, null);
-				}
-
+					reject(e);
+				});
 			}.bind(this));
-			res.on("error", function(e) {	// Will this ever happen? The docs don't specify an error event
-				console.log("Response error:", e);
+
+			// Check for errors
+			req.on("error", function(e) {	// Will this ever happen? The docs don't specify an error event
+				console.log("Request error:", e);
 				cb(e, null);
+				reject(e);
 			});
+
+			// Send the body
+			form.pipe(req);
 		}.bind(this));
-
-		// Check for errors
-		req.on("error", function(e) {	// Will this ever happen? The docs don't specify an error event
-			console.log("Request error:", e);
-			cb(e, null);
-		});
-
-		// Send the body
-		form.pipe(req);
 	},
 	/**
 	 * getFile does not actually get the file, it only gets a path where you can download the file from. This method actually sends the download request for you, The callback gets an error object if the request failed, and gets the response object otherwise. See https://nodejs.org/api/http.html#http_http_incomingmessage
@@ -514,7 +534,7 @@ BotAPI.prototype = {
 			argObj.cb(e, null);	// Something went wrong with the request
 		});
 	}
-};
+}
 
 /***************
  *  DataTypes  *
@@ -568,4 +588,4 @@ var DataTypes = {
 			throw new Error("Invalid data for InputFile");
 		}
 	}
-};
+}

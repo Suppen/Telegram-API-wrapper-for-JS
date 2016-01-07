@@ -183,7 +183,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line73">line 73</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line72">line 72</a>
     </li></ul></dd>
     
 
@@ -271,7 +271,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line106">line 106</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line105">line 105</a>
     </li></ul></dd>
     
 
@@ -295,7 +295,7 @@
 
 
 <div class="description">
-    teleapiwrapper 0.14.0 changed the result object from the method calls. Set this to "true" to use the old way instead. Before, it returned the unmodified parsed object from the method call. Now, it returns the object in the result property of that object. This means that where you earlier used "res.result", you can now use just "res". Example: You call bot.getUpdates(function(err, res) {}); In the callback, you earlier wrote "res.result[0]" to get the first update. Now, you write "res[0]". This option will be removed in later versions of teleapiwrapper, so please modify your code to deal with the new way
+    teleapiwrapper 0.14.0 changed the result object from the method calls. Set this to "true" to use the old way instead. Before, the methods returned the unmodified parsed object from the method call. Now, they return the object in the result property of that object. This means that where you earlier used "res.result", you can now use just "res". Example: You call bot.getUpdates(function(err, res) {}); In the callback, you earlier wrote "res.result[0]" to get the first update. Now, you write "res[0]". This option will be removed in later versions of teleapiwrapper, so please modify your code to deal with the new way
 </div>
 
 
@@ -333,7 +333,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line93">line 93</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line92">line 92</a>
     </li></ul></dd>
     
 
@@ -395,7 +395,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line102">line 102</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line101">line 101</a>
     </li></ul></dd>
     
 
@@ -457,7 +457,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line87">line 87</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line86">line 86</a>
     </li></ul></dd>
     
 
@@ -519,7 +519,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line82">line 82</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line81">line 81</a>
     </li></ul></dd>
     
 
@@ -540,160 +540,6 @@
 
     
         <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="_doRequest"><span class="type-signature"></span>_doRequest<span class="signature">(method, argObj)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Internal API method. DO NOT USE. Sends the actual request to the API server
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>method</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Name of the method to use</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>argObj</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Parsed argument object</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line399">line 399</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         
             
@@ -967,7 +813,7 @@ No more than 50 results per query are allowed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line384">line 384</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line383">line 383</a>
     </li></ul></dd>
     
 
@@ -1203,7 +1049,7 @@ No more than 50 results per query are allowed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line145">line 145</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line144">line 144</a>
     </li></ul></dd>
     
 
@@ -1377,7 +1223,7 @@ No more than 50 results per query are allowed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line368">line 368</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line367">line 367</a>
     </li></ul></dd>
     
 
@@ -1520,7 +1366,7 @@ No more than 50 results per query are allowed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line112">line 112</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line111">line 111</a>
     </li></ul></dd>
     
 
@@ -1762,7 +1608,7 @@ No more than 50 results per query are allowed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line341">line 341</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line340">line 340</a>
     </li></ul></dd>
     
 
@@ -2002,7 +1848,7 @@ No more than 50 results per query are allowed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line326">line 326</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line325">line 325</a>
     </li></ul></dd>
     
 
@@ -2176,7 +2022,7 @@ No more than 50 results per query are allowed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line495">line 495</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line496">line 496</a>
     </li></ul></dd>
     
 
@@ -2555,7 +2401,7 @@ No more than 50 results per query are allowed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line186">line 186</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line185">line 185</a>
     </li></ul></dd>
     
 
@@ -2764,7 +2610,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line312">line 312</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line311">line 311</a>
     </li></ul></dd>
     
 
@@ -3044,7 +2890,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line208">line 208</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line207">line 207</a>
     </li></ul></dd>
     
 
@@ -3352,7 +3198,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line291">line 291</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line290">line 290</a>
     </li></ul></dd>
     
 
@@ -3695,7 +3541,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line126">line 126</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line125">line 125</a>
     </li></ul></dd>
     
 
@@ -4008,7 +3854,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line163">line 163</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line162">line 162</a>
     </li></ul></dd>
     
 
@@ -4288,7 +4134,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line227">line 227</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line226">line 226</a>
     </li></ul></dd>
     
 
@@ -4634,7 +4480,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line248">line 248</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line247">line 247</a>
     </li></ul></dd>
     
 
@@ -4947,7 +4793,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line270">line 270</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line269">line 269</a>
     </li></ul></dd>
     
 
@@ -5154,7 +5000,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line355">line 355</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line354">line 354</a>
     </li></ul></dd>
     
 
@@ -5202,7 +5048,7 @@ We only recommend using this method when a response from the bot will take a not
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Thu Jan 07 2016 09:34:22 GMT+0100 (CET)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Thu Jan 07 2016 21:14:09 GMT+0100 (CET)
 </footer>
 
 <script> prettyPrint(); </script>
