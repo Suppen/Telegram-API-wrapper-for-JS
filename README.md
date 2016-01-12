@@ -120,6 +120,7 @@ bot.getUpdates({
 ```
 
 ## Changelog
+* **0.15.1**: Fixed a bug which made method calls without parameters hang forever
 * **0.15.0**: Re-added support for promises. Callbacks still work
 * **0.14.0**: Changed format of the result object in callbacks. This update **WILL** break your bots, but it should be easy to fix them again
 * **0.13.0**: Support for inline bots, and major refactoring

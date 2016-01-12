@@ -441,8 +441,17 @@ BotAPI.prototype = {
 		var form = new FormData();
 
 		// Fill data into the form
+		var dataProvided = false;
 		for (var field in argObj) {
+			dataProvided = true;
 			form.append(field, argObj[field]);
+		}
+
+		// Check if data was provided. This is a hack to make stuff work if no parameters were passed to a method
+		if (!dataProvided) {
+			form.getHeaders = function() {
+				return {};
+			}
 		}
 
 		// Do the request
