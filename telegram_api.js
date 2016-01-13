@@ -117,6 +117,8 @@ BotAPI.prototype = {
 	 * A simple method for testing your bot's auth token. Requires no parameters. Returns basic information about the bot in form of a User object.
 	 *
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
+	 *
+	 * @return {Promise}	A promise which resolves when the method call completes
 	 */
 	getMe: function() {
 		var args = [];
@@ -131,6 +133,8 @@ BotAPI.prototype = {
 	 * @param {Integer} [reply_to_message_id]	If the message is a reply, ID of the original message
 	 * @param {ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [reply_markup]	Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
+	 *
+	 * @return {Promise}	A promise which resolves when the method call completes
 	 */
 	sendMessage: function() {
 		var args = [
@@ -150,6 +154,8 @@ BotAPI.prototype = {
 	 * @param {Integer} from_chat_id	Unique identifier for the chat where the original message was sent — User or GroupChat id
 	 * @param {Integer} message_id	Unique message identifier
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
+	 *
+	 * @return {Promise}	A promise which resolves when the method call completes
 	 */
 	forwardMessage: function() {
 		var args = [
@@ -168,6 +174,8 @@ BotAPI.prototype = {
 	 * @param {Integer} [reply_to_message_id]	If the message is a reply, ID of the original message
 	 * @param {ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [reply_markup]	Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
+	 *
+	 * @return {Promise}	A promise which resolves when the method call completes
 	 */
 	sendPhoto: function() {
 		var args = [
@@ -191,6 +199,8 @@ BotAPI.prototype = {
 	 * @param {Integer} [reply_to_message_id]	If the message is a reply, ID of the original message
 	 * @param {ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [reply_markup]	Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
+	 *
+	 * @return {Promise}	A promise which resolves when the method call completes
 	 */
 	sendAudio: function() {
 		var args = [
@@ -213,6 +223,8 @@ BotAPI.prototype = {
 	 * @param {Integer} [reply_to_message_id]	If the message is a reply, ID of the original message
 	 * @param {ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [reply_markup]	Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
+	 *
+	 * @return {Promise}	A promise which resolves when the method call completes
 	 */
 	sendDocument: function() {
 		var args = [
@@ -232,6 +244,8 @@ BotAPI.prototype = {
 	 * @param {Integer} [reply_to_message_id]	If the message is a reply, ID of the original message
 	 * @param {ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [reply_markup]	Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
+	 *
+	 * @return {Promise}	A promise which resolves when the method call completes
 	 */
 	sendSticker: function() {
 		var args = [
@@ -253,6 +267,8 @@ BotAPI.prototype = {
 	 * @param {Integer} [reply_to_message_id]	If the message is a reply, ID of the original message
 	 * @param {ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [reply_markup]	Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
+	 *
+	 * @return {Promise}	A promise which resolves when the method call completes
 	 */
 	sendVideo: function() {
 		var args = [
@@ -275,6 +291,8 @@ BotAPI.prototype = {
 	 * @param {Integer} [reply_to_message_id]	If the message is a reply, ID of the original message
 	 * @param {ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [reply_markup]	Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
+	 *
+	 * @return {Promise}	A promise which resolves when the method call completes
 	 */
 	sendVoice: function() {
 		var args = [
@@ -296,6 +314,8 @@ BotAPI.prototype = {
 	 * @param {Integer} [reply_to_message_id]	If the message is a reply, ID of the original message
 	 * @param {ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [reply_markup]	Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
+	 *
+	 * @return {Promise}	A promise which resolves when the method call completes
 	 */
 	sendLocation: function() {
 		var args = [
@@ -317,6 +337,8 @@ BotAPI.prototype = {
 	 * @param {Integer} chat_id	ID of the chat to send the message to
 	 * @param {String} action	Type of action to broadcast. Choose one, depending on what the user is about to receive: typing for text messages, upload_photo for photos, record_video or upload_video for videos, record_audio or upload_audio for audio files, upload_document for general files, find_location for location data.
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
+	 *
+	 * @return {Promise}	A promise which resolves when the method call completes
 	 */
 	sendChatAction: function() {
 		var args = [
@@ -331,6 +353,8 @@ BotAPI.prototype = {
 	 * @param {Integer} [offset]	Sequential number of the first photo to be returned. By default, all photos are returned.
 	 * @param {Integer} [limit]	Limits the number of photos to be retrieved. Values between 1—100 are accepted. Defaults to 100.
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
+	 *
+	 * @return {Promise}	A promise which resolves when the method call completes
 	 */
 	getUserProfilePhotos: function() {
 		var args = [
@@ -346,6 +370,8 @@ BotAPI.prototype = {
 	 * @param {Integer} [limit]	Limits the number of updates to be retrieved. Values between 1—100 are accepted. Defaults to 100
 	 * @param {Integer} [timeout]	Timeout in seconds for long polling. Defaults to 0, i.e. usual short polling
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
+	 *
+	 * @return {Promise}	A promise which resolves when the method call completes
 	 */
 	getUpdates: function() {
 		var args = [
@@ -360,6 +386,8 @@ BotAPI.prototype = {
 	 * @param {String} url	HTTPS url to send updates to. Use an empty string to remove webhook integration
 	 * @param {InputFile} [certificate]	Upload your public key certificate so that the root certificate in use can be checked
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
+	 *
+	 * @return {Promise}	A promise which resolves when the method call completes
 	 */
 	setWebhook: function() {
 		var args = [
@@ -373,6 +401,8 @@ BotAPI.prototype = {
 	 * Use this method to get basic info about a file and prepare it for downloading. For the moment, bots can download files of up to 20MB in size. On success, a File object is returned. The file can then be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>, where <file_path> is taken from the response. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile again.
 	 * @param {String} file_id	File identifier to get info about
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
+	 *
+	 * @return {Promise}	A promise which resolves when the method call completes
 	 */
 	getFile: function() {
 		var args = [
@@ -389,6 +419,8 @@ BotAPI.prototype = {
 	 * @param {Boolean] [is_personal]	Pass True, if results may be cached on the server side only for the user that sent the query. By default, results may be returned to any user who sends the same query
 	 * @param {String} [next_offset]	Pass the offset that a client should send in the next query with the same text to receive more results. Pass an empty string if there are no more results or if you don‘t support pagination. Offset length can’t exceed 64 bytes.
 	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
+	 *
+	 * @return {Promise}	A promise which resolves when the method call completes
 	 */
 	answerInlineQuery: function() {
 		var args = [
@@ -404,6 +436,8 @@ BotAPI.prototype = {
 	 * Internal API method. DO NOT USE. Sends the actual request to the API server
 	 * @param {String} method	Name of the method to use
 	 * @param {Object} argObj	Parsed argument object
+	 *
+	 * @return {Promise}	A promise which resolves when the method call completes
 	 *
 	 * @private
 	 */
@@ -519,7 +553,9 @@ BotAPI.prototype = {
 	/**
 	 * getFile does not actually get the file, it only gets a path where you can download the file from. This method actually sends the download request for you, The callback gets an error object if the request failed, and gets the response object otherwise. See https://nodejs.org/api/http.html#http_http_incomingmessage
 	 * @param {File} file	The File object returned from getFile
-	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result"
+	 * @param {Function} [cb]	If the last argument is a function, it will be treated as a callback function with args "error" and "result". "Result" will be a download stream for the file
+	 *
+	 * @return {Promise}	A promise which resolves when the download stream is ready
 	 */
 	helperDownloadFile: function() {
 		var args = [
@@ -536,11 +572,15 @@ BotAPI.prototype = {
 		var url = this.fileUrlBase + argObj.file.file_path;
 		url = url.replace("<token>", this.token);
 
-		var req = https.get(url, function(res) {
-			argObj.cb(null, res);	// Return the response object
-		});
-		req.on("error", function(e) {
-			argObj.cb(e, null);	// Something went wrong with the request
+		return new Promise(function(resolve, reject) {
+			var req = https.get(url, function(res) {
+				argObj.cb(null, res);	// Return the response object
+				resolve(res);
+			});
+			req.on("error", function(e) {
+				argObj.cb(e, null);	// Something went wrong with the request
+				reject(e);
+			});
 		});
 	}
 }
