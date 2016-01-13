@@ -120,6 +120,7 @@ bot.getUpdates({
 ```
 
 ## Changelog
+* **0.15.3**: Made `helperDownloadFile` work again
 * **0.15.2**: Made the `helperDownloadFile` method also return a promise
 * **0.15.1**: Fixed a bug which made method calls without parameters hang forever
 * **0.15.0**: Re-added support for promises. Callbacks still work
@@ -128,7 +129,5 @@ bot.getUpdates({
 * **0.12.1**: Inserted a missing | in the code, and cleaned the code a bit
 * **0.12.0**: Supports the new getFile() method. Also has a helper method called "helperDownloadFile", which actually gets the file for you
 * **0.11.0**: All methods now support a single object naming all the methods arguments. See examples
-* **0.10.1**: Added missing datatypes and updated existing ones
-* **0.10.0**: Updated the API to match the bot API as of Sep. 7 2015. See also the [BotAPI changelog](https://core.telegram.org/bots/api-changelog)
 
 PS: If someone wants to write tests for this package, please do, and send me a pull request on github

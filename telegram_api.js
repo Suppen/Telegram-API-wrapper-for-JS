@@ -557,24 +557,23 @@ BotAPI.prototype = {
 	 *
 	 * @return {Promise}	A promise which resolves when the download stream is ready
 	 */
-	helperDownloadFile: function() {
-		var args = [
-			"file"
-		];
-		argObj = parseArgs(args, arguments);
+	helperDownloadFile: function(file, cb) {
+		if (!(cb instanceof Function)) {
+			cb = dummyFunc;
+		}
 
 		// Check if a file was actually provided
-		if (typeof argObj.file.file_id != "undefined") {
+		if (typeof file == "undefined " || typeof file.file_id == "undefined") {
 			throw new Error("Given file argument is not a file object");
 		}
 
 		// Download the file
-		var url = this.fileUrlBase + argObj.file.file_path;
+		var url = this.fileUrlBase + file.file_path;
 		url = url.replace("<token>", this.token);
 
 		return new Promise(function(resolve, reject) {
 			var req = https.get(url, function(res) {
-				argObj.cb(null, res);	// Return the response object
+				cb(null, res);	// Return the response object
 				resolve(res);
 			});
 			req.on("error", function(e) {
