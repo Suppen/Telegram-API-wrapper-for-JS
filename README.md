@@ -119,6 +119,11 @@ bot.getUpdates({
 });
 ```
 
+## Documentation
+
+Everything in the wrapper is documented with JSDoc. The documentation is available in `node_modules/teleapiwrapper/docs/index.html`. Use it well.
+They are also readable on [https://doc.suppen.no/teleapiwrapper](https://doc.suppen.no/teleapiwrapper)
+
 ## Changelog
 * **0.15.3**: Made `helperDownloadFile` work again
 * **0.15.2**: Made the `helperDownloadFile` method also return a promise
