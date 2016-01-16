@@ -125,6 +125,7 @@ Everything in the wrapper is documented with JSDoc. The documentation is availab
 They are also readable on [https://doc.suppen.no/teleapiwrapper](https://doc.suppen.no/teleapiwrapper)
 
 ## Changelog
+* **0.15.4**: Fixed a bug which would cause errors on boolean parameters
 * **0.15.3**: Made `helperDownloadFile` work again
 * **0.15.2**: Made the `helperDownloadFile` method also return a promise
 * **0.15.1**: Fixed a bug which made method calls without parameters hang forever

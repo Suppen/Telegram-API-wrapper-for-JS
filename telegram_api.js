@@ -465,7 +465,7 @@ BotAPI.prototype = {
 				} else {
 					argObj[p] = argObj[p].file_id;
 				}
-			} else if (argObj[p] instanceof Object) {
+			} else if (argObj[p] instanceof Object || typeof argObj[p] == "boolean") {
 				// Stringify the object
 				argObj[p] = JSON.stringify(argObj[p]);
 			}
