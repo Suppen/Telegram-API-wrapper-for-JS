@@ -12,6 +12,8 @@ Official API-documentation: [https://core.telegram.org/bots/api](https://core.te
 
 **IMPORTANT!!!!** teleapiwrapper **0.14.0** changed the result object from the method calls. If you insist on using the old way, set the property "forceOldWay" on your bot to true. Before, the methods returned the unmodified parsed object from the method call. Now, they return the object in the result property of that object. This means that where you earlier used "res.result", you can now use just "res". Example: You call bot.getUpdates(function(err, res) {}); In the callback, you earlier wrote "res.result[0]" to get the first update. Now, you write "res[0]". This option will be removed in later versions of teleapiwrapper, so please modify your code to deal with the new way
 
+In the summer 2016, I will convert the wrapper to ES6. Node 0.10.x and 0.12.x will then no longer be supported
+
 ## Create a new wrapper (aka. new bot)
 
 ```javascript
@@ -125,6 +127,7 @@ Everything in the wrapper is documented with JSDoc. The documentation is availab
 They are also readable on [https://doc.suppen.no/teleapiwrapper](https://doc.suppen.no/teleapiwrapper)
 
 ## Changelog
+* **0.16.0**: Added a timeout to the HTTPS-requests. Defaults to 60 seconds. Available on the `requestTimeout` property
 * **0.15.4**: Fixed a bug which would cause errors on boolean parameters
 * **0.15.3**: Made `helperDownloadFile` work again
 * **0.15.2**: Made the `helperDownloadFile` method also return a promise

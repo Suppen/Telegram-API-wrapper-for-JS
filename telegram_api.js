@@ -1,10 +1,3 @@
-/************
- * Exports  *
- ************/
-
-module.exports.BotAPI = BotAPI;
-module.exports.DataTypes = DataTypes;
-
 /**************
  *  Requires  *
  **************/
@@ -97,6 +90,21 @@ function BotAPI(botToken, botName) {
 	}
 
 	/**
+	 * The API endpoint to connect the bot to
+	 */
+	this.methodUrlBase = "https://api.telegram.org/bot<token>/";
+
+	/**
+	 * The API endpoint to download files from
+	 */
+	this.fileUrlBase = "https://api.telegram.org/file/bot<token>/";
+
+	/**
+	 * Timeout for requests to the HTTPS-api, in milliseconds
+	 */
+	this.requestTimeout = 60*1000;
+
+	/**
 	 * teleapiwrapper 0.14.0 changed the result object from the method calls. Set this to "true" to use the old way instead. Before, the methods returned the unmodified parsed object from the method call. Now, they return the object in the result property of that object. This means that where you earlier used "res.result", you can now use just "res". Example: You call bot.getUpdates(function(err, res) {}); In the callback, you earlier wrote "res.result[0]" to get the first update. Now, you write "res[0]". This option will be removed in later versions of teleapiwrapper, so please modify your code to deal with the new way
 	 */
 	this.forceOldWay = false;
@@ -105,14 +113,6 @@ function BotAPI(botToken, botName) {
 
 // The prototype of the bot BotAPI
 BotAPI.prototype = {
-	/**
-	 * Change this in the constructed object if you for some reason don't want to use this URL
-	 */
-	methodUrlBase: "https://api.telegram.org/bot<token>/",
-	/**
-	 * Change this in the constructed object if you for some reason don't want to use this URL
-	 */
-	fileUrlBase: "https://api.telegram.org/file/bot<token>/",
 	/**
 	 * A simple method for testing your bot's auth token. Requires no parameters. Returns basic information about the bot in form of a User object.
 	 *
@@ -496,7 +496,14 @@ BotAPI.prototype = {
 			headers: form.getHeaders()
 		});
 
+		// Create the promise to return
 		return new Promise(function(resolve, reject) {
+			// Set timeout on the request
+			req.setTimeout(this.requestTimeout, function() {
+				req.abort();
+				reject("Connection timed out on method " + method);
+			});
+
 			// Listen for the response
 			req.on("response", function(res) {
 				// Buffer to hold the result body
@@ -637,3 +644,10 @@ var DataTypes = {
 		}
 	}
 }
+
+/************
+ * Exports  *
+ ************/
+
+module.exports.BotAPI = BotAPI;
+module.exports.DataTypes = DataTypes;
