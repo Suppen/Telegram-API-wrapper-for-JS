@@ -9,6 +9,16 @@ var FormData = require("form-data");
 var fs = require("fs");
 var stream = require("stream");
 
+/********************************************************
+ * Make sure a lack of Promise doesn't break everything *
+ ********************************************************/
+
+if (typeof Promise != "function") {
+	console.warn("Promises are not available. teleapiwrapper will work, but only with callbacks. Either upgrade nodejs or polyfill promises if you wish to use them");
+	Promise = function(func) {
+		func(dummyFunc, dummyFunc);
+	};
+}
 
 /***********************
  *  General functions  *
@@ -47,17 +57,6 @@ function parseArgs(fields, args) {
 	}
 
 	return parsed;
-}
-
-/********************************************************
- * Make sure a lack of Promise doesn't break everything *
- ********************************************************/
-
-if (typeof Promise != "function") {
-	console.warn("Promises are not available. teleapiwrapper will work, but only with callbacks. Either upgrade nodejs or polyfill promises if you wish to use them");
-	Promise = function(func) {
-		func(dummyFunc, dummyFunc);
-	};
 }
 
 /************
@@ -501,7 +500,9 @@ BotAPI.prototype = {
 			// Set timeout on the request
 			req.setTimeout(this.requestTimeout, function() {
 				req.abort();
-				reject("Connection timed out on method " + method);
+				var err = new Error("Connection timed out on method " + method);
+				cb(err, null);
+				reject(err);
 			});
 
 			// Listen for the response

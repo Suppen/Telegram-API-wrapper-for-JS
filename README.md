@@ -127,6 +127,7 @@ Everything in the wrapper is documented with JSDoc. The documentation is availab
 They are also readable on [https://doc.suppen.no/teleapiwrapper](https://doc.suppen.no/teleapiwrapper)
 
 ## Changelog
+* **0.16.1**: Made the timeout call the callback too, not just reject the promise
 * **0.16.0**: Added a timeout to the HTTPS-requests. Defaults to 60 seconds. Available on the `requestTimeout` property
 * **0.15.4**: Fixed a bug which would cause errors on boolean parameters
 * **0.15.3**: Made `helperDownloadFile` work again
@@ -137,6 +138,5 @@ They are also readable on [https://doc.suppen.no/teleapiwrapper](https://doc.sup
 * **0.13.0**: Support for inline bots, and major refactoring
 * **0.12.1**: Inserted a missing | in the code, and cleaned the code a bit
 * **0.12.0**: Supports the new getFile() method. Also has a helper method called "helperDownloadFile", which actually gets the file for you
-* **0.11.0**: All methods now support a single object naming all the methods arguments. See examples
 
 PS: If someone wants to write tests for this package, please do, and send me a pull request on github
