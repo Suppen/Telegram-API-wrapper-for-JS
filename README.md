@@ -1,8 +1,8 @@
 # Telegram API wrapper
 
-An unofficial JS-wrapper for the Telegram chat API. Currently focused on bots.
+An unofficial JS-wrapper for the Telegram bot API
 
-**Supports ALL methods in the bot API as of 2016-01-04**, but currently none in the regular API
+**Supports ALL methods in the bot API as of 2016-04-16**
 
 npm: [https://www.npmjs.com/package/teleapiwrapper](https://www.npmjs.com/package/teleapiwrapper)
 
@@ -10,115 +10,151 @@ github: [https://github.com/Suppen/Telegram-API-wrapper-for-JS](https://github.c
 
 Official API-documentation: [https://core.telegram.org/bots/api](https://core.telegram.org/bots/api)
 
-**IMPORTANT!!!!** teleapiwrapper **0.14.0** changed the result object from the method calls. If you insist on using the old way, set the property "forceOldWay" on your bot to true. Before, the methods returned the unmodified parsed object from the method call. Now, they return the object in the result property of that object. This means that where you earlier used "res.result", you can now use just "res". Example: You call bot.getUpdates(function(err, res) {}); In the callback, you earlier wrote "res.result[0]" to get the first update. Now, you write "res[0]". This option will be removed in later versions of teleapiwrapper, so please modify your code to deal with the new way
+Documentation for this package: [https://doc.suppen.no/teleapiwrapper]{https://doc.suppen.no/teleapiwrapper}
 
-In the summer 2016, I will convert the wrapper to ES6. Node 0.10.x and 0.12.x will then no longer be supported
+## Major changes in v2.0
 
-## Create a new wrapper (aka. new bot)
+* teleapiwrapper has been converted to ES6, meaning older versions of node are no longer supported.
+* All arguments MUST now be given in object form, meaning `bot.sendMessage(123456789, "Cake")` will no longer work. The way to do it now is `bot.sendMessage({chat_id: 123456789, text: "Cake"})
+* The major and minor version numbers of this package will now match the official API's version
+
+## How to use
+
+### Create a new wrapper (aka. new bot)
 
 ```javascript
-var BotAPI = require("teleapiwrapper").BotAPI;
+const BotAPI = require("teleapiwrapper").BotAPI;
 
-var bot = new BotAPI(botToken);
+let bot = new BotAPI(botToken);
 ```
 
-## Send a request
+### Send a request
+
+All methods in the API have the signature `methodName(args, cb)`. The arguments to the method are given as an object, and an optional callback function can be called when the API call is completed.
+All methods return promises, which can be used instead of callbacks.
 
 ```javascript
-// Note: All methods support callbacks on the form function(error, result), where "result" is the parsed JSON-response from the server
-// Get bot info
-bot.getMe(function(err, res) {
+// Get bot info using callback
+bot.getMe({}, (err, res) => {
+        if (err) {
+                console.log(err);
+        } else {
+                console.log(res);
+        }
+});
+
+// Get bot info using promise
+bot.getMe().then(res => {
         console.log(res);
+}).catch(err => {
+        console.log(err);
 });
 
 
 // Send a message
-
-// There are two ways to give arguments to a method.
-// One is to just give them in the order the API documentation says
-bot.sendMessage(chatId, text, callback);        // Callback optional
-
-// The other is to provide an object as the method's only parameter
+// Arguments are provided as an object to the method
 
 bot.sendMessage({
         chat_id: chatId,
-        text: text,
-        cb: callback
+        text: text
 });
 
-// Send a more fancy message
-
 // Send a message with a reply-keyboard
-var keyboard = { /*  reply_markup */
+let keyboard = {/* reply_markup */
         keyboard: [
                 ['yes', 'no'],
                 [ 'cancel'],
         ],
         resize_keyboard: true
 };
-bot.sendMessage(chatId, text, null, 0, 0, keyboard, callback);
-// or
 bot.sendMessage({
         chat_id: chatId,
         text: text,
-        keyboard: keyboard,
-        cb: callback    // Again, callback is optional
+        keyboard: keyboard
 });
+```
 
-// Send a photo (same approach with other file sendings)
+### Sending files
+
+There are a few ways you can send files with your bot. I will demonstrate these ways with the `sendPhoto` method, but all methods which can send files do it this way.
+
+#### With a readable stream
+This one sends any readable stream as a file. Easiest method to send a file from your file system
+```javascript
 bot.sendPhoto({
         chat_id: chatId,
         photo: fs.createReadStream("some_photo.jpg"),
         caption: "This is a really nice photo"
 });
+```
 
-// Send a photo by ID (same approach with other file sendings)
-var photoId = "Adrgvmercfiawejdatruotseafasert";
+If the readable stream is an instance of `fs.ReadStream`, like in the example above, the file name will be extracted from the stream, so the receivers will see it named "some_photo.jpg". Other streams don't have the file name in them, and will therefore be named "Some file" if you do not explicitly give it a name with the `InputFile` class described further down
+
+#### With a Buffer
+Much the same as sending with a stream, you can send a buffer containing a file
+your file system
+```javascript
+let fileBuffer = fs.readFileSync("some_photo.jpg");
+bot.sendPhoto({
+        chat_id: chatId,
+        photo: fileBuffer
+        caption: "This is a really nice photo"
+});
+```
+Not, however, that the receiver(s) will see the file name as "Some file". See the section about the `InputFile` class to change this.
+
+#### By ID
+When you send a file to Telegram, you will get the sent message in response. This message contains the ID Telegram assigned to the file. Using this ID, you can resend the file without having to upload it again
+
+```javascript
+let photoId = "Adrgvmercfiawejdatruotseafasert";
 bot.sendPhoto({
         chat_id: chatId,
         photo: photoId,
         caption: "This is a really nice photo"
 });
-
-// Download a file sent to the bot
-bot.getFile(file_id, function(err, res) {
-        bot.helperDownloadFile(res.result, function(err, res) {
-                // res is now a http.IncomingMessage with the file.
-                res.pipe(fs.createWriteStream("downloadedFile"));
-        });
-});
-
-// If you want to give the file a specific name, you create an object of type DataTypes.InputFile and give it to the method
-var DataTypes = require("teleapiwrapper").DataTypes;
-
-var file = new DataTypes.InputFile(fs.createReadStream("somefile"), "Very important file.txt");
-bot.sendDocument({
-        chat_id: chatId,
-        document: file
-});
-
-// The DataTypes.InputFile constructor can be initialized with a string, a buffer, a readable stream or an already existing InputFile.
-// If given a string, it is interpreted as a file ID for an already uploaded file, so Telegram will just resend that one.
-// Otherwise, it will upload the file.
-// If you pass it an instance of fs.ReadStream, it will itself extract the name of the file from the stream and use that, unless you override it yourself
 ```
 
-## Promises
+#### With the `InputFile` class
 
-teleapiwrapper **0.15.0** added support for ES6 Promises. Promises can now be used on every method instead of (or if you really want to, in addition to) callbacks. Callbacks will still work the way they used to, and probably will for a long time into the future. If you don't have promises in your environment, teleapiwrapper will still work, but you can only use callbacks.
+The `InputFile` class is what the above methods are converted to under the hood, but you can also use it explicitly to give a file a specific name.
 
-Example:
+To use it, first require it:
 
 ```javascript
-bot.getUpdates({
-  offset: offset,
-  limit: 50,
-  timeout: 60
-}).then(function(updates) {
-  processUpdates(updates);
-}).catch(function(err) {
-  console.log("Something went very wrong...");
+const InputFile = require("teleapiwrapper").InputFile;
+```
+
+The `InputFile` constructor takes two arguments: `data` and `filename`. The `data` argument can be a readable stream, a `Buffer` or a `String`, with the same results as the examples above. The `filename` option lets you set a name the receiver(s) of the file will see.
+
+```javascript
+let file = new InputFile(fs.createReadStream("some_photo.jpg"), "Very nice photo.jpg");
+bot.sendPhoto({
+        chat_id: chatId,
+        photo: file,
+        caption: "This is a really nice photo"
 });
+```
+
+### Downloading files sent to the bot
+
+Users can send any file to the bot. Telegram allows bots to download files up to 20 MB. If someone has sent a file to your but, you will find a `file_id` in the corresponding `update` object. Use the `getFile` method to get data about the file.
+
+Unfortunately, the `getFile` method does not actually get the file, just data about it, including an URL where you can actually download it. teleapiwrapper therefore has a helper method, named `helperGetFileStream`, which gives you a download stream for that file
+
+```javascript
+let file_id = update.message.document.file_id;
+bot.getFile({file_id})
+  .then(file => {
+	// The `file` object does not contain the actual file, just data about it, like a download path, the size and a file name. Pass it on to the `helperGetFileStream` method
+	return bot.helperGetFileStream(file);
+  }).then(stream => {
+	// Now you have a stream containing the actual file. Do whatever you want with it, like saving it to disk:
+	stream.pipe(fs.createWriteStream("some_file"));
+  }).catch(err => {
+	// Something went very wrong when fetching the file
+	console.log(err);
+  });
 ```
 
 ## Documentation
@@ -127,6 +163,7 @@ Everything in the wrapper is documented with JSDoc. The documentation is availab
 They are also readable on [https://doc.suppen.no/teleapiwrapper](https://doc.suppen.no/teleapiwrapper)
 
 ## Changelog
+* **2.0.0**: Added methods and updated old ones to support the API v2.0. Converted everything to ES6 and removed support for giving arguments the traditional way. All your bots will probably break on this update
 * **0.16.1**: Made the timeout call the callback too, not just reject the promise
 * **0.16.0**: Added a timeout to the HTTPS-requests. Defaults to 60 seconds. Available on the `requestTimeout` property
 * **0.15.4**: Fixed a bug which would cause errors on boolean parameters
@@ -136,7 +173,4 @@ They are also readable on [https://doc.suppen.no/teleapiwrapper](https://doc.sup
 * **0.15.0**: Re-added support for promises. Callbacks still work
 * **0.14.0**: Changed format of the result object in callbacks. This update **WILL** break your bots, but it should be easy to fix them again
 * **0.13.0**: Support for inline bots, and major refactoring
-* **0.12.1**: Inserted a missing | in the code, and cleaned the code a bit
-* **0.12.0**: Supports the new getFile() method. Also has a helper method called "helperDownloadFile", which actually gets the file for you
 
-PS: If someone wants to write tests for this package, please do, and send me a pull request on github

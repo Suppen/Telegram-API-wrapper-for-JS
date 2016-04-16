@@ -1,10 +1,10 @@
 {
   "name": "teleapiwrapper",
-  "version": "0.16.1",
-  "description": "An unofficial JS-wrapper for the Telegram chat API. Currently focused on bots.",
+  "version": "2.0.0",
+  "description": "An unofficial JS-wrapper for the Telegram bot API.",
   "main": "telegram_api.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/jasmine/bin/jasmine.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,9 @@
   },
   "homepage": "https://github.com/Suppen/Telegram-API-wrapper-for-JS",
   "dependencies": {
-    "form-data": "^1.0.0-rc3"
+    "form-data": "^1.0.0-rc4"
+  },
+  "devDependencies": {
+    "jasmine": "^2.4.1"
   }
 }

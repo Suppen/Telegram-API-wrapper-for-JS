@@ -30,6 +30,8 @@
     
         <h2>BotAPI</h2>
         
+            <div class="class-description">A wrapper for the <a href="https://core.telegram.org/bots/api">Telegram Bot API</a>. Instances are bound to a single bot token</div>
+        
     
 </header>
 
@@ -39,8 +41,10 @@
         
 
     
+    <h2>Constructor</h2>
+    
 
-    <h4 class="name" id="BotAPI"><span class="type-signature"></span>new BotAPI<span class="signature">(botToken, botName<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="BotAPI"><span class="type-signature"></span>new BotAPI<span class="signature">(botToken)</span><span class="type-signature"></span></h4>
 
     
 
@@ -71,8 +75,6 @@
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
         
 
@@ -98,51 +100,10 @@
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last">The authentication token for the bot, as provided by BotFather</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>botName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">Name of the bot. Not required, and not used. Just creates a handy property, name, on the object to access the bot's name</td>
+            <td class="description last">The authentication token for the bot, as provided by <a href="https://telegram.me/botfather">BotFather</a></td>
         </tr>
 
     
@@ -183,7 +144,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line82">line 82</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line21">line 21</a>
     </li></ul></dd>
     
 
@@ -227,7 +188,7 @@
 
         
             
-<h4 class="name" id="fileUrlBase"><span class="type-signature"></span>fileUrlBase<span class="type-signature"></span></h4>
+<h4 class="name" id="fileUrlBase"><span class="type-signature"></span>fileUrlBase<span class="type-signature"> :String</span></h4>
 
 
 
@@ -238,67 +199,15 @@
 
 
 
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line107">line 107</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
+    <h5>Type:</h5>
+    <ul>
+        <li>
             
-<h4 class="name" id="forceOldWay"><span class="type-signature"></span>forceOldWay<span class="type-signature"></span></h4>
+<span class="param-type">String</span>
 
 
-
-
-<div class="description">
-    teleapiwrapper 0.14.0 changed the result object from the method calls. Set this to "true" to use the old way instead. Before, the methods returned the unmodified parsed object from the method call. Now, they return the object in the result property of that object. This means that where you earlier used "res.result", you can now use just "res". Example: You call bot.getUpdates(function(err, res) {}); In the callback, you earlier wrote "res.result[0]" to get the first update. Now, you write "res[0]". This option will be removed in later versions of teleapiwrapper, so please modify your code to deal with the new way
-</div>
-
-
+        </li>
+    </ul>
 
 
 
@@ -329,11 +238,16 @@
     
 
     
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"https://api.telegram.org/file/bot<token>/"</li>
+        </ul></dd>
+    
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line117">line 117</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line49">line 49</a>
     </li></ul></dd>
     
 
@@ -351,7 +265,7 @@
 
         
             
-<h4 class="name" id="methodUrlBase"><span class="type-signature"></span>methodUrlBase<span class="type-signature"></span></h4>
+<h4 class="name" id="methodUrlBase"><span class="type-signature"></span>methodUrlBase<span class="type-signature"> :String</span></h4>
 
 
 
@@ -362,6 +276,16 @@
 
 
 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">String</span>
+
+
+        </li>
+    </ul>
+
 
 
 
@@ -391,11 +315,16 @@
     
 
     
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"https://api.telegram.org/bot<token>/"</li>
+        </ul></dd>
+    
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line102">line 102</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line41">line 41</a>
     </li></ul></dd>
     
 
@@ -413,16 +342,26 @@
 
         
             
-<h4 class="name" id="name"><span class="type-signature"></span>name<span class="type-signature"></span></h4>
+<h4 class="name" id="requestTimeout"><span class="type-signature"></span>requestTimeout<span class="type-signature"> :Integer</span></h4>
 
 
 
 
 <div class="description">
-    The name of the bot. Not used by the wrapper, just a handle for you
+    Timeout for requests to the HTTPS-api, in milliseconds. Default: 60000 (one minute)
 </div>
 
 
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Integer</span>
+
+
+        </li>
+    </ul>
 
 
 
@@ -457,7 +396,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line96">line 96</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line56">line 56</a>
     </li></ul></dd>
     
 
@@ -475,69 +414,7 @@
 
         
             
-<h4 class="name" id="requestTimeout"><span class="type-signature"></span>requestTimeout<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    Timeout for requests to the HTTPS-api, in milliseconds
-</div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line112">line 112</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="token"><span class="type-signature"></span>token<span class="type-signature"></span></h4>
+<h4 class="name" id="token"><span class="type-signature"></span>token<span class="type-signature"> :String</span></h4>
 
 
 
@@ -548,6 +425,16 @@
 
 
 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">String</span>
+
+
+        </li>
+    </ul>
+
 
 
 
@@ -581,7 +468,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line91">line 91</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line33">line 33</a>
     </li></ul></dd>
     
 
@@ -608,7 +495,328 @@
 
     
 
-    <h4 class="name" id="answerInlineQuery"><span class="type-signature"></span>answerInlineQuery<span class="signature">(inline_query_id, results, cache_time<span class="signature-attributes">opt</span>, {Boolean, next_offset<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="answerCallbackQuery"><span class="type-signature"></span>answerCallbackQuery<span class="signature">(args, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Arguments for the method
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>callback_query_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Unique identifier for the query to be answered</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Text of the notification. If not specified, nothing will be shown to the user</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>show_alert</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">If true, an alert will be shown by the client instead of a notification at the top of the chat screen. Defaults to false.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cb</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">A callback which will be called with the usual "error" and "result" arguments when the call completes</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line466">line 466</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    A promise which resolves to a boolean when the method call completes. True if successful, false otherwise
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="answerInlineQuery"><span class="type-signature"></span>answerInlineQuery<span class="signature">(args, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
@@ -616,6 +824,7 @@
 
 <div class="description">
     Use this method to send answers to an inline query. On success, True is returned.
+
 No more than 50 results per query are allowed.
 </div>
 
@@ -629,6 +838,58 @@ No more than 50 results per query are allowed.
 
     <h5>Parameters:</h5>
     
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Arguments for the method
+                <h6>Properties</h6>
+                
 
 <table class="params">
     <thead>
@@ -709,7 +970,7 @@ No more than 50 results per query are allowed.
 
             
 
-            <td class="description last">A JSON-serialized array of results for the inline query</td>
+            <td class="description last">A JSON-serialized array of <a href="https://core.telegram.org/bots/api#inlinequeryresult">results</a> for the inline query</td>
         </tr>
 
     
@@ -749,15 +1010,22 @@ No more than 50 results per query are allowed.
 
         <tr>
             
-                <td class="name"><code>{Boolean</code></td>
+                <td class="name"><code>is_personal</code></td>
             
 
             <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
             
             </td>
 
             
                 <td class="attributes">
+                
+                    &lt;optional><br>
                 
 
                 
@@ -768,7 +1036,7 @@ No more than 50 results per query are allowed.
 
             
 
-            <td class="description last">[is_personal]	Pass True, if results may be cached on the server side only for the user that sent the query. By default, results may be returned to any user who sends the same query</td>
+            <td class="description last">Pass True, if results may be cached on the server side only for the user that sent the query. By default, results may be returned to any user who sends the same query</td>
         </tr>
 
     
@@ -808,6 +1076,79 @@ No more than 50 results per query are allowed.
 
         <tr>
             
+                <td class="name"><code>switch_pm_text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">If passed, clients will display a button with specified text that switches the user to a private chat with the bot and sends the bot a start message with the parameter switch_pm_parameter</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>switch_pm_parameter</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Parameter for the start message sent to the bot when user presses the switch button</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>cb</code></td>
             
 
@@ -834,7 +1175,7 @@ No more than 50 results per query are allowed.
 
             
 
-            <td class="description last">If the last argument is a function, it will be treated as a callback function with args "error" and "result"</td>
+            <td class="description last">A callback which will be called with the usual "error" and "result" arguments when the call completes</td>
         </tr>
 
     
@@ -875,7 +1216,7 @@ No more than 50 results per query are allowed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line432">line 432</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line488">line 488</a>
     </li></ul></dd>
     
 
@@ -902,7 +1243,7 @@ No more than 50 results per query are allowed.
 
         
 <div class="param-desc">
-    A promise which resolves when the method call completes
+    A promise which resolves to a boolean when the method call completes
 </div>
 
 
@@ -928,14 +1269,14 @@ No more than 50 results per query are allowed.
 
     
 
-    <h4 class="name" id="forwardMessage"><span class="type-signature"></span>forwardMessage<span class="signature">(chat_id, from_chat_id, message_id, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="editMessageCaption"><span class="type-signature"></span>editMessageCaption<span class="signature">(args, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
 
 
 <div class="description">
-    Use this method to forward messages of any kind. On success, the sent Message is returned.
+    Use this method to edit text messages sent by the bot or via the bot (for inline bots). On success, the edited <a href="https://core.telegram.org/bots/api#message">Message</a> is returned.
 </div>
 
 
@@ -973,7 +1314,93 @@ No more than 50 results per query are allowed.
 
         <tr>
             
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Arguments for the method
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
                 <td class="name"><code>chat_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>message_id</code></td>
             
 
             <td class="type">
@@ -997,7 +1424,1163 @@ No more than 50 results per query are allowed.
 
             
 
-            <td class="description last">ID of the chat to send the message to</td>
+            <td class="description last">Required if inline_message_id is not specified. Unique identifier of the sent message</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inline_message_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Required if chat_id and message_id are not specified. Identifier of the inline message</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>caption</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">New caption of the message</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reply_markup</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">InlineKeyboardMarkup</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">A JSON-serialized object for an [inline keyboard]]<a href="https://core.telegram.org/bots/api#inlinekeyboardmarkup">https://core.telegram.org/bots/api#inlinekeyboardmarkup</a></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cb</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">A callback which will be called with the usual "error" and "result" arguments when the call completes</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line362">line 362</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    A promise which resolves to the edited <a href="https://core.telegram.org/bots/api#message">Message</a> object when the method call completes
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="editMessageReplyMarkup"><span class="type-signature"></span>editMessageReplyMarkup<span class="signature">(args, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Use this method to edit only the reply markup of messages sent by the bot or via the bot (for inline bots). On success, the edited <a href="https://core.telegram.org/bots/api#message">Message</a> is returned.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Arguments for the method
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>chat_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>message_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Required if inline_message_id is not specified. Unique identifier of the sent message</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inline_message_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Required if chat_id and message_id are not specified. Identifier of the inline message</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reply_markup</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">InlineKeyboardMarkup</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">A JSON-serialized object for an [inline keyboard]]<a href="https://core.telegram.org/bots/api#inlinekeyboardmarkup">https://core.telegram.org/bots/api#inlinekeyboardmarkup</a></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cb</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">A callback which will be called with the usual "error" and "result" arguments when the call completes</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line378">line 378</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    A promise which resolves to the edited <a href="https://core.telegram.org/bots/api#message">Message</a> object when the method call completes
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="editMessageText"><span class="type-signature"></span>editMessageText<span class="signature">(args, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Use this method to edit text messages sent by the bot or via the bot (for inline bots). On success, the edited <a href="https://core.telegram.org/bots/api#message">Message</a> is returned.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Arguments for the method
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>chat_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>message_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Required if inline_message_id is not specified. Unique identifier of the sent message</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inline_message_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Required if chat_id and message_id are not specified. Identifier of the inline message</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">New text of the message</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>parse_mode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in your bot's message.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>disable_web_page_preview</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Disables link previews for links in this message</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reply_markup</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">InlineKeyboardMarkup</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">A JSON-serialized object for an [inline keyboard]]<a href="https://core.telegram.org/bots/api#inlinekeyboardmarkup">https://core.telegram.org/bots/api#inlinekeyboardmarkup</a></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cb</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">A callback which will be called with the usual "error" and "result" arguments when the call completes</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line345">line 345</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    A promise which resolves to the edited <a href="https://core.telegram.org/bots/api#message">Message</a> object when the method call completes
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="forwardMessage"><span class="type-signature"></span>forwardMessage<span class="signature">(args, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Use this method to forward messages of any kind. On success, the sent <a href="https://core.telegram.org/bots/api#message">Message</a> is returned.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Arguments for the method
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>chat_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Unique identifier for the target chat or username of the target channel (in the format @channelusername)</td>
         </tr>
 
     
@@ -1011,6 +2594,9 @@ No more than 50 results per query are allowed.
             
                 
 <span class="param-type">Integer</span>
+|
+
+<span class="param-type">String</span>
 
 
             
@@ -1028,7 +2614,40 @@ No more than 50 results per query are allowed.
 
             
 
-            <td class="description last">Unique identifier for the chat where the original message was sent — User or GroupChat id</td>
+            <td class="description last">Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>disable_notification</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Sends the message silently. iOS users will not receive a notification, Android users will receive a notification with no sound.</td>
         </tr>
 
     
@@ -1063,6 +2682,13 @@ No more than 50 results per query are allowed.
         </tr>
 
     
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
 
         <tr>
             
@@ -1092,7 +2718,7 @@ No more than 50 results per query are allowed.
 
             
 
-            <td class="description last">If the last argument is a function, it will be treated as a callback function with args "error" and "result"</td>
+            <td class="description last">A callback which will be called with the usual "error" and "result" arguments when the call completes</td>
         </tr>
 
     
@@ -1133,7 +2759,7 @@ No more than 50 results per query are allowed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line167">line 167</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line128">line 128</a>
     </li></ul></dd>
     
 
@@ -1160,7 +2786,7 @@ No more than 50 results per query are allowed.
 
         
 <div class="param-desc">
-    A promise which resolves when the method call completes
+    A promise which resolves to the sent <a href="https://core.telegram.org/bots/api#message">Message</a> when the method call completes
 </div>
 
 
@@ -1186,14 +2812,14 @@ No more than 50 results per query are allowed.
 
     
 
-    <h4 class="name" id="getFile"><span class="type-signature"></span>getFile<span class="signature">(file_id, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="getFile"><span class="type-signature"></span>getFile<span class="signature">(args, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
 
 
 <div class="description">
-    Use this method to get basic info about a file and prepare it for downloading. For the moment, bots can download files of up to 20MB in size. On success, a File object is returned. The file can then be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>, where <file_path> is taken from the response. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile again.
+    Use this method to get basic info about a file and prepare it for downloading. For the moment, bots can download files of up to 20MB in size. On success, a <a href="https://core.telegram.org/bots/api#file">File</a> object is returned. The file can then be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>, where <file_path> is taken from the response. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile again.
 </div>
 
 
@@ -1218,6 +2844,56 @@ No more than 50 results per query are allowed.
 
         
         <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Arguments for the method
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
         
 
         
@@ -1244,18 +2920,17 @@ No more than 50 results per query are allowed.
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
 
             <td class="description last">File identifier to get info about</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -1288,7 +2963,7 @@ No more than 50 results per query are allowed.
 
             
 
-            <td class="description last">If the last argument is a function, it will be treated as a callback function with args "error" and "result"</td>
+            <td class="description last">A callback which will be called with the usual "error" and "result" arguments when the call completes</td>
         </tr>
 
     
@@ -1329,7 +3004,7 @@ No more than 50 results per query are allowed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line414">line 414</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line421">line 421</a>
     </li></ul></dd>
     
 
@@ -1356,7 +3031,7 @@ No more than 50 results per query are allowed.
 
         
 <div class="param-desc">
-    A promise which resolves when the method call completes
+    A promise which resolves to a <a href="https://core.telegram.org/bots/api#file">File</a> object when the method call completes
 </div>
 
 
@@ -1382,14 +3057,14 @@ No more than 50 results per query are allowed.
 
     
 
-    <h4 class="name" id="getMe"><span class="type-signature"></span>getMe<span class="signature">(cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="getMe"><span class="type-signature"></span>getMe<span class="signature">(args, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
 
 
 <div class="description">
-    A simple method for testing your bot's auth token. Requires no parameters. Returns basic information about the bot in form of a User object.
+    A simple method for testing your bot's auth token. Requires no parameters. Returns basic information about the bot in form of a <a href="https://core.telegram.org/bots/api#user">User</a> object.
 </div>
 
 
@@ -1427,6 +3102,37 @@ No more than 50 results per query are allowed.
 
         <tr>
             
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">This is here to make the method's signature equal to the others. Put anything here, really. It will be ignored. If you use promises, just ignore this</td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>cb</code></td>
             
 
@@ -1453,7 +3159,7 @@ No more than 50 results per query are allowed.
 
             
 
-            <td class="description last">If the last argument is a function, it will be treated as a callback function with args "error" and "result"</td>
+            <td class="description last">A callback which will be called with the usual "error" and "result" arguments when the call completes</td>
         </tr>
 
     
@@ -1494,7 +3200,7 @@ No more than 50 results per query are allowed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line130">line 130</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line394">line 394</a>
     </li></ul></dd>
     
 
@@ -1521,7 +3227,7 @@ No more than 50 results per query are allowed.
 
         
 <div class="param-desc">
-    A promise which resolves when the method call completes
+    A promise which resolves to a <a href="https://core.telegram.org/bots/api#user">User</a> object when the method call completes
 </div>
 
 
@@ -1547,14 +3253,14 @@ No more than 50 results per query are allowed.
 
     
 
-    <h4 class="name" id="getUpdates"><span class="type-signature"></span>getUpdates<span class="signature">(offset<span class="signature-attributes">opt</span>, limit<span class="signature-attributes">opt</span>, timeout<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="getUpdates"><span class="type-signature"></span>getUpdates<span class="signature">(args, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
 
 
 <div class="description">
-    Use this method to receive incoming updates using long polling. An Array of Update objects is returned.
+    Use this method to receive incoming updates using long polling. An Array of <a href="https://core.telegram.org/bots/api#update">Update</a> objects is returned.
 </div>
 
 
@@ -1567,6 +3273,58 @@ No more than 50 results per query are allowed.
 
     <h5>Parameters:</h5>
     
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Arguments for the method
+                <h6>Properties</h6>
+                
 
 <table class="params">
     <thead>
@@ -1688,6 +3446,13 @@ No more than 50 results per query are allowed.
         </tr>
 
     
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
 
         <tr>
             
@@ -1717,7 +3482,7 @@ No more than 50 results per query are allowed.
 
             
 
-            <td class="description last">If the last argument is a function, it will be treated as a callback function with args "error" and "result"</td>
+            <td class="description last">A callback which will be called with the usual "error" and "result" arguments when the call completes</td>
         </tr>
 
     
@@ -1758,7 +3523,7 @@ No more than 50 results per query are allowed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line383">line 383</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line74">line 74</a>
     </li></ul></dd>
     
 
@@ -1785,7 +3550,7 @@ No more than 50 results per query are allowed.
 
         
 <div class="param-desc">
-    A promise which resolves when the method call completes
+    A promise which resolves to an array of <a href="https://core.telegram.org/bots/api#update">Update</a> objects when the method call completes
 </div>
 
 
@@ -1811,14 +3576,14 @@ No more than 50 results per query are allowed.
 
     
 
-    <h4 class="name" id="getUserProfilePhotos"><span class="type-signature"></span>getUserProfilePhotos<span class="signature">(user_id, offset<span class="signature-attributes">opt</span>, limit<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="getUserProfilePhotos"><span class="type-signature"></span>getUserProfilePhotos<span class="signature">(args, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
 
 
 <div class="description">
-    Use this method to get a list of profile pictures for a user. Returns a UserProfilePhotos object.
+    Use this method to get a list of profile pictures for a user. Returns a <a href="https://core.telegram.org/bots/api#userprofilephotos">UserProfilePhotos</a> object.
 </div>
 
 
@@ -1831,6 +3596,58 @@ No more than 50 results per query are allowed.
 
     <h5>Parameters:</h5>
     
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Arguments for the method
+                <h6>Properties</h6>
+                
 
 <table class="params">
     <thead>
@@ -1950,6 +3767,13 @@ No more than 50 results per query are allowed.
         </tr>
 
     
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
 
         <tr>
             
@@ -1979,7 +3803,7 @@ No more than 50 results per query are allowed.
 
             
 
-            <td class="description last">If the last argument is a function, it will be treated as a callback function with args "error" and "result"</td>
+            <td class="description last">A callback which will be called with the usual "error" and "result" arguments when the call completes</td>
         </tr>
 
     
@@ -2020,7 +3844,7 @@ No more than 50 results per query are allowed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line366">line 366</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line409">line 409</a>
     </li></ul></dd>
     
 
@@ -2047,7 +3871,7 @@ No more than 50 results per query are allowed.
 
         
 <div class="param-desc">
-    A promise which resolves when the method call completes
+    A promise which resolves to a <a href="https://core.telegram.org/bots/api#userprofilephotos">UserProfilePhotos</a> object when the method call completes
 </div>
 
 
@@ -2073,14 +3897,14 @@ No more than 50 results per query are allowed.
 
     
 
-    <h4 class="name" id="helperDownloadFile"><span class="type-signature"></span>helperDownloadFile<span class="signature">(file, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="helperGetFileStream"><span class="type-signature"></span>helperGetFileStream<span class="signature">(file, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
 
 
 <div class="description">
-    getFile does not actually get the file, it only gets a path where you can download the file from. This method actually sends the download request for you, The callback gets an error object if the request failed, and gets the response object otherwise. See https://nodejs.org/api/http.html#http_http_incomingmessage
+    The API method <a href="BotAPI.html#getFile">BotAPI#getFile</a> does not actually get the file, it only gets a path where you can download the file from. This method actually sends the download request and gives you a download stream of the type <a href="https://nodejs.org/api/http.html#http_http_incomingmessage">HTTP incoming message</a>, which you can do whatever you want with
 </div>
 
 
@@ -2142,7 +3966,7 @@ No more than 50 results per query are allowed.
 
             
 
-            <td class="description last">The File object returned from getFile</td>
+            <td class="description last">The <a href="https://core.telegram.org/bots/api#file">File</a> object returned from <a href="BotAPI.html#getFile">BotAPI#getFile</a></td>
         </tr>
 
     
@@ -2175,7 +3999,7 @@ No more than 50 results per query are allowed.
 
             
 
-            <td class="description last">If the last argument is a function, it will be treated as a callback function with args "error" and "result". "Result" will be a download stream for the file</td>
+            <td class="description last">A callback which will be called with the usual "error" and "result" arguments when the call completes. "Result" will be a download stream for the file</td>
         </tr>
 
     
@@ -2216,7 +4040,7 @@ No more than 50 results per query are allowed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line574">line 574</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line622">line 622</a>
     </li></ul></dd>
     
 
@@ -2243,7 +4067,7 @@ No more than 50 results per query are allowed.
 
         
 <div class="param-desc">
-    A promise which resolves when the download stream is ready
+    A promise which resolves to a HTTP response stream when the file stream is ready
 </div>
 
 
@@ -2269,14 +4093,16 @@ No more than 50 results per query are allowed.
 
     
 
-    <h4 class="name" id="sendAudio"><span class="type-signature"></span>sendAudio<span class="signature">(chat_id, audio, duration<span class="signature-attributes">opt</span>, performer<span class="signature-attributes">opt</span>, title<span class="signature-attributes">opt</span>, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="kickChatMember"><span class="type-signature"></span>kickChatMember<span class="signature">(args, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
 
 
 <div class="description">
-    Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .ogg file encoded with OPUS (other formats may be sent as Document). On success, the sent Message is returned.
+    Use this method to kick a user from a group or a supergroup. In the case of supergroups, the user will not be able to return to the group on their own using invite links, etc., unless unbanned first. The bot must be an administrator in the group for this to work. Returns True on success.
+
+Note: This will method only work if the ‘All Members Are Admins’ setting is off in the target group. Otherwise members may only be removed by the group's creator or by the member that added them.
 </div>
 
 
@@ -2314,13 +4140,13 @@ No more than 50 results per query are allowed.
 
         <tr>
             
-                <td class="name"><code>chat_id</code></td>
+                <td class="name"><code>args</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Integer</span>
+<span class="param-type">Object</span>
 
 
             
@@ -2338,7 +4164,333 @@ No more than 50 results per query are allowed.
 
             
 
-            <td class="description last">ID of the chat to send the message to</td>
+            <td class="description last">Arguments for the method
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>chat_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Unique identifier for the target chat or username of the target channel (in the format @channelusername)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>user_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Unique identifier of the target user</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cb</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">A callback which will be called with the usual "error" and "result" arguments when the call completes</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line437">line 437</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    A promise which resolves when the method call completes
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="sendAudio"><span class="type-signature"></span>sendAudio<span class="signature">(args, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .ogg file encoded with OPUS (other formats may be sent as Document). On success, the sent <a href="https://core.telegram.org/bots/api#message">Message</a> is returned.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Arguments for the method
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>chat_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Unique identifier for the target chat or username of the target channel (in the format @channelusername)</td>
         </tr>
 
     
@@ -2354,7 +4506,7 @@ No more than 50 results per query are allowed.
 <span class="param-type">String</span>
 |
 
-<span class="param-type"><a href="DataTypes.InputFile.html">DataTypes.InputFile</a></span>
+<span class="param-type"><a href="InputFile.html">InputFile</a></span>
 
 
             
@@ -2372,7 +4524,7 @@ No more than 50 results per query are allowed.
 
             
 
-            <td class="description last">Audio file to send. You can either pass a file_id as String to resend an audio that is already on the Telegram servers, or upload a new audio file using multipart/form-data.</td>
+            <td class="description last">Audio file to send. You can either pass a file_id as String to resend an audio that is already on the Telegram servers, or upload a new audio file</td>
         </tr>
 
     
@@ -2478,6 +4630,39 @@ No more than 50 results per query are allowed.
 
         <tr>
             
+                <td class="name"><code>disable_notification</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Sends the message silently. iOS users will not receive a notification, Android users will receive a notification with no sound.</td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>reply_to_message_id</code></td>
             
 
@@ -2517,6 +4702,9 @@ No more than 50 results per query are allowed.
             <td class="type">
             
                 
+<span class="param-type">InlineKeyboardMarkup</span>
+|
+
 <span class="param-type">ReplyKeyboardMarkup</span>
 |
 
@@ -2543,7 +4731,14 @@ No more than 50 results per query are allowed.
 
             
 
-            <td class="description last">Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</td>
+            <td class="description last">Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to hide reply keyboard or to force a reply from the user. See <a href="https://core.telegram.org/bots/api#inlinekeyboardmarkup">InlineKeyboardMarkup</a>, <a href="https://core.telegram.org/bots/api#replykeyboardmarkup">ReplyKeyboardMarkup</a>, <a href="https://core.telegram.org/bots/api#inlinekeyboardhide">ReplyKeyboardHide</a>, <a href="https://core.telegram.org/bots/api#forcereply">ForceReply</a></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -2576,7 +4771,7 @@ No more than 50 results per query are allowed.
 
             
 
-            <td class="description last">If the last argument is a function, it will be treated as a callback function with args "error" and "result"</td>
+            <td class="description last">A callback which will be called with the usual "error" and "result" arguments when the call completes</td>
         </tr>
 
     
@@ -2617,7 +4812,7 @@ No more than 50 results per query are allowed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line212">line 212</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line167">line 167</a>
     </li></ul></dd>
     
 
@@ -2644,7 +4839,7 @@ No more than 50 results per query are allowed.
 
         
 <div class="param-desc">
-    A promise which resolves when the method call completes
+    A promise which resolves to the sent <a href="https://core.telegram.org/bots/api#message">Message</a> when the method call completes
 </div>
 
 
@@ -2670,14 +4865,14 @@ No more than 50 results per query are allowed.
 
     
 
-    <h4 class="name" id="sendChatAction"><span class="type-signature"></span>sendChatAction<span class="signature">(chat_id, action, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="sendChatAction"><span class="type-signature"></span>sendChatAction<span class="signature">(args, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
 
 
 <div class="description">
-    Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status).
+    Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). 
 
 Example: The ImageBot needs some time to process a request and upload the image. Instead of sending a text message along the lines of “Retrieving image, please wait…”, the bot may use sendChatAction with action = upload_photo. The user will see a “sending photo” status for the bot.
 
@@ -2719,13 +4914,13 @@ We only recommend using this method when a response from the bot will take a not
 
         <tr>
             
-                <td class="name"><code>chat_id</code></td>
+                <td class="name"><code>args</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Integer</span>
+<span class="param-type">Object</span>
 
 
             
@@ -2743,7 +4938,52 @@ We only recommend using this method when a response from the bot will take a not
 
             
 
-            <td class="description last">ID of the chat to send the message to</td>
+            <td class="description last">Arguments for the method
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>chat_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Unique identifier for the target chat or username of the target channel (in the format @channelusername)</td>
         </tr>
 
     
@@ -2763,18 +5003,17 @@ We only recommend using this method when a response from the bot will take a not
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
 
             <td class="description last">Type of action to broadcast. Choose one, depending on what the user is about to receive: typing for text messages, upload_photo for photos, record_video or upload_video for videos, record_audio or upload_audio for audio files, upload_document for general files, find_location for location data.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -2807,7 +5046,7 @@ We only recommend using this method when a response from the bot will take a not
 
             
 
-            <td class="description last">If the last argument is a function, it will be treated as a callback function with args "error" and "result"</td>
+            <td class="description last">A callback which will be called with the usual "error" and "result" arguments when the call completes</td>
         </tr>
 
     
@@ -2848,7 +5087,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line350">line 350</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line322">line 322</a>
     </li></ul></dd>
     
 
@@ -2901,14 +5140,14 @@ We only recommend using this method when a response from the bot will take a not
 
     
 
-    <h4 class="name" id="sendDocument"><span class="type-signature"></span>sendDocument<span class="signature">(chat_id, document, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="sendContact"><span class="type-signature"></span>sendContact<span class="signature">(args, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
 
 
 <div class="description">
-    Use this method to send general files. On success, the sent Message is returned.
+    Use this method to send phone contacts. On success, the sent <a href="https://core.telegram.org/bots/api#message">Message</a> is returned.
 </div>
 
 
@@ -2946,6 +5185,58 @@ We only recommend using this method when a response from the bot will take a not
 
         <tr>
             
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Arguments for the method
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
                 <td class="name"><code>chat_id</code></td>
             
 
@@ -2953,6 +5244,9 @@ We only recommend using this method when a response from the bot will take a not
             
                 
 <span class="param-type">Integer</span>
+|
+
+<span class="param-type">String</span>
 
 
             
@@ -2970,23 +5264,20 @@ We only recommend using this method when a response from the bot will take a not
 
             
 
-            <td class="description last">ID of the chat to send the message to</td>
+            <td class="description last">Unique identifier for the target chat or username of the target channel (in the format @channelusername)</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>document</code></td>
+                <td class="name"><code>phone_number</code></td>
             
 
             <td class="type">
             
                 
 <span class="param-type">String</span>
-|
-
-<span class="param-type"><a href="DataTypes.InputFile.html">DataTypes.InputFile</a></span>
 
 
             
@@ -3004,7 +5295,104 @@ We only recommend using this method when a response from the bot will take a not
 
             
 
-            <td class="description last">File to send. You can either pass a file_id as String to resend a file that is already on the Telegram servers, or upload a new file using multipart/form-data.</td>
+            <td class="description last">Contact's phone number</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>first_name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Contact's first name</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>last_name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Contact's last name</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>disable_notification</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Sends the message silently. iOS users will not receive a notification, Android users will receive a notification with no sound.</td>
         </tr>
 
     
@@ -3050,6 +5438,9 @@ We only recommend using this method when a response from the bot will take a not
             <td class="type">
             
                 
+<span class="param-type">InlineKeyboardMarkup</span>
+|
+
 <span class="param-type">ReplyKeyboardMarkup</span>
 |
 
@@ -3076,7 +5467,14 @@ We only recommend using this method when a response from the bot will take a not
 
             
 
-            <td class="description last">Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</td>
+            <td class="description last">Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to hide reply keyboard or to force a reply from the user. See <a href="https://core.telegram.org/bots/api#inlinekeyboardmarkup">InlineKeyboardMarkup</a>, <a href="https://core.telegram.org/bots/api#replykeyboardmarkup">ReplyKeyboardMarkup</a>, <a href="https://core.telegram.org/bots/api#inlinekeyboardhide">ReplyKeyboardHide</a>, <a href="https://core.telegram.org/bots/api#forcereply">ForceReply</a></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -3109,7 +5507,7 @@ We only recommend using this method when a response from the bot will take a not
 
             
 
-            <td class="description last">If the last argument is a function, it will be treated as a callback function with args "error" and "result"</td>
+            <td class="description last">A callback which will be called with the usual "error" and "result" arguments when the call completes</td>
         </tr>
 
     
@@ -3150,7 +5548,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line236">line 236</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line304">line 304</a>
     </li></ul></dd>
     
 
@@ -3177,7 +5575,7 @@ We only recommend using this method when a response from the bot will take a not
 
         
 <div class="param-desc">
-    A promise which resolves when the method call completes
+    A promise which resolves to the sent <a href="https://core.telegram.org/bots/api#message">Message</a> when the method call completes
 </div>
 
 
@@ -3203,14 +5601,14 @@ We only recommend using this method when a response from the bot will take a not
 
     
 
-    <h4 class="name" id="sendLocation"><span class="type-signature"></span>sendLocation<span class="signature">(chat_id, latitude, longitude, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="sendDocument"><span class="type-signature"></span>sendDocument<span class="signature">(args, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
 
 
 <div class="description">
-    Use this method to send point on the map. On success, the sent Message is returned.
+    Use this method to send general files. On success, the sent <a href="https://core.telegram.org/bots/api#message">Message</a> is returned.
 </div>
 
 
@@ -3248,13 +5646,13 @@ We only recommend using this method when a response from the bot will take a not
 
         <tr>
             
-                <td class="name"><code>chat_id</code></td>
+                <td class="name"><code>args</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Integer</span>
+<span class="param-type">Object</span>
 
 
             
@@ -3272,7 +5670,495 @@ We only recommend using this method when a response from the bot will take a not
 
             
 
-            <td class="description last">ID of the chat to send the message to</td>
+            <td class="description last">Arguments for the method
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>chat_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Unique identifier for the target chat or username of the target channel (in the format @channelusername)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>document</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+|
+
+<span class="param-type"><a href="InputFile.html">InputFile</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">File to send. You can either pass a file_id as String to resend a file that is already on the Telegram servers, or upload a new file</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>caption</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Document caption (may also be used when resending documents by file_id), 0-200 characters</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>disable_notification</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Sends the message silently. iOS users will not receive a notification, Android users will receive a notification with no sound.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reply_to_message_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">If the message is a reply, ID of the original message</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reply_markup</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">InlineKeyboardMarkup</span>
+|
+
+<span class="param-type">ReplyKeyboardMarkup</span>
+|
+
+<span class="param-type">ReplyKeyboardHide</span>
+|
+
+<span class="param-type">ForceReply</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to hide reply keyboard or to force a reply from the user. See <a href="https://core.telegram.org/bots/api#inlinekeyboardmarkup">InlineKeyboardMarkup</a>, <a href="https://core.telegram.org/bots/api#replykeyboardmarkup">ReplyKeyboardMarkup</a>, <a href="https://core.telegram.org/bots/api#inlinekeyboardhide">ReplyKeyboardHide</a>, <a href="https://core.telegram.org/bots/api#forcereply">ForceReply</a></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cb</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">A callback which will be called with the usual "error" and "result" arguments when the call completes</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line186">line 186</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    A promise which resolves to the sent <a href="https://core.telegram.org/bots/api#message">Message</a> when the method call completes
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="sendLocation"><span class="type-signature"></span>sendLocation<span class="signature">(args, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Use this method to send point on the map. On success, the sent <a href="https://core.telegram.org/bots/api#message">Message</a> is returned.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Arguments for the method
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>chat_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Unique identifier for the target chat or username of the target channel (in the format @channelusername)</td>
         </tr>
 
     
@@ -3341,6 +6227,39 @@ We only recommend using this method when a response from the bot will take a not
 
         <tr>
             
+                <td class="name"><code>disable_notification</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Sends the message silently. iOS users will not receive a notification, Android users will receive a notification with no sound.</td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>reply_to_message_id</code></td>
             
 
@@ -3380,6 +6299,9 @@ We only recommend using this method when a response from the bot will take a not
             <td class="type">
             
                 
+<span class="param-type">InlineKeyboardMarkup</span>
+|
+
 <span class="param-type">ReplyKeyboardMarkup</span>
 |
 
@@ -3406,7 +6328,14 @@ We only recommend using this method when a response from the bot will take a not
 
             
 
-            <td class="description last">Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</td>
+            <td class="description last">Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to hide reply keyboard or to force a reply from the user. See <a href="https://core.telegram.org/bots/api#inlinekeyboardmarkup">InlineKeyboardMarkup</a>, <a href="https://core.telegram.org/bots/api#replykeyboardmarkup">ReplyKeyboardMarkup</a>, <a href="https://core.telegram.org/bots/api#inlinekeyboardhide">ReplyKeyboardHide</a>, <a href="https://core.telegram.org/bots/api#forcereply">ForceReply</a></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -3439,7 +6368,7 @@ We only recommend using this method when a response from the bot will take a not
 
             
 
-            <td class="description last">If the last argument is a function, it will be treated as a callback function with args "error" and "result"</td>
+            <td class="description last">A callback which will be called with the usual "error" and "result" arguments when the call completes</td>
         </tr>
 
     
@@ -3480,7 +6409,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line327">line 327</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line264">line 264</a>
     </li></ul></dd>
     
 
@@ -3507,7 +6436,7 @@ We only recommend using this method when a response from the bot will take a not
 
         
 <div class="param-desc">
-    A promise which resolves when the method call completes
+    A promise which resolves to the sent <a href="https://core.telegram.org/bots/api#message">Message</a> when the method call completes
 </div>
 
 
@@ -3533,14 +6462,14 @@ We only recommend using this method when a response from the bot will take a not
 
     
 
-    <h4 class="name" id="sendMessage"><span class="type-signature"></span>sendMessage<span class="signature">(chat_id, text, parse_mode<span class="signature-attributes">opt</span>, disable_web_page_preview<span class="signature-attributes">opt</span>, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="sendMessage"><span class="type-signature"></span>sendMessage<span class="signature">(args, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
 
 
 <div class="description">
-    Use this method to forward messages of any kind. On success, the sent Message is returned.
+    Use this method to forward messages of any kind. On success, the sent <a href="https://core.telegram.org/bots/api#message">Message</a> is returned.
 </div>
 
 
@@ -3578,13 +6507,13 @@ We only recommend using this method when a response from the bot will take a not
 
         <tr>
             
-                <td class="name"><code>chat_id</code></td>
+                <td class="name"><code>args</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Integer</span>
+<span class="param-type">Object</span>
 
 
             
@@ -3602,7 +6531,62 @@ We only recommend using this method when a response from the bot will take a not
 
             
 
-            <td class="description last">ID of the chat to send the message to</td>
+            <td class="description last">Arguments for the method
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>chat_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Unique identifier for the target chat or username of the target channel (in the format @channelusername)</td>
         </tr>
 
     
@@ -3666,7 +6650,7 @@ We only recommend using this method when a response from the bot will take a not
 
             
 
-            <td class="description last">Send Markdown, if you want Telegram apps to show bold, italic and inline URLs in your bot's message. For the moment, only Telegram for Android and OSX support this.</td>
+            <td class="description last">Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in your bot's message.</td>
         </tr>
 
     
@@ -3700,6 +6684,39 @@ We only recommend using this method when a response from the bot will take a not
             
 
             <td class="description last">Disables link previews for links in this message</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>disable_notification</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Sends the message silently. iOS users will not receive a notification, Android users will receive a notification with no sound.</td>
         </tr>
 
     
@@ -3745,6 +6762,9 @@ We only recommend using this method when a response from the bot will take a not
             <td class="type">
             
                 
+<span class="param-type">InlineKeyboardMarkup</span>
+|
+
 <span class="param-type">ReplyKeyboardMarkup</span>
 |
 
@@ -3771,7 +6791,14 @@ We only recommend using this method when a response from the bot will take a not
 
             
 
-            <td class="description last">Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</td>
+            <td class="description last">Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to hide reply keyboard or to force a reply from the user. See <a href="https://core.telegram.org/bots/api#inlinekeyboardmarkup">InlineKeyboardMarkup</a>, <a href="https://core.telegram.org/bots/api#replykeyboardmarkup">ReplyKeyboardMarkup</a>, <a href="https://core.telegram.org/bots/api#inlinekeyboardhide">ReplyKeyboardHide</a>, <a href="https://core.telegram.org/bots/api#forcereply">ForceReply</a></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -3804,7 +6831,440 @@ We only recommend using this method when a response from the bot will take a not
 
             
 
-            <td class="description last">If the last argument is a function, it will be treated as a callback function with args "error" and "result"</td>
+            <td class="description last">A callback which will be called with the usual "error" and "result" arguments when the call completes</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line112">line 112</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    A promise which resolves to the sent <a href="https://core.telegram.org/bots/api#message">Message</a> when the method call completes
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="sendPhoto"><span class="type-signature"></span>sendPhoto<span class="signature">(args, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Use this method to send photos. On success, the sent <a href="https://core.telegram.org/bots/api#message">Message</a> is returned.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Arguments for the method
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>chat_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Unique identifier for the target chat or username of the target channel (in the format @channelusername)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>photo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+|
+
+<span class="param-type"><a href="InputFile.html">InputFile</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Photo to send. You can either pass a file_id as String to resend a photo that is already on the Telegram servers, or upload a new photo</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>caption</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Photo caption (may also be used when resending photos by file_id), 0-200 characters</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>disable_notification</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Sends the message silently. iOS users will not receive a notification, Android users will receive a notification with no sound.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reply_to_message_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">If the message is a reply, ID of the original message</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reply_markup</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">InlineKeyboardMarkup</span>
+|
+
+<span class="param-type">ReplyKeyboardMarkup</span>
+|
+
+<span class="param-type">ReplyKeyboardHide</span>
+|
+
+<span class="param-type">ForceReply</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to hide reply keyboard or to force a reply from the user. See <a href="https://core.telegram.org/bots/api#inlinekeyboardmarkup">InlineKeyboardMarkup</a>, <a href="https://core.telegram.org/bots/api#replykeyboardmarkup">ReplyKeyboardMarkup</a>, <a href="https://core.telegram.org/bots/api#inlinekeyboardhide">ReplyKeyboardHide</a>, <a href="https://core.telegram.org/bots/api#forcereply">ForceReply</a></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cb</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">A callback which will be called with the usual "error" and "result" arguments when the call completes</td>
         </tr>
 
     
@@ -3872,7 +7332,7 @@ We only recommend using this method when a response from the bot will take a not
 
         
 <div class="param-desc">
-    A promise which resolves when the method call completes
+    A promise which resolves to the sent <a href="https://core.telegram.org/bots/api#message">Message</a> when the method call completes
 </div>
 
 
@@ -3898,14 +7358,14 @@ We only recommend using this method when a response from the bot will take a not
 
     
 
-    <h4 class="name" id="sendPhoto"><span class="type-signature"></span>sendPhoto<span class="signature">(chat_id, photo, caption<span class="signature-attributes">opt</span>, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="sendSticker"><span class="type-signature"></span>sendSticker<span class="signature">(args, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
 
 
 <div class="description">
-    Use this method to send photos. On success, the sent Message is returned.
+    Use this method to send .webp stickers. On success, the sent <a href="https://core.telegram.org/bots/api#message">Message</a> is returned.
 </div>
 
 
@@ -3943,13 +7403,13 @@ We only recommend using this method when a response from the bot will take a not
 
         <tr>
             
-                <td class="name"><code>chat_id</code></td>
+                <td class="name"><code>args</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Integer</span>
+<span class="param-type">Object</span>
 
 
             
@@ -3967,292 +7427,9 @@ We only recommend using this method when a response from the bot will take a not
 
             
 
-            <td class="description last">ID of the chat to send the message to</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>photo</code></td>
-            
-
-            <td class="type">
-            
+            <td class="description last">Arguments for the method
+                <h6>Properties</h6>
                 
-<span class="param-type">String</span>
-|
-
-<span class="param-type"><a href="DataTypes.InputFile.html">DataTypes.InputFile</a></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">Photo to send. You can either pass a file_id as String to resend a photo that is already on the Telegram servers, or upload a new photo using multipart/form-data.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>caption</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">Photo caption (may also be used when resending photos by file_id).</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>reply_to_message_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Integer</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">If the message is a reply, ID of the original message</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>reply_markup</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">ReplyKeyboardMarkup</span>
-|
-
-<span class="param-type">ReplyKeyboardHide</span>
-|
-
-<span class="param-type">ForceReply</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cb</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">If the last argument is a function, it will be treated as a callback function with args "error" and "result"</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line187">line 187</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    A promise which resolves when the method call completes
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="sendSticker"><span class="type-signature"></span>sendSticker<span class="signature">(chat_id, sticker, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
-
-    
-
-
-
-<div class="description">
-    Use this method to send .webp stickers. On success, the sent Message is returned.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
 
 <table class="params">
     <thead>
@@ -4285,6 +7462,9 @@ We only recommend using this method when a response from the bot will take a not
             
                 
 <span class="param-type">Integer</span>
+|
+
+<span class="param-type">String</span>
 
 
             
@@ -4302,7 +7482,7 @@ We only recommend using this method when a response from the bot will take a not
 
             
 
-            <td class="description last">ID of the chat to send the message to</td>
+            <td class="description last">Unique identifier for the target chat or username of the target channel (in the format @channelusername)</td>
         </tr>
 
     
@@ -4318,7 +7498,7 @@ We only recommend using this method when a response from the bot will take a not
 <span class="param-type">String</span>
 |
 
-<span class="param-type"><a href="DataTypes.InputFile.html">DataTypes.InputFile</a></span>
+<span class="param-type"><a href="InputFile.html">InputFile</a></span>
 
 
             
@@ -4343,6 +7523,39 @@ We only recommend using this method when a response from the bot will take a not
 
         <tr>
             
+                <td class="name"><code>disable_notification</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Sends the message silently. iOS users will not receive a notification, Android users will receive a notification with no sound.</td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>reply_to_message_id</code></td>
             
 
@@ -4382,6 +7595,9 @@ We only recommend using this method when a response from the bot will take a not
             <td class="type">
             
                 
+<span class="param-type">InlineKeyboardMarkup</span>
+|
+
 <span class="param-type">ReplyKeyboardMarkup</span>
 |
 
@@ -4408,7 +7624,14 @@ We only recommend using this method when a response from the bot will take a not
 
             
 
-            <td class="description last">Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</td>
+            <td class="description last">Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to hide reply keyboard or to force a reply from the user. See <a href="https://core.telegram.org/bots/api#inlinekeyboardmarkup">InlineKeyboardMarkup</a>, <a href="https://core.telegram.org/bots/api#replykeyboardmarkup">ReplyKeyboardMarkup</a>, <a href="https://core.telegram.org/bots/api#inlinekeyboardhide">ReplyKeyboardHide</a>, <a href="https://core.telegram.org/bots/api#forcereply">ForceReply</a></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -4441,7 +7664,7 @@ We only recommend using this method when a response from the bot will take a not
 
             
 
-            <td class="description last">If the last argument is a function, it will be treated as a callback function with args "error" and "result"</td>
+            <td class="description last">A callback which will be called with the usual "error" and "result" arguments when the call completes</td>
         </tr>
 
     
@@ -4482,7 +7705,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line257">line 257</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line204">line 204</a>
     </li></ul></dd>
     
 
@@ -4509,7 +7732,7 @@ We only recommend using this method when a response from the bot will take a not
 
         
 <div class="param-desc">
-    A promise which resolves when the method call completes
+    A promise which resolves to the sent <a href="https://core.telegram.org/bots/api#message">Message</a> when the method call completes
 </div>
 
 
@@ -4535,14 +7758,14 @@ We only recommend using this method when a response from the bot will take a not
 
     
 
-    <h4 class="name" id="sendVideo"><span class="type-signature"></span>sendVideo<span class="signature">(chat_id, video, duration<span class="signature-attributes">opt</span>, caption<span class="signature-attributes">opt</span>, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="sendVenue"><span class="type-signature"></span>sendVenue<span class="signature">(args, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
 
 
 <div class="description">
-    Use this method to send video files, Telegram clients support mp4 videos (other formats may be sent as Document). On success, the sent Message is returned.
+    Use this method to send information about a venue. On success, the sent <a href="https://core.telegram.org/bots/api#message">Message</a> is returned.
 </div>
 
 
@@ -4580,13 +7803,13 @@ We only recommend using this method when a response from the bot will take a not
 
         <tr>
             
-                <td class="name"><code>chat_id</code></td>
+                <td class="name"><code>args</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Integer</span>
+<span class="param-type">Object</span>
 
 
             
@@ -4604,7 +7827,585 @@ We only recommend using this method when a response from the bot will take a not
 
             
 
-            <td class="description last">ID of the chat to send the message to</td>
+            <td class="description last">Arguments for the method
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>chat_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Unique identifier for the target chat or username of the target channel (in the format @channelusername)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>latitude</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Float</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Latitude of location</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>longitude</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Float</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Longitude of location</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>title</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Name of the venue</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>address</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Address of the venue</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>foursquare_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Foursquare identifier of the venue</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>disable_notification</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Sends the message silently. iOS users will not receive a notification, Android users will receive a notification with no sound.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reply_to_message_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">If the message is a reply, ID of the original message</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reply_markup</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">InlineKeyboardMarkup</span>
+|
+
+<span class="param-type">ReplyKeyboardMarkup</span>
+|
+
+<span class="param-type">ReplyKeyboardHide</span>
+|
+
+<span class="param-type">ForceReply</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to hide reply keyboard or to force a reply from the user. See <a href="https://core.telegram.org/bots/api#inlinekeyboardmarkup">InlineKeyboardMarkup</a>, <a href="https://core.telegram.org/bots/api#replykeyboardmarkup">ReplyKeyboardMarkup</a>, <a href="https://core.telegram.org/bots/api#inlinekeyboardhide">ReplyKeyboardHide</a>, <a href="https://core.telegram.org/bots/api#forcereply">ForceReply</a></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cb</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">A callback which will be called with the usual "error" and "result" arguments when the call completes</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line285">line 285</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    A promise which resolves to the sent <a href="https://core.telegram.org/bots/api#message">Message</a> when the method call completes
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="sendVideo"><span class="type-signature"></span>sendVideo<span class="signature">(args, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Use this method to send video files, Telegram clients support mp4 videos (other formats may be sent as Document). On success, the sent <a href="https://core.telegram.org/bots/api#message">Message</a> is returned.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Arguments for the method
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>chat_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Unique identifier for the target chat or username of the target channel (in the format @channelusername)</td>
         </tr>
 
     
@@ -4620,7 +8421,7 @@ We only recommend using this method when a response from the bot will take a not
 <span class="param-type">String</span>
 |
 
-<span class="param-type"><a href="DataTypes.InputFile.html">DataTypes.InputFile</a></span>
+<span class="param-type"><a href="InputFile.html">InputFile</a></span>
 
 
             
@@ -4638,7 +8439,7 @@ We only recommend using this method when a response from the bot will take a not
 
             
 
-            <td class="description last">Video to send. You can either pass a file_id as String to resend a video that is already on the Telegram servers, or upload a new video file using multipart/form-data.</td>
+            <td class="description last">Video to send. You can either pass a file_id as String to resend a video that is already on the Telegram servers, or upload a new video file</td>
         </tr>
 
     
@@ -4678,6 +8479,72 @@ We only recommend using this method when a response from the bot will take a not
 
         <tr>
             
+                <td class="name"><code>width</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Video width</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>height</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Video height</td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>caption</code></td>
             
 
@@ -4705,6 +8572,39 @@ We only recommend using this method when a response from the bot will take a not
             
 
             <td class="description last">Video caption (may also be used when resending videos by file_id).</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>disable_notification</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Sends the message silently. iOS users will not receive a notification, Android users will receive a notification with no sound.</td>
         </tr>
 
     
@@ -4750,6 +8650,9 @@ We only recommend using this method when a response from the bot will take a not
             <td class="type">
             
                 
+<span class="param-type">InlineKeyboardMarkup</span>
+|
+
 <span class="param-type">ReplyKeyboardMarkup</span>
 |
 
@@ -4776,7 +8679,14 @@ We only recommend using this method when a response from the bot will take a not
 
             
 
-            <td class="description last">Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</td>
+            <td class="description last">Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to hide reply keyboard or to force a reply from the user. See <a href="https://core.telegram.org/bots/api#inlinekeyboardmarkup">InlineKeyboardMarkup</a>, <a href="https://core.telegram.org/bots/api#replykeyboardmarkup">ReplyKeyboardMarkup</a>, <a href="https://core.telegram.org/bots/api#inlinekeyboardhide">ReplyKeyboardHide</a>, <a href="https://core.telegram.org/bots/api#forcereply">ForceReply</a></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -4809,7 +8719,7 @@ We only recommend using this method when a response from the bot will take a not
 
             
 
-            <td class="description last">If the last argument is a function, it will be treated as a callback function with args "error" and "result"</td>
+            <td class="description last">A callback which will be called with the usual "error" and "result" arguments when the call completes</td>
         </tr>
 
     
@@ -4850,7 +8760,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line280">line 280</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line226">line 226</a>
     </li></ul></dd>
     
 
@@ -4877,7 +8787,7 @@ We only recommend using this method when a response from the bot will take a not
 
         
 <div class="param-desc">
-    A promise which resolves when the method call completes
+    A promise which resolves to the sent <a href="https://core.telegram.org/bots/api#message">Message</a> when the method call completes
 </div>
 
 
@@ -4903,14 +8813,14 @@ We only recommend using this method when a response from the bot will take a not
 
     
 
-    <h4 class="name" id="sendVoice"><span class="type-signature"></span>sendVoice<span class="signature">(chat_id, voice, duration<span class="signature-attributes">opt</span>, reply_to_message_id<span class="signature-attributes">opt</span>, reply_markup<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="sendVoice"><span class="type-signature"></span>sendVoice<span class="signature">(args, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
 
 
 <div class="description">
-    Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .ogg file encoded with OPUS (other formats may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
+    Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .ogg file encoded with OPUS (other formats may be sent as Audio or Document). On success, the sent <a href="https://core.telegram.org/bots/api#message">Message</a> is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
 </div>
 
 
@@ -4948,13 +8858,13 @@ We only recommend using this method when a response from the bot will take a not
 
         <tr>
             
-                <td class="name"><code>chat_id</code></td>
+                <td class="name"><code>args</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Integer</span>
+<span class="param-type">Object</span>
 
 
             
@@ -4972,7 +8882,62 @@ We only recommend using this method when a response from the bot will take a not
 
             
 
-            <td class="description last">ID of the chat to send the message to</td>
+            <td class="description last">Arguments for the method
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>chat_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Unique identifier for the target chat or username of the target channel (in the format @channelusername)</td>
         </tr>
 
     
@@ -4988,7 +8953,7 @@ We only recommend using this method when a response from the bot will take a not
 <span class="param-type">String</span>
 |
 
-<span class="param-type"><a href="DataTypes.InputFile.html">DataTypes.InputFile</a></span>
+<span class="param-type"><a href="InputFile.html">InputFile</a></span>
 
 
             
@@ -5006,7 +8971,7 @@ We only recommend using this method when a response from the bot will take a not
 
             
 
-            <td class="description last">Audio file to send. You can either pass a file_id as String to resend an audio that is already on the Telegram servers, or upload a new audio file using multipart/form-data.</td>
+            <td class="description last">Audio file to send. You can either pass a file_id as String to resend an audio that is already on the Telegram servers, or upload a new audio file</td>
         </tr>
 
     
@@ -5039,7 +9004,40 @@ We only recommend using this method when a response from the bot will take a not
 
             
 
-            <td class="description last">Duration of the audio in secondsi</td>
+            <td class="description last">Duration of the audio in seconds</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>disable_notification</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Sends the message silently. iOS users will not receive a notification, Android users will receive a notification with no sound.</td>
         </tr>
 
     
@@ -5085,6 +9083,9 @@ We only recommend using this method when a response from the bot will take a not
             <td class="type">
             
                 
+<span class="param-type">InlineKeyboardMarkup</span>
+|
+
 <span class="param-type">ReplyKeyboardMarkup</span>
 |
 
@@ -5111,7 +9112,14 @@ We only recommend using this method when a response from the bot will take a not
 
             
 
-            <td class="description last">Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</td>
+            <td class="description last">Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to hide reply keyboard or to force a reply from the user. See <a href="https://core.telegram.org/bots/api#inlinekeyboardmarkup">InlineKeyboardMarkup</a>, <a href="https://core.telegram.org/bots/api#replykeyboardmarkup">ReplyKeyboardMarkup</a>, <a href="https://core.telegram.org/bots/api#inlinekeyboardhide">ReplyKeyboardHide</a>, <a href="https://core.telegram.org/bots/api#forcereply">ForceReply</a></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -5144,7 +9152,7 @@ We only recommend using this method when a response from the bot will take a not
 
             
 
-            <td class="description last">If the last argument is a function, it will be treated as a callback function with args "error" and "result"</td>
+            <td class="description last">A callback which will be called with the usual "error" and "result" arguments when the call completes</td>
         </tr>
 
     
@@ -5185,7 +9193,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line304">line 304</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line245">line 245</a>
     </li></ul></dd>
     
 
@@ -5212,7 +9220,7 @@ We only recommend using this method when a response from the bot will take a not
 
         
 <div class="param-desc">
-    A promise which resolves when the method call completes
+    A promise which resolves to the sent <a href="https://core.telegram.org/bots/api#message">Message</a> when the method call completes
 </div>
 
 
@@ -5238,14 +9246,14 @@ We only recommend using this method when a response from the bot will take a not
 
     
 
-    <h4 class="name" id="setWebhook"><span class="type-signature"></span>setWebhook<span class="signature">(url, certificate<span class="signature-attributes">opt</span>, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="setWebhook"><span class="type-signature"></span>setWebhook<span class="signature">(args, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
 
 
 <div class="description">
-    Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized @Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts.
+    Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized <a href="https://core.telegram.org/bots/api#update">Update</a>. In case of an unsuccessful request, we will give up after a reasonable amount of attempts.
 </div>
 
 
@@ -5258,6 +9266,58 @@ We only recommend using this method when a response from the bot will take a not
 
     <h5>Parameters:</h5>
     
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Arguments for the method
+                <h6>Properties</h6>
+                
 
 <table class="params">
     <thead>
@@ -5298,6 +9358,8 @@ We only recommend using this method when a response from the bot will take a not
             
                 <td class="attributes">
                 
+                    &lt;optional><br>
+                
 
                 
 
@@ -5320,7 +9382,7 @@ We only recommend using this method when a response from the bot will take a not
             <td class="type">
             
                 
-<span class="param-type">InputFile</span>
+<span class="param-type"><a href="InputFile.html">InputFile</a></span>
 
 
             
@@ -5341,6 +9403,13 @@ We only recommend using this method when a response from the bot will take a not
             
 
             <td class="description last">Upload your public key certificate so that the root certificate in use can be checked</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -5373,7 +9442,7 @@ We only recommend using this method when a response from the bot will take a not
 
             
 
-            <td class="description last">If the last argument is a function, it will be treated as a callback function with args "error" and "result"</td>
+            <td class="description last">A callback which will be called with the usual "error" and "result" arguments when the call completes</td>
         </tr>
 
     
@@ -5414,7 +9483,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line399">line 399</a>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line88">line 88</a>
     </li></ul></dd>
     
 
@@ -5463,6 +9532,277 @@ We only recommend using this method when a response from the bot will take a not
 
 
         
+            
+
+    
+
+    <h4 class="name" id="unbanChatMember"><span class="type-signature"></span>unbanChatMember<span class="signature">(args, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Use this method to unban a previously kicked user in a supergroup. The user will not return to the group automatically, but will be able to join via link, etc. The bot must be an administrator in the group for this to work. Returns True on success
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Arguments for the method
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>chat_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Unique identifier for the target chat or username of the target channel (in the format @channelusername)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>user_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Unique identifier of the target user</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cb</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">A callback which will be called with the usual "error" and "result" arguments when the call completes</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="telegram_api.js.html">telegram_api.js</a>, <a href="telegram_api.js.html#line451">line 451</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    A promise which resolves to a boolean when the method call completes. True if successful, false otherwise
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
     
 
     
@@ -5478,13 +9818,13 @@ We only recommend using this method when a response from the bot will take a not
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BotAPI.html">BotAPI</a></li><li><a href="DataTypes.InputFile.html">InputFile</a></li></ul><h3>Namespaces</h3><ul><li><a href="DataTypes.html">DataTypes</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BotAPI.html">BotAPI</a></li><li><a href="InputFile.html">InputFile</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Mon Feb 01 2016 21:16:18 GMT+0100 (CET)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sat Apr 16 2016 15:11:31 GMT+0200 (CEST)
 </footer>
 
 <script> prettyPrint(); </script>
