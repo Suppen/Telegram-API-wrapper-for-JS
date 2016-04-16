@@ -541,7 +541,7 @@ class BotAPI {
 
 		// Check if data was provided. This is a hack to make stuff work if no parameters were passed to a method
 		if (!dataProvided) {
-			form.getHeaders = () => {return {};}
+			form.getHeaders = () => {return {};};
 		}
 
 		// Do the request
@@ -634,7 +634,7 @@ class BotAPI {
 				resolve(res);
 			});
 			req.on("error", e => {
-				args.cb(e, null);	// Something went wrong with the request
+				cb(e, null);	// Something went wrong with the request
 				reject(e);
 			});
 		});

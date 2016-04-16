@@ -10,7 +10,7 @@ github: [https://github.com/Suppen/Telegram-API-wrapper-for-JS](https://github.c
 
 Official API-documentation: [https://core.telegram.org/bots/api](https://core.telegram.org/bots/api)
 
-Documentation for this package: [https://doc.suppen.no/teleapiwrapper]{https://doc.suppen.no/teleapiwrapper}
+Documentation for this package: [https://doc.suppen.no/teleapiwrapper](https://doc.suppen.no/teleapiwrapper)
 
 ## Major changes in v2.0
 
@@ -163,6 +163,7 @@ Everything in the wrapper is documented with JSDoc. The documentation is availab
 They are also readable on [https://doc.suppen.no/teleapiwrapper](https://doc.suppen.no/teleapiwrapper)
 
 ## Changelog
+* **2.0.1**: Minor bugfix
 * **2.0.0**: Added methods and updated old ones to support the API v2.0. Converted everything to ES6 and removed support for giving arguments the traditional way. All your bots will probably break on this update
 * **0.16.1**: Made the timeout call the callback too, not just reject the promise
 * **0.16.0**: Added a timeout to the HTTPS-requests. Defaults to 60 seconds. Available on the `requestTimeout` property
