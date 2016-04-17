@@ -1,7 +1,7 @@
 "use strict";
 
 // Import teleapiwrapper to test it 
-const teleapiwrapper = require("../telegram_api");
+const teleapiwrapper = require("../main");
 const fs = require("fs");
 
 // Function to put thens and catches on promises

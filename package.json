@@ -1,8 +1,8 @@
 {
   "name": "teleapiwrapper",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "An unofficial JS-wrapper for the Telegram bot API.",
-  "main": "telegram_api.js",
+  "main": "main.js",
   "scripts": {
     "test": "./node_modules/jasmine/bin/jasmine.js"
   },

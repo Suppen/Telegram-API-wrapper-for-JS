@@ -15,7 +15,8 @@ Documentation for this package: [https://doc.suppen.no/teleapiwrapper](https://d
 ## Major changes in v2.0
 
 * teleapiwrapper has been converted to ES6, meaning older versions of node are no longer supported.
-* All arguments MUST now be given in object form, meaning `bot.sendMessage(123456789, "Cake")` will no longer work. The way to do it now is `bot.sendMessage({chat_id: 123456789, text: "Cake"})
+* All arguments MUST now be given in object form, meaning `bot.sendMessage(123456789, "Cake")` will no longer work. The way to do it now is `bot.sendMessage({chat_id: 123456789, text: "Cake"})`
+* The callback is given as a second argument to the method, not as a property of the argument object. Example: `bot.sendMessage({chat_id: 123456789, text: "Cake"}, cb)`
 * The major and minor version numbers of this package will now match the official API's version
 
 ## How to use
@@ -101,7 +102,7 @@ bot.sendPhoto({
         caption: "This is a really nice photo"
 });
 ```
-Not, however, that the receiver(s) will see the file name as "Some file". See the section about the `InputFile` class to change this.
+Note, however, that the receiver(s) will see the file name as "Some file". See the section about the `InputFile` class to change this.
 
 #### By ID
 When you send a file to Telegram, you will get the sent message in response. This message contains the ID Telegram assigned to the file. Using this ID, you can resend the file without having to upload it again
@@ -163,6 +164,7 @@ Everything in the wrapper is documented with JSDoc. The documentation is availab
 They are also readable on [https://doc.suppen.no/teleapiwrapper](https://doc.suppen.no/teleapiwrapper)
 
 ## Changelog
+* **2.0.2**: Minor changes to the readme, and modularized the code. No functional changes
 * **2.0.1**: Minor bugfix
 * **2.0.0**: Added methods and updated old ones to support the API v2.0. Converted everything to ES6 and removed support for giving arguments the traditional way. All your bots will probably break on this update
 * **0.16.1**: Made the timeout call the callback too, not just reject the promise
