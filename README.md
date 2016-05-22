@@ -71,7 +71,7 @@ let keyboard = {/* reply_markup */
 bot.sendMessage({
         chat_id: chatId,
         text: text,
-        keyboard: keyboard
+        reply_markup: keyboard
 });
 ```
 
@@ -164,6 +164,7 @@ Everything in the wrapper is documented with JSDoc. The documentation is availab
 They are also readable on [https://doc.suppen.no/teleapiwrapper](https://doc.suppen.no/teleapiwrapper)
 
 ## Changelog
+* **2.1.0**: Brought the wrapper up to date with BotAPI v2.1
 * **2.0.2**: Minor changes to the readme, and modularized the code. No functional changes
 * **2.0.1**: Minor bugfix
 * **2.0.0**: Added methods and updated old ones to support the API v2.0. Converted everything to ES6 and removed support for giving arguments the traditional way. All your bots will probably break on this update

@@ -763,7 +763,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="bot_api.js.html">bot_api.js</a>, <a href="bot_api.js.html#line465">line 465</a>
+        <a href="bot_api.js.html">bot_api.js</a>, <a href="bot_api.js.html#line516">line 516</a>
     </li></ul></dd>
     
 
@@ -1216,7 +1216,7 @@ No more than 50 results per query are allowed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="bot_api.js.html">bot_api.js</a>, <a href="bot_api.js.html#line487">line 487</a>
+        <a href="bot_api.js.html">bot_api.js</a>, <a href="bot_api.js.html#line538">line 538</a>
     </li></ul></dd>
     
 
@@ -2812,6 +2812,649 @@ No more than 50 results per query are allowed.
 
     
 
+    <h4 class="name" id="getChat"><span class="type-signature"></span>getChat<span class="signature">(chat_id)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Use this method to get up to date information about the chat (current name of the user for one-on-one conversations, current username of a user, group or channel, etc.). Returns a [Chat](https://core.telegram.org/bots/api#chat) object on success.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>chat_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="bot_api.js.html">bot_api.js</a>, <a href="bot_api.js.html#line392">line 392</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    A promise which resolves to a [Chat](https://core.telegram.org/bots/api#chat) when the method call completes
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getChatAdministrators"><span class="type-signature"></span>getChatAdministrators<span class="signature">(chat_id)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Use this method to get a list of administrators in a chat. On success, returns an Array of [ChatMember](https://core.telegram.org/bots/api#chatmember) objects that contains information about all chat administrators except other bots. If the chat is a group or a supergroup and no administrators were appointed, only the creator will be returned.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>chat_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="bot_api.js.html">bot_api.js</a>, <a href="bot_api.js.html#line403">line 403</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    A promise which resolves to an Array of [ChatMember](https://core.telegram.org/bots/api#chatmember) when the method call completes
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getChatMember"><span class="type-signature"></span>getChatMember<span class="signature">(chat_id, user_id)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Use this method to get information about a member of a chat. Returns a [ChatMember](https://core.telegram.org/bots/api#chatmember) object on success.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>chat_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>user_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Unique identifier of the target user</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="bot_api.js.html">bot_api.js</a>, <a href="bot_api.js.html#line426">line 426</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getChatMembersCount"><span class="type-signature"></span>getChatMembersCount<span class="signature">(chat_id)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Use this method to get the number of members in a chat. Returns Integer on success.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>chat_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="bot_api.js.html">bot_api.js</a>, <a href="bot_api.js.html#line414">line 414</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    A promise which resolves to an Integer when the method call completes
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
     <h4 class="name" id="getFile"><span class="type-signature"></span>getFile<span class="signature">(args, cb<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
@@ -3004,7 +3647,7 @@ No more than 50 results per query are allowed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="bot_api.js.html">bot_api.js</a>, <a href="bot_api.js.html#line420">line 420</a>
+        <a href="bot_api.js.html">bot_api.js</a>, <a href="bot_api.js.html#line471">line 471</a>
     </li></ul></dd>
     
 
@@ -3200,7 +3843,7 @@ No more than 50 results per query are allowed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="bot_api.js.html">bot_api.js</a>, <a href="bot_api.js.html#line393">line 393</a>
+        <a href="bot_api.js.html">bot_api.js</a>, <a href="bot_api.js.html#line444">line 444</a>
     </li></ul></dd>
     
 
@@ -3844,7 +4487,7 @@ No more than 50 results per query are allowed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="bot_api.js.html">bot_api.js</a>, <a href="bot_api.js.html#line408">line 408</a>
+        <a href="bot_api.js.html">bot_api.js</a>, <a href="bot_api.js.html#line459">line 459</a>
     </li></ul></dd>
     
 
@@ -4040,7 +4683,7 @@ No more than 50 results per query are allowed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="bot_api.js.html">bot_api.js</a>, <a href="bot_api.js.html#line621">line 621</a>
+        <a href="bot_api.js.html">bot_api.js</a>, <a href="bot_api.js.html#line672">line 672</a>
     </li></ul></dd>
     
 
@@ -4313,7 +4956,7 @@ Note: This will method only work if the ‘All Members Are Admins’ setting is 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="bot_api.js.html">bot_api.js</a>, <a href="bot_api.js.html#line436">line 436</a>
+        <a href="bot_api.js.html">bot_api.js</a>, <a href="bot_api.js.html#line487">line 487</a>
     </li></ul></dd>
     
 
@@ -9754,7 +10397,7 @@ We only recommend using this method when a response from the bot will take a not
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="bot_api.js.html">bot_api.js</a>, <a href="bot_api.js.html#line450">line 450</a>
+        <a href="bot_api.js.html">bot_api.js</a>, <a href="bot_api.js.html#line501">line 501</a>
     </li></ul></dd>
     
 
@@ -9824,7 +10467,7 @@ We only recommend using this method when a response from the bot will take a not
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sun Apr 17 2016 09:19:26 GMT+0200 (CEST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sun May 22 2016 11:14:16 GMT+0200 (CEST)
 </footer>
 
 <script> prettyPrint(); </script>
