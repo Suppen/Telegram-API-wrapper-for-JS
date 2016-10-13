@@ -164,6 +164,7 @@ Everything in the wrapper is documented with JSDoc. The documentation is availab
 They are also readable on [https://doc.suppen.no/teleapiwrapper](https://doc.suppen.no/teleapiwrapper)
 
 ## Changelog
+* **2.2.0**: Added the game methods, bringing the wrapper up to date with BotAPI v2.2
 * **2.1.0**: Brought the wrapper up to date with BotAPI v2.1
 * **2.0.2**: Minor changes to the readme, and modularized the code. No functional changes
 * **2.0.1**: Minor bugfix

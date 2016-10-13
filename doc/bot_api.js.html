@@ -117,6 +117,15 @@ class BotAPI {
 		return this._doRequest("setWebhook", args, cb);
 	}
 
+	/**
+	 * Use this method to get current webhook status. Requires no parameters. On success, returns a [WebhookInfo]{https://core.telegram.org/bots/api#webhookinfo} object. If the bot is using getUpdates, will return an object with the url field empty.
+	 *
+	 * @return {Promise}	A promise which resolves to a [WebhookInfo]{https://core.telegram.org/bots/api#webhookinfo} object
+	 */
+	getWebhookInfo(args, cb) {
+		return this._doRequest("getWebhookInfo", args, cb);
+	}
+
 	/****************************
 	 * Methods to send messages *
 	 ****************************/
@@ -161,7 +170,7 @@ class BotAPI {
 	 *
 	 * @param {Object} args	Arguments for the method
 	 * @param {Integer|String} args.chat_id	Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-	 * @param {String|InputFile} args.photo	Photo to send. You can either pass a file_id as String to resend a photo that is already on the Telegram servers, or upload a new photo
+	 * @param {String|InputFile} args.photo	Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data.
 	 * @param {String} [args.caption]	Photo caption (may also be used when resending photos by file_id), 0-200 characters
 	 * @param {Boolean} [args.disable_notification]	Sends the message silently. iOS users will not receive a notification, Android users will receive a notification with no sound.
 	 * @param {Integer} [args.reply_to_message_id]	If the message is a reply, ID of the original message
@@ -180,7 +189,8 @@ class BotAPI {
 	 *
 	 * @param {Object} args	Arguments for the method
 	 * @param {Integer|String} args.chat_id	Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-	 * @param {String|InputFile} args.audio	Audio file to send. You can either pass a file_id as String to resend an audio that is already on the Telegram servers, or upload a new audio file
+	 * @param {String|InputFile} args.audio	Audio file to send. Pass a file_id as String to send an audio file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the Internet, or upload a new one using multipart/form-data.
+	 * @param {String} [args.caption]	Audio caption, 0-200 characters
 	 * @param {Integet} [args.duration]	Duration of the audio in secondsi
 	 * @param {String} [args.performer]	Performer
 	 * @param {String} [args.title]	Track name
@@ -201,7 +211,7 @@ class BotAPI {
 	 *
 	 * @param {Object} args	Arguments for the method
 	 * @param {Integer|String} args.chat_id	Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-	 * @param {String|InputFile} args.document	File to send. You can either pass a file_id as String to resend a file that is already on the Telegram servers, or upload a new file
+	 * @param {String|InputFile} args.document	File to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data.
 	 * @param {String} [args.caption]	Document caption (may also be used when resending documents by file_id), 0-200 characters
 	 * @param {Boolean} [args.disable_notification]	Sends the message silently. iOS users will not receive a notification, Android users will receive a notification with no sound.
 	 * @param {Integer} [args.reply_to_message_id]	If the message is a reply, ID of the original message
@@ -220,7 +230,7 @@ class BotAPI {
 	 *
 	 * @param {Object} args	Arguments for the method
 	 * @param {Integer|String} args.chat_id	Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-	 * @param {String|InputFile} args.sticker	Sticker to send. You can either pass a file_id as String to resend a sticker that is already on the Telegram servers, or upload a new sticker using multipart/form-data.
+	 * @param {String|InputFile} args.sticker	Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a .webp file from the Internet, or upload a new one using multipart/form-data.
 	 * @param {Boolean} [args.disable_notification]	Sends the message silently. iOS users will not receive a notification, Android users will receive a notification with no sound.
 	 * @param {Integer} [args.reply_to_message_id]	If the message is a reply, ID of the original message
 	 * @param {InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [args.reply_markup]	Additional interface options. An object for an inline keyboard, custom reply keyboard, instructions to hide reply keyboard or to force a reply from the user. See [InlineKeyboardMarkup]{@link https://core.telegram.org/bots/api#inlinekeyboardmarkup}, [ReplyKeyboardMarkup]{@link https://core.telegram.org/bots/api#replykeyboardmarkup}, [ReplyKeyboardHide]{@link https://core.telegram.org/bots/api#inlinekeyboardhide}, [ForceReply]{@link https://core.telegram.org/bots/api#forcereply}
@@ -238,7 +248,7 @@ class BotAPI {
 	 *
 	 * @param {Object} args	Arguments for the method
 	 * @param {Integer|String} args.chat_id	Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-	 * @param {String|InputFile} args.video	Video to send. You can either pass a file_id as String to resend a video that is already on the Telegram servers, or upload a new video file
+	 * @param {String|InputFile} args.video	Video to send. Video to send. Pass a file_id as String to send a video that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new video using multipart/form-data.
 	 * @param {Integer} [args.duration]	Duration of sent video in seconds
 	 * @param {Integer} [args.width]	Video width
 	 * @param {Integer} [args.height]	Video height
@@ -260,7 +270,8 @@ class BotAPI {
 	 *
 	 * @param {Object} args	Arguments for the method
 	 * @param {Integer|String} args.chat_id	Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-	 * @param {String|InputFile} args.voice	Audio file to send. You can either pass a file_id as String to resend an audio that is already on the Telegram servers, or upload a new audio file
+	 * @param {String|InputFile} args.voice	Audio file to send. Pass a filei_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data.
+	 * @param {String} [args.caption]	Voice message caption, 0-200 characters
 	 * @param {Integet} [args.duration]	Duration of the audio in seconds
 	 * @param {Boolean} [args.disable_notification]	Sends the message silently. iOS users will not receive a notification, Android users will receive a notification with no sound.
 	 * @param {Integer} [args.reply_to_message_id]	If the message is a reply, ID of the original message
@@ -537,6 +548,7 @@ class BotAPI {
 	 * @param {String} args.callback_query_id	Unique identifier for the query to be answered
 	 * @param {String} [args.text]	Text of the notification. If not specified, nothing will be shown to the user
 	 * @param {Boolean} [args.show_alert]	If true, an alert will be shown by the client instead of a notification at the top of the chat screen. Defaults to false.
+	 * @param {String} [args.url]	URL that will be opened by the user's client. If you have created a Game and accepted the conditions via @Botfather, specify the URL that opens your game – note that this will only work if the query comes from a callback_game button. Otherwise, you may use links like telegram.me/your_bot?start=XXXX that open your bot with a parameter.
 	 * @param {Function} [cb]	A callback which will be called with the usual "error" and "result" arguments when the call completes
 	 * 
 	 * @return {Promise}	A promise which resolves to a boolean when the method call completes. True if successful, false otherwise
@@ -565,6 +577,60 @@ class BotAPI {
 	 */
 	answerInlineQuery(args, cb) {
 		return this._doRequest("answerInlineQuery", args, cb);
+	}
+
+
+
+	/****************
+	 * Game methods *
+	 ****************/
+
+	/**
+	 * Use this method to send a game. On success, the sent [Message]{@link https://core.telegram.org/bots/api#message} is returned.
+	 *
+	 * @param {Object} args	Arguments for the method
+	 * @param {Integer|String} args.chat_id	Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+	 * @param {String} args.game_short_name	Short name of the game, serves as the unique identifier for the game. Set up your games via [BotFather]{@link https://telegram.me/botfather}
+	 * @param {Boolean} [args.disable_notification]	Sends the message silently. iOS users will not receive a notification, Android users will receive a notification with no sound
+	 * @param {Integer} [args.reply_to_message_id]	If the message is a reply, ID of the original message
+	 * @param {InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply} [args.reply_markup]	Additional interface options. An object for an inline keyboard, custom reply keyboard, instructions to hide reply keyboard or to force a reply from the user. See [InlineKeyboardMarkup]{@link https://core.telegram.org/bots/api#inlinekeyboardmarkup}, [ReplyKeyboardMarkup]{@link https://core.telegram.org/bots/api#replykeyboardmarkup}, [ReplyKeyboardHide]{@link https://core.telegram.org/bots/api#inlinekeyboardhide}, [ForceReply]{@link https://core.telegram.org/bots/api#forcereply}
+	 * 
+	 * @return {Promise}	A promise which resolves to the sent [Message]{@link https://core.telegram.org/bots/api#message} when the method call completes
+	 */
+	sendGame(args, cb) {
+		return this._doRequest("sendGame", args, cb);
+	}
+
+	/**
+	 * Use this method to set the score of the specified user in a game. On success, if the message was sent by the bot, returns the edited [Message]{@link https://core.telegram.org/bots/api#message}, otherwise returns True. Returns an error, if the new score is not greater than the user's current score in the chat.
+	 *
+	 * @param {Object} args	Arguments for the method
+	 * @param {Integer} args.user_id	User identifier
+	 * @param {Integer} args.score	New score, must be positive
+	 * @param {Integer|String} [args.chat_id]	Required if inline_message_id is not specified. Unique identifier for the target chat (or username of the target channel in the format @channelusername)
+	 * @param {Integer} [args.message_id]	Required if inline_message_id is not specified. Unique identifier of the sent message
+	 * @param {String} [args.inline_message_id]	Required if chat_id and message_id are not specified. Identifier of the inline message
+	 * @param {Boolean} [args.edit_message]	Pass True, if the game message should be automatically edited to include the current scoreboard
+	 *
+	 * @return {Promise}	A promise resolving to the sent [Message]{@link https://core.telegram.org/bots/api#message} when the method call completes
+	 */
+	setGameScore(args, cb) {
+		return this._doRequest("setGameScore", args, cb);
+	}
+
+	/**	
+	 * Use this method to get data for high score tables. Will return the score of the specified user and several of his neighbors in a game. On success, returns an Array of [GameHighScore]{https://core.telegram.org/bots/api#gamehighscore} objects.
+	 *
+	 * @param {Object} args	Arguments for the method
+	 * @param {Integer} args.user_id	Target user id
+	 * @param {Integer|String} [args.chat_id]	Required if inline_message_id is not specified. Unique identifier for the target chat (or username of the target channel in the format @channelusername)
+	 * @param {Integer} [args.message_id]	Required if inline_message_id is not specified. Unique identifier of the sent message
+	 * @param {String} [args.inline_message_id]	Required if chat_id and message_id are not specified. Identifier of the inline message
+	 *
+	 * @return {Promise}	A promise which resolves to an Array of [GameHighScore]{https://core.telegram.org/bots/api#gamehighscore} objects.
+	 */
+	getGameHighScores(args, cb) {
+		return this._doRequest("sendGameHighScores", args, cb);
 	}
 
 	/****************************************************************
@@ -740,7 +806,7 @@ module.exports = BotAPI;
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sun May 22 2016 11:14:16 GMT+0200 (CEST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.2</a> on Thu Oct 13 2016 18:56:21 GMT+0200 (CEST)
 </footer>
 
 <script> prettyPrint(); </script>
