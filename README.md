@@ -2,7 +2,7 @@
 
 An unofficial JS-wrapper for the Telegram bot API
 
-**Supports ALL methods in the bot API as of 2016-04-16**
+**Supports ALL methods in the bot API as of 2016-12-04**
 
 npm: [https://www.npmjs.com/package/teleapiwrapper](https://www.npmjs.com/package/teleapiwrapper)
 
@@ -164,6 +164,7 @@ Everything in the wrapper is documented with JSDoc. The documentation is availab
 They are also readable on [https://doc.suppen.no/teleapiwrapper](https://doc.suppen.no/teleapiwrapper)
 
 ## Changelog
+* **2.3.1**: Brought the wrapper up to date with BotAPI v2.3.1
 * **2.3.0**: Brought the wrapper up to date with BotAPI v2.3
 * **2.1.1**: Added the game methods, and added the new arguments to many methods as of 2016-10-03
 * **2.1.0**: Brought the wrapper up to date with BotAPI v2.1
