@@ -1,3 +1,5 @@
+# Please don't use this. Use [Telegraf](https://www.npmjs.com/package/telegraf) instead
+
 # Telegram API wrapper
 
 An unofficial JS-wrapper for the Telegram bot API
